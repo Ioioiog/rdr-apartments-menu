@@ -125,7 +125,7 @@
 
     /* Hero */
     .hero {
-      min-height: 560px;
+      min-height: 460px;
       position: relative;
       background:
         linear-gradient(90deg, rgba(0,27,24,.92) 0%, rgba(0,27,24,.78) 36%, rgba(0,27,24,.20) 64%, rgba(0,27,24,.05) 100%),
@@ -133,7 +133,7 @@
       color: white;
       display: flex;
       align-items: center;
-      padding: 120px 0 180px;
+      padding: 110px 0 160px;
     }
     .hero::after {
       content: "";
@@ -174,26 +174,6 @@
       line-height: 1.75;
       max-width: 500px;
       color: rgba(255,255,255,.82);
-    }
-    .hero-highlights {
-      margin: 28px 0;
-      display: grid;
-      gap: 14px;
-    }
-    .hero-highlights span {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      font-size: 14px;
-    }
-    .hero-highlights i {
-      width: 32px; height: 32px;
-      border: 1px solid rgba(215,171,85,.55);
-      border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-style: normal;
     }
 
     /* Booking */
@@ -460,7 +440,7 @@
       }
       .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
       .menu-btn { display: block; }
-      .hero { min-height: 640px; background-position: 62% center; }
+      .hero { min-height: 540px; background-position: 62% center; }
       .booking { grid-template-columns: 1fr 1fr; }
       .booking button { min-height: 60px; }
       .apartments-grid { grid-template-columns: 1fr; }
@@ -476,9 +456,9 @@
       .logo strong { font-size: 23px; }
       .logo small { display: none; }
       .hero {
-        min-height: 700px;
+        min-height: 580px;
         align-items: flex-start;
-        padding-top: 120px;
+        padding-top: 110px;
         background:
           linear-gradient(180deg, rgba(0,27,24,.9) 0%, rgba(0,27,24,.72) 55%, rgba(0,27,24,.35) 100%),
           url("photos/hero.jpg") center/cover;
@@ -506,12 +486,10 @@
     }
 
     @media (max-width: 480px) {
-      .hero { min-height: 780px; }
+      .hero { min-height: 640px; }
       .hero h1 { font-size: 52px; }
       .hero h2 { font-size: 24px; }
       .hero p { font-size: 15px; }
-      .hero-highlights span { font-size: 13px; }
-      .hero-highlights i { width: 28px; height: 28px; font-size: 12px; }
       .eyebrow { font-size: 24px; }
       .section-title { font-size: 34px; }
       .section-tag { font-size: 22px; }
@@ -563,7 +541,7 @@
 
     <nav class="nav-links" id="navLinks">
       <a href="#acasa" data-en="HOME" data-es="INICIO">HOME</a>
-      <a href="#apartamente" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
+      <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
       <a href="#facilitati" data-en="AMENITIES" data-es="SERVICIOS">AMENITIES</a>
       <a href="#despre" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
       <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
@@ -586,12 +564,6 @@
           A tropical retreat where modern comfort, privacy and the island's authentic charm meet. Relax. Breathe. Live the Caribbean.
         </p>
 
-        <div class="hero-highlights">
-          <span><i>✦</i> <span data-en="Quiet location in Santa Catharina" data-es="Ubicación tranquila en Santa Catharina">Quiet location in Santa Catharina</span></span>
-          <span><i>♡</i> <span data-en="Welcoming host and personal attention" data-es="Anfitrión acogedor y atención personal">Welcoming host and personal attention</span></span>
-          <span><i>★</i> <span data-en="Modern comfort and privacy" data-es="Comodidad moderna y privacidad">Modern comfort and privacy</span></span>
-          <span><i>≈</i> <span data-en="Close to beaches and attractions" data-es="Cerca de playas y atracciones">Close to beaches and attractions</span></span>
-        </div>
       </div>
     </div>
 
@@ -633,15 +605,15 @@
 
         <div class="image-grid">
           <article class="image-card">
-            <img src="photos/apartament.jpg" alt="Cozy bedroom">
+            <img src="photos/superior/bed.jpeg" alt="Cozy bedroom">
             <div class="image-label" data-en="Cozy bedroom" data-es="Dormitorio acogedor">Cozy bedroom</div>
           </article>
           <article class="image-card">
-            <img src="photos/apartament1.jpg" alt="Fully equipped kitchen">
+            <img src="photos/superior/kitchen.jpg" alt="Fully equipped kitchen">
             <div class="image-label" data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</div>
           </article>
           <article class="image-card">
-            <img src="photos/apartament.jpg" alt="Private balcony">
+            <img src="photos/superior/terase.jpeg" alt="Private balcony">
             <div class="image-label" data-en="Private balcony" data-es="Balcón privado">Private balcony</div>
           </article>
         </div>
@@ -710,7 +682,7 @@
       <div>
         <h4 data-en="Contact" data-es="Contacto">Contact</h4>
         <p>
-          Santa Catharina, Willemstad, Curaçao<br>
+          La Quinta Villas 95, Santa Catharina, Curaçao<br>
           +599 9 693 9031<br>
           info@rdrapartments.com
         </p>
@@ -718,7 +690,7 @@
       <div>
         <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
         <p>
-          <a href="#apartamente" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
           <a href="#facilitati" data-en="Amenities" data-es="Servicios">Amenities</a><br>
           <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
           <a href="#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
