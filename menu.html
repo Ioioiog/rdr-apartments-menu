@@ -1,588 +1,802 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>RDR Apartments — Menu</title>
-<style>
-  @import url('https://fonts.googleapis.com/css2?family=Fraunces:opsz,wght@9..144,500;9..144,600&family=Archivo:wght@400;500;600;700&display=swap');
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="RDR Apartments – Lunch & Dinner menu in Curaçao." />
+  <title>Menu | RDR Apartments Curaçao</title>
 
-  :root{
-    --ink:#0d2b36;          /* petrol adânc – marea Caraibelor la amurg */
-    --ink-soft:#41616d;
-    --paper:#ffffff;
-    --sand:#f4f6f5;
-    --coral:#e8543f;        /* accent coral */
-    --line:#dfe6e6;
-  }
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
 
-  *{margin:0;padding:0;box-sizing:border-box;}
+  <style>
+    :root {
+      --green-950: #032f29;
+      --green-900: #073d35;
+      --green-800: #0d4f45;
+      --green-700: #17675a;
+      --gold: #d7ab55;
+      --gold-dark: #b68532;
+      --cream: #f5efe4;
+      --cream-2: #fbf7f0;
+      --paper: #eee4d2;
+      --ink: #1a211f;
+      --muted: #68716d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+      --radius: 24px;
+    }
 
-  @page{ size:A4; margin:0; }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream-2);
+      overflow-x: hidden;
+    }
+    img { width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
 
-  html,body{ background:#e9ecec; }
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(3,47,41,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      padding: 10px 0;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(215,171,85,.7);
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: .08em;
+      line-height: .8;
+    }
+    .logo small {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing: .32em;
+      opacity: .9;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-links a {
+      opacity: .88;
+      transition: .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      padding: 13px 20px;
+      background: var(--gold);
+      color: var(--green-950);
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 24px;
+    }
 
-  body{
-    font-family:'Archivo',sans-serif;
-    color:var(--ink);
-    -webkit-print-color-adjust:exact;
-    print-color-adjust:exact;
-  }
+    /* Page hero */
+    .page-hero {
+      min-height: 380px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(0,27,24,.88) 0%, rgba(0,27,24,.6) 50%, rgba(0,27,24,.2) 100%),
+        url("photos/hero.jpg") center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 60px;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 60px;
+      background: var(--cream-2);
+      clip-path: polygon(0 58%, 12% 72%, 27% 50%, 44% 76%, 62% 54%, 79% 75%, 100% 55%, 100% 100%, 0 100%);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+    .eyebrow {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: .9;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .page-hero p {
+      font-size: 16px;
+      line-height: 1.75;
+      max-width: 500px;
+      color: rgba(255,255,255,.82);
+      margin-top: 16px;
+    }
 
-  .page{
-    width:210mm; height:297mm;
-    margin:0 auto;
-    background:var(--paper);
-    padding:8mm 9mm 7mm;
-    display:flex; flex-direction:column;
-    overflow:hidden;
-  }
-  @media print{
-    html,body{background:#fff;}
-    .page{margin:0; box-shadow:none;}
-  }
-  @media screen{
-    .page{margin:16px auto; box-shadow:0 10px 40px rgba(13,43,54,.18);}
-  }
+    /* Common */
+    section { position: relative; }
+    .section-tag {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4vw, 48px);
+      line-height: .95;
+      margin: 10px 0 24px;
+      color: var(--green-950);
+    }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+    .btn:hover { transform: translateY(-2px); }
 
-  /* ---------- Header ---------- */
-  header{
-    display:flex; align-items:flex-end; justify-content:space-between;
-    border-bottom:2.5px solid var(--ink);
-    padding-bottom:3mm; margin-bottom:3.5mm;
-  }
-  .brand h1{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:23pt; letter-spacing:.5px; line-height:1;
-  }
-  .brand .tag{
-    font-size:7pt; letter-spacing:3.5px; text-transform:uppercase;
-    color:var(--coral); font-weight:600; margin-top:1.5mm;
-  }
-  .contact{ text-align:right; font-size:7pt; color:var(--ink-soft); line-height:1.6; }
-  .contact strong{ color:var(--ink); font-weight:600; }
+    /* Menu sections */
+    .menu-section { padding: 50px 0 30px; }
+    .menu-cat {
+      display: flex;
+      align-items: center;
+      gap: 14px;
+      margin-bottom: 24px;
+    }
+    .menu-cat .dot {
+      width: 10px; height: 10px;
+      border-radius: 50%;
+      background: var(--gold);
+      flex: none;
+    }
+    .menu-cat h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      font-weight: 600;
+      color: var(--green-950);
+      margin: 0;
+      white-space: nowrap;
+    }
+    .menu-cat::after {
+      content: "";
+      flex: 1;
+      height: 1px;
+      background: rgba(3,47,41,.12);
+    }
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 20px;
+    }
+    .menu-item {
+      display: flex;
+      gap: 14px;
+      align-items: flex-start;
+      background: white;
+      border-radius: 14px;
+      padding: 14px;
+      box-shadow: 0 6px 20px rgba(15,45,39,.06);
+      transition: .2s;
+    }
+    .menu-item:hover { transform: translateY(-3px); box-shadow: 0 10px 30px rgba(15,45,39,.1); }
+    .menu-item img {
+      width: 64px; height: 64px;
+      flex: none;
+      border-radius: 10px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+    .menu-item .txt { min-width: 0; }
+    .menu-item h3 {
+      font-size: 14px;
+      font-weight: 700;
+      line-height: 1.2;
+      margin: 0 0 4px;
+      color: var(--green-950);
+    }
+    .menu-item p {
+      font-size: 12px;
+      line-height: 1.45;
+      color: var(--muted);
+      margin: 0;
+    }
 
-  /* ---------- Secțiuni ---------- */
-  .section-title{
-    display:flex; align-items:center; gap:3mm;
-    margin:2.8mm 0 2mm;
-  }
-  .section-title h2{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:10.5pt; letter-spacing:.3px; white-space:nowrap;
-  }
-  .section-title::after{
-    content:""; flex:1; height:1px; background:var(--line);
-  }
-  .section-title .dot{
-    width:2.2mm; height:2.2mm; border-radius:50%;
-    background:var(--coral); flex:none;
-  }
+    /* Specials */
+    .specials-section {
+      padding: 50px 0;
+    }
+    .specials {
+      background: var(--green-950);
+      color: white;
+      border-radius: 24px;
+      padding: 36px;
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 28px;
+      box-shadow: var(--shadow);
+    }
+    .special {
+      display: flex;
+      gap: 16px;
+      align-items: flex-start;
+    }
+    .special img {
+      width: 72px; height: 72px;
+      flex: none;
+      border-radius: 12px;
+      object-fit: cover;
+      border: 1px solid rgba(215,171,85,.3);
+      cursor: zoom-in;
+    }
+    .special .label {
+      font-size: 10px;
+      letter-spacing: 2px;
+      text-transform: uppercase;
+      color: var(--gold);
+      font-weight: 700;
+      margin-bottom: 4px;
+    }
+    .special h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-weight: 600;
+      line-height: 1.1;
+      margin: 0 0 6px;
+    }
+    .special p {
+      font-size: 12px;
+      line-height: 1.5;
+      color: rgba(255,255,255,.72);
+      margin: 0;
+    }
+    .special .price {
+      font-size: 14px;
+      font-weight: 700;
+      color: var(--gold);
+      margin-top: 8px;
+    }
 
-  /* ---------- Grilă de preparate ---------- */
-  .grid{
-    display:grid;
-    grid-template-columns:repeat(3,1fr);
-    gap:1.8mm 4mm;
-  }
-  .item{
-    display:flex; gap:2.5mm; align-items:flex-start;
-    padding:1mm 0;
-  }
-  .item img{
-    width:15mm; height:15mm; flex:none;
-    object-fit:cover; border-radius:2mm;
-    background:var(--sand);
-    border:1px solid var(--line);
-  }
-  .item .txt{ min-width:0; }
-  .item h3{
-    font-size:7.6pt; font-weight:700; line-height:1.15;
-    margin-bottom:.8mm;
-  }
-  .item p{
-    font-size:6.2pt; line-height:1.35; color:var(--ink-soft);
-    display:-webkit-box; -webkit-line-clamp:3;
-    -webkit-box-orient:vertical; overflow:hidden;
-  }
+    /* Menu footer note */
+    .menu-note {
+      text-align: center;
+      padding: 30px 0 80px;
+      font-size: 13px;
+      color: var(--muted);
+    }
+    .menu-note b { color: var(--green-950); }
 
-  /* ---------- Banda de specialități ---------- */
-  .specials{
-    margin-top:auto;
-    background:var(--ink); color:#fff;
-    border-radius:3mm;
-    padding:3.5mm 4mm;
-    display:grid; grid-template-columns:1.05fr 1fr 1.15fr;
-    gap:4.5mm;
-  }
-  .special{ display:flex; gap:2.8mm; align-items:flex-start; }
-  .special img{
-    width:17mm; height:17mm; flex:none;
-    object-fit:cover; border-radius:2mm;
-    background:rgba(255,255,255,.12);
-    border:1px solid rgba(255,255,255,.25);
-  }
-  .special .label{
-    font-size:5.6pt; letter-spacing:2px; text-transform:uppercase;
-    color:var(--coral); font-weight:700; margin-bottom:.8mm;
-  }
-  .special h3{
-    font-family:'Fraunces',serif; font-weight:600;
-    font-size:9pt; line-height:1.1; margin-bottom:1mm;
-  }
-  .special p{
-    font-size:6pt; line-height:1.4; color:rgba(255,255,255,.75);
-  }
-  .special .price{
-    font-size:7pt; font-weight:700; color:#fff; margin-top:1mm;
-  }
+    /* Footer */
+    footer {
+      background: var(--green-950);
+      color: white;
+      padding: 55px 0 25px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    footer h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      margin: 0 0 14px;
+      color: var(--gold);
+    }
+    footer p, footer a { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 35px;
+      padding-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
 
-  footer{
-    text-align:center; font-size:6pt; letter-spacing:1.5px;
-    text-transform:uppercase; color:var(--ink-soft);
-    margin-top:2.5mm;
-  }
-  footer b{ color:var(--coral); }
+    /* Language switcher */
+    .lang-switcher {
+      position: fixed; top: 14px; right: 14px; z-index: 60;
+      font-family: "DM Sans", sans-serif; font-size: 13px;
+    }
+    .lang-switcher select {
+      padding: 6px 10px; border: 1px solid rgba(215,171,85,.6); border-radius: 8px;
+      background: rgba(3,47,41,.85); color: white; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switcher select option { color: #111; }
+    @media print { .lang-switcher { display: none; } }
 
-  /* ---------- Lightbox ---------- */
-  .lightbox{
-    position:fixed; top:0; left:0; width:100%; height:100%;
-    background:rgba(13,43,54,.92);
-    display:none; align-items:center; justify-content:center;
-    z-index:1000; padding:20px; cursor:zoom-out;
-  }
-  .lightbox.active{ display:flex; }
-  .lightbox img{
-    max-width:90%; max-height:90%; object-fit:contain;
-    border-radius:4mm; box-shadow:0 20px 60px rgba(0,0,0,.4);
-  }
-  .item img, .special img{ cursor:zoom-in; }
-  /* ---------- Language switcher ---------- */
-  .lang-switcher{
-    position:fixed; top:10px; right:10px; z-index:999;
-    font-family:'Archivo',sans-serif; font-size:10pt;
-  }
-  .lang-switcher select{
-    padding:4px 8px; border:1.5px solid var(--ink); border-radius:2mm;
-    background:var(--paper); color:var(--ink); font-weight:600; cursor:pointer;
-    box-shadow:0 2px 8px rgba(13,43,54,.1);
-  }
-  @media print{ .lang-switcher{ display:none; } }
-</style>
+    /* Lightbox */
+    .lightbox {
+      position: fixed; top: 0; left: 0; width: 100%; height: 100%;
+      background: rgba(3,47,41,.92);
+      display: none; align-items: center; justify-content: center;
+      z-index: 1000; padding: 20px; cursor: zoom-out;
+    }
+    .lightbox.active { display: flex; }
+    .lightbox img {
+      max-width: 90%; max-height: 90%; object-fit: contain;
+      border-radius: 14px; box-shadow: 0 20px 60px rgba(0,0,0,.4);
+    }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 75px 20px auto 20px;
+        background: var(--green-950);
+        border-radius: 16px;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: .2s;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .menu-btn { display: block; }
+      .menu-grid { grid-template-columns: repeat(2, 1fr); }
+      .specials { grid-template-columns: 1fr; gap: 20px; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .logo { min-width: unset; }
+      .logo strong { font-size: 23px; }
+      .logo small { display: none; }
+      .menu-grid { grid-template-columns: 1fr; }
+      .specials { padding: 24px; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { min-height: 280px; padding: 120px 0 40px; }
+      .page-hero h1 { font-size: 40px; }
+      .eyebrow { font-size: 24px; }
+      .menu-cat h2 { font-size: 26px; }
+      .menu-item { padding: 12px; }
+      .menu-item img { width: 56px; height: 56px; }
+      .menu-item h3 { font-size: 13px; }
+      .menu-item p { font-size: 11px; }
+      .specials { padding: 20px; }
+      .special img { width: 60px; height: 60px; }
+      .special h3 { font-size: 18px; }
+      .special p { font-size: 11px; }
+      .special .price { font-size: 12px; }
+      footer h4 { font-size: 22px; }
+      .lang-switcher select { font-size: 12px; padding: 5px 8px; }
+    }
+  </style>
 </head>
 <body>
-<div class="lang-switcher"><select id="lang-select"><option value="en">English</option><option value="es">Español</option></select></div>
-<div id="page-en" class="page">
 
-  <header>
-    <div class="brand">
-      <h1>RDR Apartments</h1>
-      <div class="tag">Lunch &amp; Dinner · Curaçao</div>
-    </div>
-    <div class="contact">
-      Orders &amp; reservations<br>
-      <strong>WhatsApp +599 9 693 9031</strong><br>
-      Dinner orders until 3:00 PM
-    </div>
-  </header>
-
-  <!-- ================= SEAFOOD & FISH ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Seafood &amp; Fish</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt="Seafood Platter">
-      <div class="txt"><h3>Seafood Platter</h3><p>A curated selection of the island's finest shellfish and catch, finished with citrus and extra-virgin olive oil.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt="Grilled Red Snapper">
-      <div class="txt"><h3>Grilled Red Snapper</h3><p>Whole red snapper grilled over charcoal, served with market vegetables and a light herb oil.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt="Salmon & Shrimp">
-      <div class="txt"><h3>Salmon &amp; Shrimp</h3><p>Grilled Atlantic salmon crowned with sautéed shrimp and a velvety lemon-butter sauce.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt="Tuna Steak">
-      <div class="txt"><h3>Tuna Steak</h3><p>Seared yellowfin tuna with aromatic rice, lime, and a whisper of flaky sea salt.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt="Grilled Mahi Mahi">
-      <div class="txt"><h3>Grilled Mahi Mahi</h3><p>Fresh mahi mahi grilled to golden perfection, paired with seasonal vegetables or fragrant rice.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt="Mahi Mahi with Shrimp">
-      <div class="txt"><h3>Mahi Mahi with Shrimp</h3><p>Tender mahi mahi topped with plump shrimp, citrus, and the chef's signature sauce.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt="Chef's Special Salmon">
-      <div class="txt"><h3>Chef's Special Salmon</h3><p>Perfectly grilled salmon finished with our house-made signature sauce and a touch of island spice.</p></div>
-    </div>
-  </div>
-
-  <!-- ================= MEAT ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Meat</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt="BBQ Pork Ribs">
-      <div class="txt"><h3>BBQ Pork Ribs</h3><p>Slow-braised pork ribs glazed in a smoky barbecue sauce, with your choice of rice or potatoes.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Mixed Skewers">
-      <div class="txt"><h3>Mixed Skewers</h3><p>A trio of chicken, pork, and beef skewers, flame-grilled and seasoned with Mediterranean herbs.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Crispy Schnitzel">
-      <div class="txt"><h3>Crispy Schnitzel</h3><p>Golden-breaded cutlet, crisp and light, served with lemon wedges and roasted potatoes.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Roasted Pork Knuckle">
-      <div class="txt"><h3>Roasted Pork Knuckle</h3><p>Fork-tender pork knuckle with wild mushrooms, buttery potatoes, and a tangy beet salad.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Rotisserie Chicken">
-      <div class="txt"><h3>Rotisserie Chicken</h3><p>Half free-range chicken, slow-roasted and served with silky mashed potatoes and garlic jus.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Tomahawk Steak">
-      <div class="txt"><h3>Tomahawk Steak</h3><p>1.2 kg premium ribeye on the bone, carved to share and served with rice or potatoes.</p></div>
-    </div>
-  </div>
-
-  <!-- ================= PASTA, SUSHI & SALADS ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Pasta, Sushi, Salads &amp; Vegetables</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt="Seafood Pasta">
-      <div class="txt"><h3>Seafood Pasta</h3><p>Al dente pasta tossed with shrimp, mussels, and calamari in a garlic-white-wine sauce.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Spaghetti Bolognese">
-      <div class="txt"><h3>Spaghetti Bolognese</h3><p>Traditional slow-cooked meat ragù with parmesan and fresh basil over perfect spaghetti.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Spaghetti Carbonara">
-      <div class="txt"><h3>Spaghetti Carbonara</h3><p>Silky egg-yolk cream, pancetta, and aged parmesan coating every strand of spaghetti.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Sushi Platter">
-      <div class="txt"><h3>Sushi Platter</h3><p>An artful selection of freshly rolled nigiri and maki, ideal for sharing.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000109-PHOTO-2026-07-21-23-39-33.jpg" alt="Greek Salad">
-      <div class="txt"><h3>Greek Salad</h3><p>Vine-ripened tomatoes, cucumber, Kalamata olives, red onion, and creamy feta in olive oil.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000111-PHOTO-2026-07-21-23-40-04.jpg" alt="Tuna Salad">
-      <div class="txt"><h3>Tuna Salad</h3><p>Seared tuna ribbons over crisp greens with avocado, citrus, and a delicate vinaigrette.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000115-PHOTO-2026-07-21-23-41-54.jpg" alt="Cabbage & Avocado Salad">
-      <div class="txt"><h3>Cabbage &amp; Avocado Salad</h3><p>Shaved cabbage and creamy avocado with a citrus dressing and toasted seeds.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000116-PHOTO-2026-07-21-23-41-54.jpg" alt="Marinated Mushrooms & Pickles">
-      <div class="txt"><h3>Mushrooms &amp; Pickles</h3><p>Woodsy mushrooms and tangy house pickles, lightly marinated in herbs and olive oil.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000117-PHOTO-2026-07-21-23-41-54.jpg" alt="Eggplant Salad">
-      <div class="txt"><h3>Eggplant Salad</h3><p>Smoky roasted eggplant with garlic, fresh herbs, and a bright lemon finish.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000114-PHOTO-2026-07-21-23-41-53.jpg" alt="Mixed Cabbage Salad">
-      <div class="txt"><h3>Mixed Cabbage Salad</h3><p>Crisp red and white cabbage slaw with carrots, herbs, and a light vinaigrette.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Baked Stuffed Zucchini">
-      <div class="txt"><h3>Baked Stuffed Zucchini</h3><p>Oven-baked zucchini filled with garden vegetables, melted mozzarella, and black olives.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Rice with Vegetables">
-      <div class="txt"><h3>Rice with Vegetables</h3><p>Fragrant rice folded through a medley of seasonal vegetables and fresh herbs.</p></div>
-    </div>
-  </div>
-
-  <!-- ================= DESSERTS ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Desserts</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000123-PHOTO-2026-07-21-23-48-27.jpg" alt="Assorted Cheesecake">
-      <div class="txt"><h3>Assorted Cheesecake</h3><p>A trio of velvety cheesecakes, each with a distinct island-inspired garnish.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000125-PHOTO-2026-07-21-23-50-37.jpg" alt="Classic Cheesecake">
-      <div class="txt"><h3>Classic Cheesecake</h3><p>Silky New York-style cheesecake with a buttery graham crust and berry compote.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000127-PHOTO-2026-07-21-23-51-13.jpg" alt="Crepes">
-      <div class="txt"><h3>Crepes</h3><p>Delicate crepes filled with your choice of jam, Nutella, or mozzarella and sour cream.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000130-PHOTO-2026-07-21-23-52-55.jpg" alt="Ice Cream Selection">
-      <div class="txt"><h3>Ice Cream Selection</h3><p>A curated selection of premium ice creams and sorbets, served simply or with warm sauce.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000134-PHOTO-2026-07-21-23-54-02.jpg" alt="Fresh Fruit Platter">
-      <div class="txt"><h3>Fresh Fruit Platter</h3><p>Seasonal tropical fruit, hand-cut and elegantly arranged.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000136-PHOTO-2026-07-21-23-54-55.jpg" alt="Cheese Platter">
-      <div class="txt"><h3>Cheese Platter</h3><p>Artisanal cheeses, honeycomb, and dried fruit for two to share.</p></div>
-    </div>
-  </div>
-
-  <!-- ================= SPECIALS ================= -->
-  <div class="specials">
-    <div class="special">
-      <img src="photos/00000008-PHOTO-2026-06-27-14-44-03.jpg" alt="Breakfast">
-      <div>
-        <div class="label">Breakfast</div>
-        <h3>Island Breakfast</h3>
-        <p>Omelette or fried eggs, sausages, ham, salami, cheese, tomatoes, cucumbers, peppers, rolls, toast, butter, jam, coffee and 100% natural fresh juice.</p>
-        <div class="price">17 USD · 30 XCG / person</div>
-      </div>
-    </div>
-    <div class="special">
-      <img src="photos/00000140-PHOTO-2026-07-21-23-58-43.jpg" alt="Dinner">
-      <div>
-        <div class="label">Dinner</div>
-        <h3>Romantic Dinner</h3>
-        <p>Main course, dessert and a glass of wine or cocktail, served candlelit under the stars. Reservations recommended.</p>
-        <div class="price">30–40 USD · 55–70 XCG / person</div>
-      </div>
-    </div>
-    <div class="special">
-      <img src="photos/00000147-PHOTO-2026-07-22-00-02-00.jpg" alt="Chef's Recommendation">
-      <div>
-        <div class="label">Chef's Recommendation</div>
-        <h3>Fresh Catch of the Day</h3>
-        <p>Fresh mahi mahi and local seafood selected daily by the chef. Dinner orders until 3:00 PM. Additional dishes available upon request.</p>
-      </div>
-    </div>
-  </div>
-
-  <footer>RDR Apartments · Curaçao · WhatsApp <b>+599 9 693 9031</b></footer>
-
+<div class="lang-switcher">
+  <select id="lang-select">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
 </div>
-<div id="page-es" class="page" style="display:none">
 
-  <header>
-    <div class="brand">
-      <h1>RDR Apartments</h1>
-      <div class="tag">Almuerzo y Cena · Curaçao</div>
-    </div>
-    <div class="contact">
-      Pedidos y reservas<br>
-      <strong>WhatsApp +599 9 693 9031</strong><br>
-      Pedidos de cena hasta las 3:00 PM
-    </div>
-  </header>
+<header class="site-header" id="header">
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+      <span>
+        <strong>RDR</strong>
+        <small>APARTMENTS · CURAÇAO</small>
+      </span>
+    </a>
 
-  <!-- ================= MARISCOS Y PESCADO ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Mariscos y Pescado</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt="Plato de Mariscos">
-      <div class="txt"><h3>Plato de Mariscos</h3><p>Una selección de los mejores mariscos y pescados de la isla, terminados con cítricos y aceite de oliva virgen extra.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt="Pargo Rojo a la Parrilla">
-      <div class="txt"><h3>Pargo Rojo a la Parrilla</h3><p>Pargo rojo entero asado al carbón, servido con verduras de temporada y un ligero aceite de hierbas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt="Salmón y Gambas">
-      <div class="txt"><h3>Salmón y Gambas</h3><p>Salmón atlántico a la parrilla coronado con gambas salteadas y una suave salsa de mantequilla y limón.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt="Filete de Atún">
-      <div class="txt"><h3>Filete de Atún</h3><p>Atún aleta amarilla sellado con arroz aromático, lima y un toque de sal marina en escamas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt="Mahi Mahi a la Parrilla">
-      <div class="txt"><h3>Mahi Mahi a la Parrilla</h3><p>Fresco mahi mahi a la parrilla hasta dorar, acompañado de verduras de temporada o arroz fragante.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt="Mahi Mahi con Gambas">
-      <div class="txt"><h3>Mahi Mahi con Gambas</h3><p>Tierno mahi mahi cubierto con gambas jugosas, cítricos y la salsa especial del chef.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt="Salmón Especial del Chef">
-      <div class="txt"><h3>Salmón Especial del Chef</h3><p>Salmón perfectamente a la parrilla, terminado con nuestra salsa especial casera y un toque de especia isleña.</p></div>
-    </div>
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" data-en="HOME" data-es="INICIO">HOME</a>
+      <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
+      <a href="index.html#facilitati" data-en="AMENITIES" data-es="SERVICIOS">AMENITIES</a>
+      <a href="index.html#despre" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
+      <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
+      <a href="index.html#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+      <a class="nav-cta" href="index.html#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
   </div>
+</header>
 
-  <!-- ================= CARNE ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Carne</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt="Costillas de Cerdo BBQ">
-      <div class="txt"><h3>Costillas de Cerdo BBQ</h3><p>Costillas de cerdo cocidas lentamente con salsa barbacoa ahumada, con arroz o patatas a elegir.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Brochetas Mixtas">
-      <div class="txt"><h3>Brochetas Mixtas</h3><p>Un trío de brochetas de pollo, cerdo y res, asadas a la llama y sazonadas con hierbas mediterráneas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Schnitzel Crujiente">
-      <div class="txt"><h3>Schnitzel Crujiente</h3><p>Milanesa empanada dorada, crujiente y ligera, servida con gajos de limón y patatas asadas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Codillo de Cerdo Asado">
-      <div class="txt"><h3>Codillo de Cerdo Asado</h3><p>Codillo de cerdo tierno que se deshace, con setas silvestres, patatas con mantequilla y ensalada de remolacha.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Pollo a la Parrilla">
-      <div class="txt"><h3>Pollo a la Parrilla</h3><p>Medio pollo de corral asado lentamente, servido con puré de patatas sedoso y jugo de ajo.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Bistec Tomahawk">
-      <div class="txt"><h3>Bistec Tomahawk</h3><p>1.2 kg de ribeye premium con hueso, cortado para compartir y servido con arroz o patatas.</p></div>
-    </div>
-  </div>
+<!-- EN page -->
+<div id="page-en">
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content">
+          <div class="eyebrow">RDR Apartments</div>
+          <h1>Lunch & Dinner</h1>
+          <p>Orders & reservations via WhatsApp <b>+599 9 693 9031</b>. Dinner orders until 3:00 PM.</p>
+        </div>
+      </div>
+    </section>
 
-  <!-- ================= PASTA, SUSHI, ENSALADAS Y VERDURAS ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Pasta, Sushi, Ensaladas y Verduras</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt="Pasta de Mariscos">
-      <div class="txt"><h3>Pasta de Mariscos</h3><p>Pasta al dente salteada con gambas, mejillones y calamares en salsa de ajo y vino blanco.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Espaguetis Boloñesa">
-      <div class="txt"><h3>Espaguetis Boloñesa</h3><p>Ragú de carne tradicional cocinado lentamente con parmesano y albahaca fresca sobre espaguetis perfectos.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Espaguetis Carbonara">
-      <div class="txt"><h3>Espaguetis Carbonara</h3><p>Cremosa yema de huevo, panceta y parmesano añejo cubriendo cada hebra de espagueti.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Bandeja de Sushi">
-      <div class="txt"><h3>Bandeja de Sushi</h3><p>Una selección artística de nigiri y maki recién preparados, ideal para compartir.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000109-PHOTO-2026-07-21-23-39-33.jpg" alt="Ensalada Griega">
-      <div class="txt"><h3>Ensalada Griega</h3><p>Tomates maduros en la vid, pepino, aceitunas Kalamata, cebolla morada y feta cremoso en aceite de oliva.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000111-PHOTO-2026-07-21-23-40-04.jpg" alt="Ensalada de Atún">
-      <div class="txt"><h3>Ensalada de Atún</h3><p>Tiras de atún sellado sobre verduras frescas con aguacate, cítricos y una vinagreta delicada.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000115-PHOTO-2026-07-21-23-41-54.jpg" alt="Ensalada de Repollo y Aguacate">
-      <div class="txt"><h3>Ensalada de Repollo y Aguacate</h3><p>Repollo finamente cortado y aguacate cremoso con aderezo cítrico y semillas tostadas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000116-PHOTO-2026-07-21-23-41-54.jpg" alt="Champiñones y Encurtidos">
-      <div class="txt"><h3>Champiñones y Encurtidos</h3><p>Champiñones boscosos y encurtidos agridulces caseros, ligeramente marinados en hierbas y aceite de oliva.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000117-PHOTO-2026-07-21-23-41-54.jpg" alt="Ensalada de Berenjena">
-      <div class="txt"><h3>Ensalada de Berenjena</h3><p>Berenjena asada ahumada con ajo, hierbas frescas y un toque final de limón.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000114-PHOTO-2026-07-21-23-41-53.jpg" alt="Ensalada de Repollo Mixto">
-      <div class="txt"><h3>Ensalada de Repollo Mixto</h3><p>Fresca ensalada de col roja y blanca con zanahoria, hierbas y una vinagreta ligera.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Calabacines Rellenos al Horno">
-      <div class="txt"><h3>Calabacines Rellenos al Horno</h3><p>Calabacines horneados rellenos de verduras de huerto, mozzarella derretida y aceitunas negras.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Arroz con Verduras">
-      <div class="txt"><h3>Arroz con Verduras</h3><p>Arroz fragante mezclado con una variedad de verduras de temporada y hierbas frescas.</p></div>
-    </div>
-  </div>
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Seafood & Fish</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt="Seafood Platter"><div class="txt"><h3>Seafood Platter</h3><p>A curated selection of the island's finest shellfish and catch, finished with citrus and extra-virgin olive oil.</p></div></div>
+          <div class="menu-item"><img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt="Grilled Red Snapper"><div class="txt"><h3>Grilled Red Snapper</h3><p>Whole red snapper grilled over charcoal, served with market vegetables and a light herb oil.</p></div></div>
+          <div class="menu-item"><img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt="Salmon & Shrimp"><div class="txt"><h3>Salmon &amp; Shrimp</h3><p>Grilled Atlantic salmon crowned with sautéed shrimp and a velvety lemon-butter sauce.</p></div></div>
+          <div class="menu-item"><img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt="Tuna Steak"><div class="txt"><h3>Tuna Steak</h3><p>Seared yellowfin tuna with aromatic rice, lime, and a whisper of flaky sea salt.</p></div></div>
+          <div class="menu-item"><img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt="Grilled Mahi Mahi"><div class="txt"><h3>Grilled Mahi Mahi</h3><p>Fresh mahi mahi grilled to golden perfection, paired with seasonal vegetables or fragrant rice.</p></div></div>
+          <div class="menu-item"><img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt="Mahi Mahi with Shrimp"><div class="txt"><h3>Mahi Mahi with Shrimp</h3><p>Tender mahi mahi topped with plump shrimp, citrus, and the chef's signature sauce.</p></div></div>
+          <div class="menu-item"><img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt="Chef's Special Salmon"><div class="txt"><h3>Chef's Special Salmon</h3><p>Perfectly grilled salmon finished with our house-made signature sauce and a touch of island spice.</p></div></div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ================= POSTRES ================= -->
-  <div class="section-title"><span class="dot"></span><h2>Postres</h2></div>
-  <div class="grid">
-    <div class="item">
-      <img src="photos/00000123-PHOTO-2026-07-21-23-48-27.jpg" alt="Surtido de Cheesecake">
-      <div class="txt"><h3>Surtido de Cheesecake</h3><p>Un trío de cheesecakes aterciopelados, cada uno con una decoración distintiva inspirada en la isla.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000125-PHOTO-2026-07-21-23-50-37.jpg" alt="Cheesecake Clásico">
-      <div class="txt"><h3>Cheesecake Clásico</h3><p>Cheesecake sedoso estilo Nueva York con base de galleta mantecosa y compota de bayas.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000127-PHOTO-2026-07-21-23-51-13.jpg" alt="Crepes">
-      <div class="txt"><h3>Crepes</h3><p>Delicados crepes rellenos a elección de mermelada, Nutella o mozzarella y crema agria.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000130-PHOTO-2026-07-21-23-52-55.jpg" alt="Selección de Helados">
-      <div class="txt"><h3>Selección de Helados</h3><p>Una selección de helados y sorbetes premium, servidos solos o con salsa caliente.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000134-PHOTO-2026-07-21-23-54-02.jpg" alt="Fruta Fresca">
-      <div class="txt"><h3>Fruta Fresca</h3><p>Fruta tropical de temporada, cortada a mano y elegantemente dispuesta.</p></div>
-    </div>
-    <div class="item">
-      <img src="photos/00000136-PHOTO-2026-07-21-23-54-55.jpg" alt="Tabla de Quesos">
-      <div class="txt"><h3>Tabla de Quesos</h3><p>Quesos artesanales, panal de miel y frutas secas para compartir entre dos.</p></div>
-    </div>
-  </div>
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Meat</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt="BBQ Pork Ribs"><div class="txt"><h3>BBQ Pork Ribs</h3><p>Slow-braised pork ribs glazed in a smoky barbecue sauce, with your choice of rice or potatoes.</p></div></div>
+          <div class="menu-item"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Mixed Skewers"><div class="txt"><h3>Mixed Skewers</h3><p>A trio of chicken, pork, and beef skewers, flame-grilled and seasoned with Mediterranean herbs.</p></div></div>
+          <div class="menu-item"><img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Crispy Schnitzel"><div class="txt"><h3>Crispy Schnitzel</h3><p>Golden-breaded cutlet, crisp and light, served with lemon wedges and roasted potatoes.</p></div></div>
+          <div class="menu-item"><img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Roasted Pork Knuckle"><div class="txt"><h3>Roasted Pork Knuckle</h3><p>Fork-tender pork knuckle with wild mushrooms, buttery potatoes, and a tangy beet salad.</p></div></div>
+          <div class="menu-item"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Rotisserie Chicken"><div class="txt"><h3>Rotisserie Chicken</h3><p>Half free-range chicken, slow-roasted and served with silky mashed potatoes and garlic jus.</p></div></div>
+          <div class="menu-item"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Tomahawk Steak"><div class="txt"><h3>Tomahawk Steak</h3><p>1.2 kg premium ribeye on the bone, carved to share and served with rice or potatoes.</p></div></div>
+        </div>
+      </div>
+    </section>
 
-  <!-- ================= ESPECIALES ================= -->
-  <div class="specials">
-    <div class="special">
-      <img src="photos/00000008-PHOTO-2026-06-27-14-44-03.jpg" alt="Desayuno">
-      <div>
-        <div class="label">Desayuno</div>
-        <h3>Desayuno Isleño</h3>
-        <p>Tortilla o huevos fritos, salchichas, jamón, salami, queso, tomates, pepinos, pimientos, panecillos, tostadas, mantequilla, mermelada, café y jugo 100% natural.</p>
-        <div class="price">17 USD · 30 XCG / persona</div>
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Pasta, Sushi, Salads & Vegetables</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt="Seafood Pasta"><div class="txt"><h3>Seafood Pasta</h3><p>Al dente pasta tossed with shrimp, mussels, and calamari in a garlic-white-wine sauce.</p></div></div>
+          <div class="menu-item"><img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Spaghetti Bolognese"><div class="txt"><h3>Spaghetti Bolognese</h3><p>Traditional slow-cooked meat ragù with parmesan and fresh basil over perfect spaghetti.</p></div></div>
+          <div class="menu-item"><img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Spaghetti Carbonara"><div class="txt"><h3>Spaghetti Carbonara</h3><p>Silky egg-yolk cream, pancetta, and aged parmesan coating every strand of spaghetti.</p></div></div>
+          <div class="menu-item"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Sushi Platter"><div class="txt"><h3>Sushi Platter</h3><p>An artful selection of freshly rolled nigiri and maki, ideal for sharing.</p></div></div>
+          <div class="menu-item"><img src="photos/00000109-PHOTO-2026-07-21-23-39-33.jpg" alt="Greek Salad"><div class="txt"><h3>Greek Salad</h3><p>Vine-ripened tomatoes, cucumber, Kalamata olives, red onion, and creamy feta in olive oil.</p></div></div>
+          <div class="menu-item"><img src="photos/00000111-PHOTO-2026-07-21-23-40-04.jpg" alt="Tuna Salad"><div class="txt"><h3>Tuna Salad</h3><p>Seared tuna ribbons over crisp greens with avocado, citrus, and a delicate vinaigrette.</p></div></div>
+          <div class="menu-item"><img src="photos/00000115-PHOTO-2026-07-21-23-41-54.jpg" alt="Cabbage & Avocado Salad"><div class="txt"><h3>Cabbage &amp; Avocado Salad</h3><p>Shaved cabbage and creamy avocado with a citrus dressing and toasted seeds.</p></div></div>
+          <div class="menu-item"><img src="photos/00000116-PHOTO-2026-07-21-23-41-54.jpg" alt="Mushrooms & Pickles"><div class="txt"><h3>Mushrooms &amp; Pickles</h3><p>Woodsy mushrooms and tangy house pickles, lightly marinated in herbs and olive oil.</p></div></div>
+          <div class="menu-item"><img src="photos/00000117-PHOTO-2026-07-21-23-41-54.jpg" alt="Eggplant Salad"><div class="txt"><h3>Eggplant Salad</h3><p>Smoky roasted eggplant with garlic, fresh herbs, and a bright lemon finish.</p></div></div>
+          <div class="menu-item"><img src="photos/00000114-PHOTO-2026-07-21-23-41-53.jpg" alt="Mixed Cabbage Salad"><div class="txt"><h3>Mixed Cabbage Salad</h3><p>Crisp red and white cabbage slaw with carrots, herbs, and a light vinaigrette.</p></div></div>
+          <div class="menu-item"><img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Baked Stuffed Zucchini"><div class="txt"><h3>Baked Stuffed Zucchini</h3><p>Oven-baked zucchini filled with garden vegetables, melted mozzarella, and black olives.</p></div></div>
+          <div class="menu-item"><img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Rice with Vegetables"><div class="txt"><h3>Rice with Vegetables</h3><p>Fragrant rice folded through a medley of seasonal vegetables and fresh herbs.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Desserts</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000123-PHOTO-2026-07-21-23-48-27.jpg" alt="Assorted Cheesecake"><div class="txt"><h3>Assorted Cheesecake</h3><p>A trio of velvety cheesecakes, each with a distinct island-inspired garnish.</p></div></div>
+          <div class="menu-item"><img src="photos/00000125-PHOTO-2026-07-21-23-50-37.jpg" alt="Classic Cheesecake"><div class="txt"><h3>Classic Cheesecake</h3><p>Silky New York-style cheesecake with a buttery graham crust and berry compote.</p></div></div>
+          <div class="menu-item"><img src="photos/00000127-PHOTO-2026-07-21-23-51-13.jpg" alt="Crepes"><div class="txt"><h3>Crepes</h3><p>Delicate crepes filled with your choice of jam, Nutella, or mozzarella and sour cream.</p></div></div>
+          <div class="menu-item"><img src="photos/00000130-PHOTO-2026-07-21-23-52-55.jpg" alt="Ice Cream Selection"><div class="txt"><h3>Ice Cream Selection</h3><p>A curated selection of premium ice creams and sorbets, served simply or with warm sauce.</p></div></div>
+          <div class="menu-item"><img src="photos/00000134-PHOTO-2026-07-21-23-54-02.jpg" alt="Fresh Fruit Platter"><div class="txt"><h3>Fresh Fruit Platter</h3><p>Seasonal tropical fruit, hand-cut and elegantly arranged.</p></div></div>
+          <div class="menu-item"><img src="photos/00000136-PHOTO-2026-07-21-23-54-55.jpg" alt="Cheese Platter"><div class="txt"><h3>Cheese Platter</h3><p>Artisanal cheeses, honeycomb, and dried fruit for two to share.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specials-section">
+      <div class="container">
+        <div class="specials">
+          <div class="special">
+            <img src="photos/00000008-PHOTO-2026-06-27-14-44-03.jpg" alt="Breakfast">
+            <div>
+              <div class="label">Breakfast</div>
+              <h3>Island Breakfast</h3>
+              <p>Omelette or fried eggs, sausages, ham, salami, cheese, tomatoes, cucumbers, peppers, rolls, toast, butter, jam, coffee and 100% natural fresh juice.</p>
+              <div class="price">17 USD · 30 XCG / person</div>
+            </div>
+          </div>
+          <div class="special">
+            <img src="photos/00000140-PHOTO-2026-07-21-23-58-43.jpg" alt="Dinner">
+            <div>
+              <div class="label">Dinner</div>
+              <h3>Romantic Dinner</h3>
+              <p>Main course, dessert and a glass of wine or cocktail, served candlelit under the stars. Reservations recommended.</p>
+              <div class="price">30–40 USD · 55–70 XCG / person</div>
+            </div>
+          </div>
+          <div class="special">
+            <img src="photos/00000147-PHOTO-2026-07-22-00-02-00.jpg" alt="Chef's Recommendation">
+            <div>
+              <div class="label">Chef's Recommendation</div>
+              <h3>Fresh Catch of the Day</h3>
+              <p>Fresh mahi mahi and local seafood selected daily by the chef. Dinner orders until 3:00 PM. Additional dishes available upon request.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="menu-note">
+      <div class="container">
+        RDR Apartments · Curaçao · WhatsApp <b>+599 9 693 9031</b>
       </div>
     </div>
-    <div class="special">
-      <img src="photos/00000140-PHOTO-2026-07-21-23-58-43.jpg" alt="Cena">
-      <div>
-        <div class="label">Cena</div>
-        <h3>Cena Romántica</h3>
-        <p>Plato principal, postre y una copa de vino o cóctel, servidos a la luz de las velas bajo las estrellas. Reservas recomendadas.</p>
-        <div class="price">30–40 USD · 55–70 XCG / persona</div>
-      </div>
-    </div>
-    <div class="special">
-      <img src="photos/00000147-PHOTO-2026-07-22-00-02-00.jpg" alt="Recomendación del Chef">
-      <div>
-        <div class="label">Recomendación del Chef</div>
-        <h3>Pescado del Día</h3>
-        <p>Mahi mahi fresco y mariscos locales seleccionados diariamente por el chef. Pedidos de cena hasta las 3:00 PM. Platos adicionales disponibles bajo pedido.</p>
-      </div>
-    </div>
-  </div>
-
-  <footer>RDR Apartments · Curaçao · WhatsApp <b>+599 9 693 9031</b></footer>
-
+  </main>
 </div>
+
+<!-- ES page -->
+<div id="page-es" style="display:none">
+  <main>
+    <section class="page-hero">
+      <div class="container">
+        <div class="page-hero-content">
+          <div class="eyebrow">RDR Apartments</div>
+          <h1>Almuerzo y Cena</h1>
+          <p>Pedidos y reservas por WhatsApp <b>+599 9 693 9031</b>. Pedidos de cena hasta las 3:00 PM.</p>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Mariscos y Pescado</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt="Plato de Mariscos"><div class="txt"><h3>Plato de Mariscos</h3><p>Una selección de los mejores mariscos y pescados de la isla, terminados con cítricos y aceite de oliva virgen extra.</p></div></div>
+          <div class="menu-item"><img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt="Pargo Rojo a la Parrilla"><div class="txt"><h3>Pargo Rojo a la Parrilla</h3><p>Pargo rojo entero asado al carbón, servido con verduras de temporada y un ligero aceite de hierbas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt="Salmón y Gambas"><div class="txt"><h3>Salmón y Gambas</h3><p>Salmón atlántico a la parrilla coronado con gambas salteadas y una suave salsa de mantequilla y limón.</p></div></div>
+          <div class="menu-item"><img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt="Filete de Atún"><div class="txt"><h3>Filete de Atún</h3><p>Atún aleta amarilla sellado con arroz aromático, lima y un toque de sal marina en escamas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt="Mahi Mahi a la Parrilla"><div class="txt"><h3>Mahi Mahi a la Parrilla</h3><p>Fresco mahi mahi a la parrilla hasta dorar, acompañado de verduras de temporada o arroz fragante.</p></div></div>
+          <div class="menu-item"><img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt="Mahi Mahi con Gambas"><div class="txt"><h3>Mahi Mahi con Gambas</h3><p>Tierno mahi mahi cubierto con gambas jugosas, cítricos y la salsa especial del chef.</p></div></div>
+          <div class="menu-item"><img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt="Salmón Especial del Chef"><div class="txt"><h3>Salmón Especial del Chef</h3><p>Salmón perfectamente a la parrilla, terminado con nuestra salsa especial casera y un toque de especia isleña.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Carne</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt="Costillas de Cerdo BBQ"><div class="txt"><h3>Costillas de Cerdo BBQ</h3><p>Costillas de cerdo cocidas lentamente con salsa barbacoa ahumada, con arroz o patatas a elegir.</p></div></div>
+          <div class="menu-item"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Brochetas Mixtas"><div class="txt"><h3>Brochetas Mixtas</h3><p>Un trío de brochetas de pollo, cerdo y res, asadas a la llama y sazonadas con hierbas mediterráneas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Schnitzel Crujiente"><div class="txt"><h3>Schnitzel Crujiente</h3><p>Milanesa empanada dorada, crujiente y ligera, servida con gajos de limón y patatas asadas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Codillo de Cerdo Asado"><div class="txt"><h3>Codillo de Cerdo Asado</h3><p>Codillo de cerdo tierno que se deshace, con setas silvestres, patatas con mantequilla y ensalada de remolacha.</p></div></div>
+          <div class="menu-item"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Pollo a la Parrilla"><div class="txt"><h3>Pollo a la Parrilla</h3><p>Medio pollo de corral asado lentamente, servido con puré de patatas sedoso y jugo de ajo.</p></div></div>
+          <div class="menu-item"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Bistec Tomahawk"><div class="txt"><h3>Bistec Tomahawk</h3><p>1.2 kg de ribeye premium con hueso, cortado para compartir y servido con arroz o patatas.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Pasta, Sushi, Ensaladas y Verduras</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt="Pasta de Mariscos"><div class="txt"><h3>Pasta de Mariscos</h3><p>Pasta al dente salteada con gambas, mejillones y calamares en salsa de ajo y vino blanco.</p></div></div>
+          <div class="menu-item"><img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Espaguetis Boloñesa"><div class="txt"><h3>Espaguetis Boloñesa</h3><p>Ragú de carne tradicional cocinado lentamente con parmesano y albahaca fresca sobre espaguetis perfectos.</p></div></div>
+          <div class="menu-item"><img src="photos/00000103-PHOTO-2026-07-21-23-35-20.jpg" alt="Espaguetis Carbonara"><div class="txt"><h3>Espaguetis Carbonara</h3><p>Cremosa yema de huevo, panceta y parmesano añejo cubriendo cada hebra de espagueti.</p></div></div>
+          <div class="menu-item"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Bandeja de Sushi"><div class="txt"><h3>Bandeja de Sushi</h3><p>Una selección artística de nigiri y maki recién preparados, ideal para compartir.</p></div></div>
+          <div class="menu-item"><img src="photos/00000109-PHOTO-2026-07-21-23-39-33.jpg" alt="Ensalada Griega"><div class="txt"><h3>Ensalada Griega</h3><p>Tomates maduros en la vid, pepino, aceitunas Kalamata, cebolla morada y feta cremoso en aceite de oliva.</p></div></div>
+          <div class="menu-item"><img src="photos/00000111-PHOTO-2026-07-21-23-40-04.jpg" alt="Ensalada de Atún"><div class="txt"><h3>Ensalada de Atún</h3><p>Tiras de atún sellado sobre verduras frescas con aguacate, cítricos y una vinagreta delicada.</p></div></div>
+          <div class="menu-item"><img src="photos/00000115-PHOTO-2026-07-21-23-41-54.jpg" alt="Ensalada de Repollo y Aguacate"><div class="txt"><h3>Ensalada de Repollo y Aguacate</h3><p>Repollo finamente cortado y aguacate cremoso con aderezo cítrico y semillas tostadas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000116-PHOTO-2026-07-21-23-41-54.jpg" alt="Champiñones y Encurtidos"><div class="txt"><h3>Champiñones y Encurtidos</h3><p>Champiñones boscosos y encurtidos agridulces caseros, ligeramente marinados en hierbas y aceite de oliva.</p></div></div>
+          <div class="menu-item"><img src="photos/00000117-PHOTO-2026-07-21-23-41-54.jpg" alt="Ensalada de Berenjena"><div class="txt"><h3>Ensalada de Berenjena</h3><p>Berenjena asada ahumada con ajo, hierbas frescas y un toque final de limón.</p></div></div>
+          <div class="menu-item"><img src="photos/00000114-PHOTO-2026-07-21-23-41-53.jpg" alt="Ensalada de Repollo Mixto"><div class="txt"><h3>Ensalada de Repollo Mixto</h3><p>Fresca ensalada de col roja y blanca con zanahoria, hierbas y una vinagreta ligera.</p></div></div>
+          <div class="menu-item"><img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Calabacines Rellenos al Horno"><div class="txt"><h3>Calabacines Rellenos al Horno</h3><p>Calabacines horneados rellenos de verduras de huerto, mozzarella derretida y aceitunas negras.</p></div></div>
+          <div class="menu-item"><img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Arroz con Verduras"><div class="txt"><h3>Arroz con Verduras</h3><p>Arroz fragante mezclado con una variedad de verduras de temporada y hierbas frescas.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="menu-section">
+      <div class="container">
+        <div class="menu-cat"><span class="dot"></span><h2>Postres</h2></div>
+        <div class="menu-grid">
+          <div class="menu-item"><img src="photos/00000123-PHOTO-2026-07-21-23-48-27.jpg" alt="Surtido de Cheesecake"><div class="txt"><h3>Surtido de Cheesecake</h3><p>Un trío de cheesecakes aterciopelados, cada uno con una decoración distintiva inspirada en la isla.</p></div></div>
+          <div class="menu-item"><img src="photos/00000125-PHOTO-2026-07-21-23-50-37.jpg" alt="Cheesecake Clásico"><div class="txt"><h3>Cheesecake Clásico</h3><p>Cheesecake sedoso estilo Nueva York con base de galleta mantecosa y compota de bayas.</p></div></div>
+          <div class="menu-item"><img src="photos/00000127-PHOTO-2026-07-21-23-51-13.jpg" alt="Crepes"><div class="txt"><h3>Crepes</h3><p>Delicados crepes rellenos a elección de mermelada, Nutella o mozzarella y crema agria.</p></div></div>
+          <div class="menu-item"><img src="photos/00000130-PHOTO-2026-07-21-23-52-55.jpg" alt="Selección de Helados"><div class="txt"><h3>Selección de Helados</h3><p>Una selección de helados y sorbetes premium, servidos solos o con salsa caliente.</p></div></div>
+          <div class="menu-item"><img src="photos/00000134-PHOTO-2026-07-21-23-54-02.jpg" alt="Fruta Fresca"><div class="txt"><h3>Fruta Fresca</h3><p>Fruta tropical de temporada, cortada a mano y elegantemente dispuesta.</p></div></div>
+          <div class="menu-item"><img src="photos/00000136-PHOTO-2026-07-21-23-54-55.jpg" alt="Tabla de Quesos"><div class="txt"><h3>Tabla de Quesos</h3><p>Quesos artesanales, panal de miel y frutas secas para compartir entre dos.</p></div></div>
+        </div>
+      </div>
+    </section>
+
+    <section class="specials-section">
+      <div class="container">
+        <div class="specials">
+          <div class="special">
+            <img src="photos/00000008-PHOTO-2026-06-27-14-44-03.jpg" alt="Desayuno">
+            <div>
+              <div class="label">Desayuno</div>
+              <h3>Desayuno Isleño</h3>
+              <p>Tortilla o huevos fritos, salchichas, jamón, salami, queso, tomates, pepinos, pimientos, panecillos, tostadas, mantequilla, mermelada, café y jugo 100% natural.</p>
+              <div class="price">17 USD · 30 XCG / persona</div>
+            </div>
+          </div>
+          <div class="special">
+            <img src="photos/00000140-PHOTO-2026-07-21-23-58-43.jpg" alt="Cena">
+            <div>
+              <div class="label">Cena</div>
+              <h3>Cena Romántica</h3>
+              <p>Plato principal, postre y una copa de vino o cóctel, servidos a la luz de las velas bajo las estrellas. Reservas recomendadas.</p>
+              <div class="price">30–40 USD · 55–70 XCG / persona</div>
+            </div>
+          </div>
+          <div class="special">
+            <img src="photos/00000147-PHOTO-2026-07-22-00-02-00.jpg" alt="Recomendación del Chef">
+            <div>
+              <div class="label">Recomendación del Chef</div>
+              <h3>Pescado del Día</h3>
+              <p>Mahi mahi fresco y mariscos locales seleccionados diariamente por el chef. Pedidos de cena hasta las 3:00 PM. Platos adicionales disponibles bajo pedido.</p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <div class="menu-note">
+      <div class="container">
+        RDR Apartments · Curaçao · WhatsApp <b>+599 9 693 9031</b>
+      </div>
+    </div>
+  </main>
+</div>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+          <span><strong>RDR</strong><small>APARTMENTS · CURAÇAO</small></span>
+        </div>
+        <p data-en="More than accommodation — an authentic Caribbean experience." data-es="Más que alojamiento — una experiencia caribeña auténtica.">More than accommodation — an authentic Caribbean experience.</p>
+      </div>
+      <div>
+        <h4 data-en="Contact" data-es="Contacto">Contact</h4>
+        <p>
+          Santa Catharina, Willemstad, Curaçao<br>
+          +599 9 693 9031<br>
+          info@rdrapartments.com
+        </p>
+      </div>
+      <div>
+        <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
+        <p>
+          <a href="index.html" data-en="Home" data-es="Inicio">Home</a><br>
+          <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
+          <a href="index.html#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="© 2026 RDR Apartments. All rights reserved." data-es="© 2026 RDR Apartments. Todos los derechos reservados.">© 2026 RDR Apartments. All rights reserved.</span>
+      <span>Willemstad · Curaçao</span>
+    </div>
+  </div>
+</footer>
+
 <script>
-(function(){
-  const box=document.createElement('div');
-  box.className='lightbox';
-  const img=document.createElement('img');
-  box.appendChild(img);
-  document.body.appendChild(box);
-  box.addEventListener('click',()=>box.classList.remove('active'));
-  document.addEventListener('keydown',e=>{ if(e.key==='Escape') box.classList.remove('active'); });
-  document.querySelectorAll('.item img, .special img').forEach(i=>{
-    i.addEventListener('click',()=>{ img.src=i.src; box.classList.add('active'); });
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
   });
-})();
-</script>
-<script>
-(function(){
-  const sel=document.getElementById('lang-select');
-  function setLang(l){
-    document.getElementById('page-en').style.display = (l==='en' ? 'flex' : 'none');
-    document.getElementById('page-es').style.display = (l==='es' ? 'flex' : 'none');
-    document.documentElement.lang = l;
-    localStorage.setItem('rdr-lang', l);
-    if(sel) sel.value = l;
-  }
-  if(sel){
-    sel.addEventListener('change', e => setLang(e.target.value));
-  }
-  const saved = localStorage.getItem('rdr-lang');
-  if(saved) setLang(saved);
-})();
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '×' : '☰';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  /* Lightbox */
+  (function(){
+    const box = document.createElement('div');
+    box.className = 'lightbox';
+    const img = document.createElement('img');
+    box.appendChild(img);
+    document.body.appendChild(box);
+    box.addEventListener('click', () => box.classList.remove('active'));
+    document.addEventListener('keydown', e => { if(e.key==='Escape') box.classList.remove('active'); });
+    function bindLightbox(){
+      document.querySelectorAll('.menu-item img, .special img').forEach(i => {
+        i.addEventListener('click', () => { img.src=i.src; box.classList.add('active'); });
+      });
+    }
+    bindLightbox();
+  })();
+
+  /* Language switching */
+  (function(){
+    const sel = document.getElementById('lang-select');
+    function setLang(l){
+      document.getElementById('page-en').style.display = (l==='en' ? 'block' : 'none');
+      document.getElementById('page-es').style.display = (l==='es' ? 'block' : 'none');
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + l);
+        if (val) el.textContent = val;
+      });
+      localStorage.setItem('rdr-lang', l);
+      if (sel) sel.value = l;
+    }
+    if (sel) sel.addEventListener('change', e => setLang(e.target.value));
+    const saved = localStorage.getItem('rdr-lang');
+    setLang(saved || 'en');
+  })();
 </script>
 </body>
 </html>

@@ -1,0 +1,788 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="RDR Apartments – our apartments in Curaçao. One-bedroom and Deluxe Garden Apartment." />
+  <title>Our Apartments | RDR Apartments Curaçao</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-950: #032f29;
+      --green-900: #073d35;
+      --green-800: #0d4f45;
+      --green-700: #17675a;
+      --gold: #d7ab55;
+      --gold-dark: #b68532;
+      --cream: #f5efe4;
+      --cream-2: #fbf7f0;
+      --paper: #eee4d2;
+      --ink: #1a211f;
+      --muted: #68716d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream-2);
+      overflow-x: hidden;
+    }
+    img { width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(3,47,41,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      padding: 10px 0;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(215,171,85,.7);
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: .08em;
+      line-height: .8;
+    }
+    .logo small {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing: .32em;
+      opacity: .9;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-links a {
+      opacity: .88;
+      transition: .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      padding: 13px 20px;
+      background: var(--gold);
+      color: var(--green-950);
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+
+    /* Page hero */
+    .page-hero {
+      min-height: 420px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(0,27,24,.88) 0%, rgba(0,27,24,.6) 50%, rgba(0,27,24,.2) 100%),
+        url("photos/hero.jpg") center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 60px;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 60px;
+      background: var(--cream-2);
+      clip-path: polygon(0 58%, 12% 72%, 27% 50%, 44% 76%, 62% 54%, 79% 75%, 100% 55%, 100% 100%, 0 100%);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+    .eyebrow {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: .9;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .page-hero p {
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 540px;
+      color: rgba(255,255,255,.82);
+      margin-top: 18px;
+    }
+
+    /* Common */
+    section { position: relative; }
+    .section-tag {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 4.5vw, 56px);
+      line-height: .95;
+      margin: 10px 0 18px;
+      color: var(--green-950);
+    }
+    .section-copy { color: var(--muted); line-height: 1.8; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+    .btn-dark { background: var(--green-950); color: white; }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+    .btn-outline { border: 1px solid rgba(3,47,41,.35); }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Intro */
+    .intro { padding: 80px 0 40px; }
+    .intro-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Apartment cards */
+    .apt-section { padding: 40px 0 60px; }
+    .apt-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 15px 50px rgba(15,45,39,.1);
+      margin-bottom: 50px;
+    }
+    .apt-card:nth-child(even) .apt-img { order: 2; }
+    .apt-img {
+      min-height: 420px;
+    }
+    .apt-img img { height: 100%; }
+    .apt-body {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .apt-badge {
+      display: inline-block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+    .apt-body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      margin: 4px 0 8px;
+      color: var(--green-950);
+      font-weight: 600;
+    }
+    .apt-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .apt-desc {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .apt-lists {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 28px;
+      margin-bottom: 20px;
+    }
+    .apt-list h5 {
+      font-family: "DM Sans", sans-serif;
+      font-size: 12px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .06em;
+      color: var(--green-800);
+      margin: 0 0 12px;
+    }
+    .apt-list ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .apt-list li {
+      font-size: 13px;
+      color: var(--ink);
+      padding: 5px 0;
+      padding-left: 20px;
+      position: relative;
+    }
+    .apt-list li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 11px;
+    }
+    .apt-note {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* Shared amenities */
+    .shared-section {
+      padding: 60px 0;
+      background: var(--green-950);
+      color: white;
+    }
+    .shared-section .section-tag { color: var(--gold); }
+    .shared-section .section-title { color: white; }
+    .shared-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .shared-item {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(215,171,85,.2);
+      border-radius: 14px;
+      padding: 20px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .shared-item b {
+      display: block;
+      color: var(--gold);
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    /* Welcome gift */
+    .gift-section { padding: 70px 0; }
+    .gift-box {
+      display: grid;
+      grid-template-columns: 1.05fr .95fr;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--green-950);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    .gift-img {
+      background: url("photos/apartament.jpg") center/cover;
+      min-height: 360px;
+    }
+    .gift-copy {
+      padding: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .gift-copy::after {
+      content: "✦";
+      position: absolute;
+      right: -20px;
+      bottom: -70px;
+      font-size: 230px;
+      color: rgba(255,255,255,.035);
+    }
+    .gift-copy h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      margin: 8px 0 18px;
+      font-weight: 500;
+    }
+    .gift-copy p { color: rgba(255,255,255,.76); line-height: 1.75; }
+    .gift-list {
+      list-style: none;
+      padding: 0;
+      margin: 16px 0 0;
+    }
+    .gift-list li {
+      padding: 6px 0;
+      padding-left: 24px;
+      position: relative;
+      color: rgba(255,255,255,.76);
+      font-size: 15px;
+    }
+    .gift-list li::before {
+      content: "♡";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+    }
+
+    /* Closing CTA */
+    .cta-section {
+      padding: 60px 0 100px;
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-box h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 4vw, 48px);
+      color: var(--green-950);
+      margin: 10px 0 18px;
+      line-height: 1.1;
+    }
+    .cta-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--green-950);
+      color: white;
+      padding: 55px 0 25px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    footer h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      margin: 0 0 14px;
+      color: var(--gold);
+    }
+    footer p, footer a { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 35px;
+      padding-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Language switcher */
+    .lang-switcher {
+      position: fixed; top: 14px; right: 14px; z-index: 60;
+      font-family: "DM Sans", sans-serif; font-size: 13px;
+    }
+    .lang-switcher select {
+      padding: 6px 10px; border: 1px solid rgba(215,171,85,.6); border-radius: 8px;
+      background: rgba(3,47,41,.85); color: white; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switcher select option { color: #111; }
+    @media print { .lang-switcher { display: none; } }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 75px 20px auto 20px;
+        background: var(--green-950);
+        border-radius: 16px;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: .2s;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .menu-btn { display: block; }
+      .apt-card { grid-template-columns: 1fr; }
+      .apt-card:nth-child(even) .apt-img { order: 0; }
+      .apt-img { min-height: 300px; }
+      .apt-lists { grid-template-columns: 1fr; }
+      .shared-grid { grid-template-columns: repeat(2, 1fr); }
+      .gift-box { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .logo { min-width: unset; }
+      .logo strong { font-size: 23px; }
+      .logo small { display: none; }
+      .apt-body { padding: 32px 24px; }
+      .gift-copy { padding: 36px 26px; }
+      .shared-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { min-height: 300px; padding: 120px 0 40px; }
+      .page-hero h1 { font-size: 40px; }
+      .eyebrow { font-size: 24px; }
+      .section-title { font-size: 32px; }
+      .section-tag { font-size: 22px; }
+      .apt-body { padding: 26px 20px; }
+      .apt-body h3 { font-size: 30px; }
+      .apt-badge { font-size: 18px; }
+      .apt-subtitle { font-size: 13px; }
+      .apt-desc { font-size: 14px; }
+      .apt-list li { font-size: 12px; }
+      .apt-img { min-height: 240px; }
+      .gift-copy h3 { font-size: 32px; }
+      .gift-copy p { font-size: 14px; }
+      .gift-list li { font-size: 14px; }
+      .shared-item { padding: 16px; font-size: 12px; }
+      .shared-item b { font-size: 20px; }
+      .cta-box h2 { font-size: 30px; }
+      .cta-box p { font-size: 14px; }
+      footer h4 { font-size: 22px; }
+      .lang-switcher select { font-size: 12px; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <select id="lang-select">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
+</div>
+
+<header class="site-header" id="header">
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+      <span>
+        <strong>RDR</strong>
+        <small>APARTMENTS · CURAÇAO</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" data-en="HOME" data-es="INICIO">HOME</a>
+      <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
+      <a href="index.html#facilitati" data-en="AMENITIES" data-es="SERVICIOS">AMENITIES</a>
+      <a href="index.html#despre" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
+      <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
+      <a href="index.html#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+      <a class="nav-cta" href="index.html#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="eyebrow" data-en="Our Apartments" data-es="Nuestros Apartamentos">Our Apartments</div>
+        <h1 data-en="Your home in Curaçao" data-es="Tu hogar en Curaçao">Your home in Curaçao</h1>
+        <p data-en="Bright and elegant spaces where modern comfort meets the relaxed atmosphere of Curaçao. Each apartment is designed for privacy, tranquility and all the amenities needed for a worry-free stay." data-es="Espacios luminosos y elegantes donde la comodidad moderna se encuentra con la atmósfera relajada de Curaçao. Cada apartamento está diseñado para ofrecer privacidad, tranquilidad y todas las comodidades necesarias para una estancia sin preocupaciones.">
+          Bright and elegant spaces where modern comfort meets the relaxed atmosphere of Curaçao. Each apartment is designed for privacy, tranquility and all the amenities needed for a worry-free stay.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="apt-section">
+    <div class="container">
+
+      <!-- Apartment 1: One Bedroom -->
+      <article class="apt-card">
+        <div class="apt-img">
+          <img src="photos/apartament.jpg" alt="One Bedroom Apartment">
+        </div>
+        <div class="apt-body">
+          <span class="apt-badge" data-en="Ideal for couples" data-es="Ideal para parejas">Ideal for couples</span>
+          <h3 data-en="One Bedroom Apartment" data-es="Apartamento de 1 Dormitorio">One Bedroom Apartment</h3>
+          <p class="apt-subtitle" data-en="≈ 55 m² · Perfect for two" data-es="≈ 55 m² · Perfecto para dos">≈ 55 m² · Perfect for two</p>
+          <p class="apt-desc" data-en="A spacious apartment of approximately 55 m², perfect for two people seeking comfort, privacy and a relaxing atmosphere." data-es="Un apartamento espacioso de aproximadamente 55 m², perfecto para dos personas que buscan comodidad, privacidad y un ambiente relajante.">
+            A spacious apartment of approximately 55 m², perfect for two people seeking comfort, privacy and a relaxing atmosphere.
+          </p>
+          <div class="apt-lists">
+            <div class="apt-list">
+              <h5 data-en="Layout" data-es="Distribución">Layout</h5>
+              <ul>
+                <li data-en="1 bedroom with king-size bed" data-es="1 dormitorio con cama king-size">1 bedroom with king-size bed</li>
+                <li data-en="Cozy living room" data-es="Salón acogedor">Cozy living room</li>
+                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
+                <li data-en="Modern bathroom with walk-in shower" data-es="Baño moderno con ducha walk-in">Modern bathroom with walk-in shower</li>
+                <li data-en="Private balcony" data-es="Balcón privado">Private balcony</li>
+              </ul>
+            </div>
+            <div class="apt-list">
+              <h5 data-en="Amenities" data-es="Servicios">Amenities</h5>
+              <ul>
+                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
+                <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+                <li data-en="High-speed free Wi-Fi" data-es="Wi-Fi gratuito de alta velocidad">High-speed free Wi-Fi</li>
+                <li data-en="Smart TV with streaming" data-es="Smart TV con streaming">Smart TV with streaming</li>
+                <li data-en="Minibar" data-es="Minibar">Minibar</li>
+                <li data-en="Coffee machine" data-es="Cafetera">Coffee machine</li>
+                <li data-en="Soundproofing" data-es="Insonorización">Soundproofing</li>
+                <li data-en="Private patio & terrace" data-es="Patio y terraza privados">Private patio & terrace</li>
+                <li data-en="Garden & pool view" data-es="Vista al jardín y la piscina">Garden & pool view</li>
+              </ul>
+            </div>
+          </div>
+          <p class="apt-note" data-en="Perfect for romantic getaways, weekend escapes or longer stays." data-es="Perfecto para escapadas románticas, fines de semana o estancias más largas.">Perfect for romantic getaways, weekend escapes or longer stays.</p>
+        </div>
+      </article>
+
+      <!-- Apartment 2: Deluxe Garden -->
+      <article class="apt-card">
+        <div class="apt-img">
+          <img src="photos/apartament1.jpg" alt="Deluxe Garden Apartment">
+        </div>
+        <div class="apt-body">
+          <span class="apt-badge" data-en="Space and premium comfort" data-es="Espacio y comodidad premium">Space and premium comfort</span>
+          <h3 data-en="Deluxe Garden Apartment" data-es="Apartamento Deluxe Garden">Deluxe Garden Apartment</h3>
+          <p class="apt-subtitle" data-en="≈ 100 m² · The most generous" data-es="≈ 100 m² · El más amplio">≈ 100 m² · The most generous</p>
+          <p class="apt-desc" data-en="The most generous apartment on the property, with approximately 100 m², ideal for those who want more space and extra comfort." data-es="El apartamento más amplio de la propiedad, con aproximadamente 100 m², ideal para quienes desean más espacio y comodidad adicional.">
+            The most generous apartment on the property, with approximately 100 m², ideal for those who want more space and extra comfort.
+          </p>
+          <div class="apt-lists">
+            <div class="apt-list">
+              <h5 data-en="Layout" data-es="Distribución">Layout</h5>
+              <ul>
+                <li data-en="Spacious bedroom" data-es="Dormitorio espacioso">Spacious bedroom</li>
+                <li data-en="Generous living area" data-es="Amplia zona de estar">Generous living area</li>
+                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
+                <li data-en="Modern bathroom" data-es="Baño moderno">Modern bathroom</li>
+                <li data-en="Private balcony" data-es="Balcón privado">Private balcony</li>
+              </ul>
+            </div>
+            <div class="apt-list">
+              <h5 data-en="Amenities" data-es="Servicios">Amenities</h5>
+              <ul>
+                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
+                <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+                <li data-en="Free Wi-Fi" data-es="Wi-Fi gratuito">Free Wi-Fi</li>
+                <li data-en="Smart TV" data-es="Smart TV">Smart TV</li>
+                <li data-en="Minibar" data-es="Minibar">Minibar</li>
+                <li data-en="Coffee machine" data-es="Cafetera">Coffee machine</li>
+                <li data-en="Soundproofing" data-es="Insonorización">Soundproofing</li>
+                <li data-en="Private patio & terrace" data-es="Patio y terraza privados">Private patio & terrace</li>
+                <li data-en="Panoramic garden & pool view" data-es="Vista panorámica al jardín y la piscina">Panoramic garden & pool view</li>
+              </ul>
+            </div>
+          </div>
+          <p class="apt-note" data-en="Ideal for couples seeking a premium experience in a tranquil tropical setting." data-es="Ideal para parejas que buscan una experiencia premium en un entorno tropical tranquilo.">Ideal for couples seeking a premium experience in a tranquil tropical setting.</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Shared amenities -->
+  <section class="shared-section">
+    <div class="container">
+      <div class="section-tag" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
+      <h2 class="section-title" data-en="Available to all guests" data-es="Disponibles para todos los huéspedes">Available to all guests</h2>
+      <div class="shared-grid">
+        <div class="shared-item"><b>≋</b><span data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</span></div>
+        <div class="shared-item"><b>♧</b><span data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</span></div>
+        <div class="shared-item"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
+        <div class="shared-item"><b>▣</b><span data-en="Free private parking" data-es="Estacionamiento privado gratis">Free private parking</span></div>
+        <div class="shared-item"><b>⌁</b><span data-en="Free Wi-Fi throughout" data-es="Wi-Fi gratuito en todo el recinto">Free Wi-Fi throughout</span></div>
+        <div class="shared-item"><b>◷</b><span data-en="24/7 reception" data-es="Recepción 24/7">24/7 reception</span></div>
+        <div class="shared-item"><b>☕</b><span data-en="Breakfast on request" data-es="Desayuno bajo petición">Breakfast on request</span></div>
+        <div class="shared-item"><b>❄</b><span data-en="Relaxation area" data-es="Zona de relajación">Relaxation area</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Welcome gift -->
+  <section class="gift-section">
+    <div class="container">
+      <div class="gift-box">
+        <div class="gift-img"></div>
+        <div class="gift-copy">
+          <div class="section-tag" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
+          <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
+          <p data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:" data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa:">
+            We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:
+          </p>
+          <ul class="gift-list">
+            <li data-en="Wine or champagne" data-es="Vino o champán">Wine or champagne</li>
+            <li data-en="Fresh fruit" data-es="Frutas frescas">Fresh fruit</li>
+            <li data-en="Sweets" data-es="Dulces">Sweets</li>
+          </ul>
+          <p style="margin-top:16px;font-size:14px;font-style:italic;" data-en="A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">
+            A simple gesture that turns arrival into an authentic Caribbean hospitality experience.
+          </p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="section-tag" data-en="Feel at home" data-es="Siéntete en casa">Feel at home</div>
+        <h2 data-en="Feel at home in Curaçao" data-es="Siéntete en casa en Curaçao">Feel at home in Curaçao</h2>
+        <p data-en="Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad." data-es="Ya vengas para relajarte, vivir una aventura o descubrir la belleza de la isla, RDR Apartments te ofrece un refugio cómodo en una ubicación tranquila, a solo minutos de las playas y atracciones más hermosas de Willemstad.">
+          Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad.
+        </p>
+        <a href="index.html#rezerva" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+          <span><strong>RDR</strong><small>APARTMENTS · CURAÇAO</small></span>
+        </div>
+        <p data-en="More than accommodation — an authentic Caribbean experience." data-es="Más que alojamiento — una experiencia caribeña auténtica.">More than accommodation — an authentic Caribbean experience.</p>
+      </div>
+      <div>
+        <h4 data-en="Contact" data-es="Contacto">Contact</h4>
+        <p>
+          Santa Catharina, Willemstad, Curaçao<br>
+          +599 9 693 9031<br>
+          info@rdrapartments.com
+        </p>
+      </div>
+      <div>
+        <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
+        <p>
+          <a href="index.html" data-en="Home" data-es="Inicio">Home</a><br>
+          <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
+          <a href="index.html#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="© 2026 RDR Apartments. All rights reserved." data-es="© 2026 RDR Apartments. Todos los derechos reservados.">© 2026 RDR Apartments. All rights reserved.</span>
+      <span>Willemstad · Curaçao</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+  let currentLang = 'en';
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '×' : '☰';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  /* Language switching */
+  (function(){
+    const sel = document.getElementById('lang-select');
+    function setLang(l){
+      currentLang = l;
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + l);
+        if (val) el.textContent = val;
+      });
+      localStorage.setItem('rdr-lang', l);
+      if (sel) sel.value = l;
+    }
+    if (sel) sel.addEventListener('change', e => setLang(e.target.value));
+    const saved = localStorage.getItem('rdr-lang');
+    setLang(saved || 'en');
+  })();
+</script>
+</body>
+</html>

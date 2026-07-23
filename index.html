@@ -2,7 +2,7 @@
 <html lang="en">
 <head>
   <meta charset="UTF-8" />
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
   <meta name="description" content="RDR Apartments – premium accommodation in Santa Catharina, Willemstad, Curaçao." />
   <title>RDR Apartments | Curaçao</title>
 
@@ -74,11 +74,10 @@
       height: 46px;
       border: 1px solid rgba(215,171,85,.7);
       border-radius: 50%;
-      display: grid;
-      place-items: center;
-      color: var(--gold);
-      font-size: 23px;
+      overflow: hidden;
+      flex-shrink: 0;
     }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
     .logo strong {
       display: block;
       font-family: "Cormorant Garamond", serif;
@@ -134,7 +133,7 @@
       color: white;
       display: flex;
       align-items: center;
-      padding: 150px 0 130px;
+      padding: 150px 0 240px;
     }
     .hero::after {
       content: "";
@@ -505,7 +504,28 @@
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; }
     }
-    /* Language switcher */
+
+    @media (max-width: 480px) {
+      .hero { min-height: 1100px; }
+      .hero h1 { font-size: 52px; }
+      .hero h2 { font-size: 24px; }
+      .hero p { font-size: 15px; }
+      .hero-highlights span { font-size: 13px; }
+      .hero-highlights i { width: 28px; height: 28px; font-size: 12px; }
+      .eyebrow { font-size: 24px; }
+      .section-title { font-size: 34px; }
+      .section-tag { font-size: 22px; }
+      .welcome-copy h3 { font-size: 36px; }
+      .welcome-copy p { font-size: 14px; }
+      .amenity { font-size: 10px; }
+      .amenity b { font-size: 22px; }
+      .image-card { min-height: 280px; }
+      .image-label { font-size: 11px; padding: 10px 12px; }
+      footer h4 { font-size: 22px; }
+      .field { padding: 14px 16px; }
+      .booking button { padding: 16px; font-size: 12px; }
+      .lang-switcher select { font-size: 12px; padding: 5px 8px; }
+    }
     .lang-switcher {
       position: fixed; top: 14px; right: 14px; z-index: 60;
       font-family: "DM Sans", sans-serif; font-size: 13px;
@@ -531,7 +551,7 @@
 <header class="site-header" id="header">
   <div class="container nav">
     <a href="#" class="logo">
-      <span class="logo-mark">♜</span>
+      <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
       <span>
         <strong>RDR</strong>
         <small>APARTMENTS · CURAÇAO</small>
@@ -605,7 +625,7 @@
           <p class="section-copy" data-en="The recently renovated apartments offer everything you need for a memorable stay: air conditioning, fully equipped kitchen, TV with streaming services, private bathroom and balcony with garden or pool view." data-es="Los apartamentos recientemente renovados ofrecen todo lo necesario para una estancia memorable: aire acondicionado, cocina totalmente equipada, TV con servicios de streaming, baño privado y balcón con vista al jardín o la piscina.">
             The recently renovated apartments offer everything you need for a memorable stay: air conditioning, fully equipped kitchen, TV with streaming services, private bathroom and balcony with garden or pool view.
           </p>
-          <a href="#" class="btn btn-dark" data-en="View apartments →" data-es="Ver apartamentos →">View apartments →</a>
+          <a href="apartments.html" class="btn btn-dark" data-en="View apartments →" data-es="Ver apartamentos →">View apartments →</a>
         </div>
 
         <div class="image-grid">
@@ -629,7 +649,7 @@
           <div class="amenity"><b>≋</b><span data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</span></div>
           <div class="amenity"><b>⌁</b><span data-en="Free Wi-Fi" data-es="Wi-Fi gratis">Free Wi-Fi</span></div>
           <div class="amenity"><b>▣</b><span data-en="Free parking" data-es="Estacionamiento gratis">Free parking</span></div>
-          <div class="amenity"><b>☕</b><span data-en="Daily breakfast" data-es="Desayuno diario">Daily breakfast</span></div>
+          <div class="amenity"><b>☕</b><span data-en="Breakfast on request" data-es="Desayuno bajo petición">Breakfast on request</span></div>
           <div class="amenity"><b>◷</b><span data-en="24/7 reception" data-es="Recepción 24/7">24/7 reception</span></div>
           <div class="amenity"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
           <div class="amenity"><b>♧</b><span data-en="Garden & terrace" data-es="Jardín y terraza">Garden & terrace</span></div>
@@ -644,10 +664,28 @@
       <div class="welcome-box">
         <div class="welcome-img"></div>
         <div class="welcome-copy">
-          <div class="section-tag" data-en="Special attention" data-es="Atención especial">Special attention</div>
+          <div class="section-tag" data-en="About us" data-es="Sobre nosotros">About us</div>
           <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
           <p data-en="Every guest is welcomed with wine or champagne, fresh fruit and sweets, so the experience starts in a special way from the very first moment." data-es="Cada huésped es recibido con vino o champán, frutas frescas y dulces, para que la experiencia comience de manera especial desde el primer momento.">
             Every guest is welcomed with wine or champagne, fresh fruit and sweets, so the experience starts in a special way from the very first moment.
+          </p>
+          <p data-en="RDR Apartments is located 12 km from Curaçao Sea Aquarium and offers an outdoor pool, a garden and accommodation with air conditioning, free WiFi and a balcony." data-es="RDR Apartments se encuentra a 12 km del Curaçao Sea Aquarium y ofrece una piscina al aire libre, un jardín y alojamiento con aire acondicionado, WiFi gratuito y balcón.">
+            RDR Apartments is located 12 km from Curaçao Sea Aquarium and offers an outdoor pool, a garden and accommodation with air conditioning, free WiFi and a balcony.
+          </p>
+          <p data-en="The apartment features units with a terrace, pool view, seating area, flat-screen TV, fully equipped kitchen with a fridge and an oven, as well as a private bathroom with a shower and free toiletries. Guests also have access to a microwave, a minibar and a stovetop, as well as a coffee machine and an electric kettle." data-es="El apartamento ofrece unidades con terraza, vista a la piscina, zona de estar, TV de pantalla plana, cocina totalmente equipada con nevera y horno, así como baño privado con ducha y artículos de aseo gratuitos. Los huéspedes también disponen de microondas, minibar y cocina, así como cafetera y hervidor eléctrico.">
+            The apartment features units with a terrace, pool view, seating area, flat-screen TV, fully equipped kitchen with a fridge and an oven, as well as a private bathroom with a shower and free toiletries. Guests also have access to a microwave, a minibar and a stovetop, as well as a coffee machine and an electric kettle.
+          </p>
+          <p data-en="A continental, full English/Irish or Italian breakfast is available at the property." data-es="Un desayuno continental, inglés/irlandés completo o italiano está disponible en la propiedad.">
+            A continental, full English/Irish or Italian breakfast is available at the property.
+          </p>
+          <p data-en="RDR Apartments features a barbecue." data-es="RDR Apartments cuenta con parrilla.">
+            RDR Apartments features a barbecue.
+          </p>
+          <p data-en="Car rental services are available at RDR Apartments." data-es="Servicios de alquiler de coches están disponibles en RDR Apartments.">
+            Car rental services are available at RDR Apartments.
+          </p>
+          <p data-en="The apartment is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away." data-es="El apartamento se encuentra a 14 km del Queen Emma Bridge y a 43 km del Christoffel National Park. El Aeropuerto Internacional de Curaçao está a 17 km.">
+            The apartment is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away.
           </p>
         </div>
       </div>
@@ -661,7 +699,7 @@
     <div class="footer-grid">
       <div>
         <div class="logo">
-          <span class="logo-mark">♜</span>
+          <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
           <span><strong>RDR</strong><small>APARTMENTS · CURAÇAO</small></span>
         </div>
         <p data-en="More than accommodation — an authentic Caribbean experience." data-es="Más que alojamiento — una experiencia caribeña auténtica.">More than accommodation — an authentic Caribbean experience.</p>
