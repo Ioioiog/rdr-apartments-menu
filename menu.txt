@@ -1,0 +1,411 @@
+========================================
+RESTAURANT MENU
+========================================
+
+IMPORTANT
+
+Each photo filename below corresponds to the dish.
+
+Use the matching image from the photos folder.
+
+If multiple photos exist for the same dish, choose the best looking one.
+
+Do not use duplicate dishes twice.
+
+========================================
+BREAKFAST
+========================================
+
+Breakfast Special
+
+Price:
+17 USD
+30 XCG
+
+Description:
+A freshly prepared breakfast made to order using quality ingredients.
+
+Photo:
+00000152-PHOTO-2026-07-22-00-09-44.jpg
+
+
+========================================
+SEAFOOD
+========================================
+
+Seafood Platter
+
+Description:
+A delicious selection of fresh seafood prepared with Mediterranean flavors.
+
+Photo:
+00000058-PHOTO-2026-07-21-22-59-11.jpg
+
+
+Seafood Pasta
+
+Description:
+Al dente pasta with shrimp, mussels and seafood in a flavorful garlic sauce.
+
+Preferred Photo:
+00000072-PHOTO-2026-07-21-23-10-49.jpg
+
+Alternative Photo:
+00000074-PHOTO-2026-07-21-23-11-37.jpg
+
+
+========================================
+FRESH FISH
+========================================
+
+Grilled Red Snapper
+
+Description:
+Whole grilled Red Snapper served with seasonal vegetables.
+
+Photo:
+00000060-PHOTO-2026-07-21-22-59-59.jpg
+
+
+Salmon & Shrimp
+
+Description:
+Grilled salmon fillet topped with sautéed shrimp and lemon butter sauce.
+
+Photo:
+00000062-PHOTO-2026-07-21-23-01-37.jpg
+
+
+Tuna Steak
+
+Description:
+Fresh grilled tuna served with aromatic rice.
+
+Photo:
+00000066-PHOTO-2026-07-21-23-03-37.jpg
+
+
+Grilled Mahi Mahi
+
+Description:
+Fresh Mahi Mahi served with vegetables or rice.
+
+Photo:
+00000068-PHOTO-2026-07-21-23-04-47.jpg
+
+
+Mahi Mahi with Shrimp
+
+Description:
+Fresh Mahi Mahi topped with shrimp, lemon and chef's special sauce.
+
+Photo:
+00000070-PHOTO-2026-07-21-23-06-44.jpg
+
+
+Chef's Special Salmon
+
+Description:
+Perfectly grilled salmon served with our homemade signature sauce.
+
+Photo:
+00000077-PHOTO-2026-07-21-23-14-13.jpg
+
+
+========================================
+MEAT
+========================================
+
+BBQ Pork Ribs
+
+Description:
+Slow cooked pork ribs served with vegetables, rice or potatoes.
+
+Photo:
+00000079-PHOTO-2026-07-21-23-16-20.jpg
+
+
+Mixed Skewers
+
+Description:
+Chicken, pork or beef skewers grilled to perfection.
+
+Photo:
+00000082-PHOTO-2026-07-21-23-17-38.jpg
+
+
+Crispy Schnitzel
+
+Description:
+Golden fried chicken, pork or beef schnitzel.
+
+Photo:
+00000084-PHOTO-2026-07-21-23-18-43.jpg
+
+
+Roasted Pork Knuckle
+
+Description:
+Tender pork knuckle served with mushrooms, potatoes and beet salad.
+
+Photo:
+00000086-PHOTO-2026-07-21-23-21-02.jpg
+
+
+Rotisserie Chicken
+
+Description:
+Slow roasted chicken served with mashed potatoes or polenta and garlic sauce.
+
+Serves:
+2 people
+
+Photo:
+00000088-PHOTO-2026-07-21-23-23-40.jpg
+
+
+Tomahawk Steak
+
+Description:
+1.2 kg premium Tomahawk steak served with rice or potatoes.
+
+Serves:
+2 people
+
+Photo:
+00000091-PHOTO-2026-07-21-23-26-19.jpg
+
+
+Salmon with Shrimp (Alternative)
+
+Description:
+Grilled salmon with shrimp and creamy sauce.
+
+Photo:
+00000093-PHOTO-2026-07-21-23-29-13.jpg
+
+
+BBQ Pork Ribs (Alternative)
+
+Description:
+Slow cooked BBQ pork ribs served with mashed or fried potatoes.
+
+Photo:
+00000095-PHOTO-2026-07-21-23-30-12.jpg
+
+
+========================================
+PASTA
+========================================
+
+Seafood Pasta
+
+Description:
+Fresh seafood with al dente pasta and garlic sauce.
+
+Photo:
+00000072-PHOTO-2026-07-21-23-10-49.jpg
+
+
+Spaghetti Bolognese
+
+Description:
+Traditional Italian meat sauce with parmesan.
+
+Photo:
+00000103-PHOTO-2026-07-21-23-35-20.jpg
+
+
+Spaghetti Carbonara
+
+Description:
+Creamy carbonara with bacon and parmesan.
+
+Photo:
+00000103-PHOTO-2026-07-21-23-35-20.jpg
+
+
+========================================
+SUSHI
+========================================
+
+Sushi Platter
+
+Description:
+Freshly prepared sushi assortment.
+
+Serves:
+2 people
+
+Photo:
+00000101-PHOTO-2026-07-21-23-34-27.jpg
+
+
+========================================
+SALADS
+========================================
+
+Greek Salad
+
+Photo:
+00000109-PHOTO-2026-07-21-23-39-33.jpg
+
+
+Tuna Salad
+
+Photo:
+00000111-PHOTO-2026-07-21-23-40-04.jpg
+
+
+Cabbage & Avocado Salad
+
+Photo:
+00000114-PHOTO-2026-07-21-23-41-53.jpg
+
+
+Marinated Mushrooms & Pickles
+
+Photo:
+00000115-PHOTO-2026-07-21-23-41-54.jpg
+
+
+Eggplant Salad
+
+Photo:
+00000116-PHOTO-2026-07-21-23-41-54.jpg
+
+
+Mixed Cabbage Salad
+
+Photo:
+00000117-PHOTO-2026-07-21-23-41-54.jpg
+
+
+========================================
+SIDE DISHES
+========================================
+
+Rice
+
+Roasted Vegetables
+
+Mashed Potatoes
+
+French Fries
+
+Boiled Potatoes
+
+Vegetable Rice
+
+Stuffed Zucchini with Mozzarella
+
+Photos:
+00000120-PHOTO-2026-07-21-23-44-45.jpg
+00000121-PHOTO-2026-07-21-23-44-45.jpg
+
+
+========================================
+DESSERTS
+========================================
+
+Assorted Cheesecake
+
+Photo:
+00000123-PHOTO-2026-07-21-23-48-27.jpg
+
+
+Classic Cheesecake
+
+Photo:
+00000125-PHOTO-2026-07-21-23-50-37.jpg
+
+
+Crepes
+
+Description:
+Choice of jam, Nutella or mozzarella & sour cream.
+
+Photo:
+00000127-PHOTO-2026-07-21-23-51-13.jpg
+
+
+Ice Cream Selection
+
+Photo:
+00000130-PHOTO-2026-07-21-23-52-55.jpg
+
+
+Fresh Fruit Platter
+
+Photo:
+00000134-PHOTO-2026-07-21-23-54-02.jpg
+
+
+Cheese Platter
+
+Serves:
+2 people
+
+Photo:
+00000136-PHOTO-2026-07-21-23-54-55.jpg
+
+
+========================================
+ROMANTIC DINNER
+========================================
+
+Use these photos:
+
+00000139-PHOTO-2026-07-21-23-58-42.jpg
+
+00000140-PHOTO-2026-07-21-23-58-43.jpg
+
+00000141-PHOTO-2026-07-21-23-58-43.jpg
+
+00000144-PHOTO-2026-07-22-00-00-43.jpg
+
+00000145-PHOTO-2026-07-22-00-00-44.jpg
+
+Offer:
+
+Main Course
+
+Dessert
+
+One Glass of Wine or One Cocktail
+
+Price:
+
+30–40 USD
+
+55–70 XCG
+
+
+========================================
+FRESH CATCH
+========================================
+
+Use:
+
+00000147-PHOTO-2026-07-22-00-02-00.jpg
+
+Text:
+
+Our fish is freshly caught and prepared daily.
+
+Mahi Mahi and other seafood specialties depend on the daily catch to ensure the highest quality and freshness.
+
+
+========================================
+ORDER INFORMATION
+========================================
+
+Breakfast orders should be placed the evening before.
+
+Dinner orders are accepted until 3:00 PM.
+
+Additional dishes can be prepared upon request.
+
+WhatsApp
+
++599 9 693 9031
