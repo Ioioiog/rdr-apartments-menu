@@ -177,13 +177,17 @@
     }
 
     /* Booking */
-    .booking-wrap {
-      position: absolute;
+    .booking-section {
+      position: relative;
       z-index: 5;
-      left: 50%;
-      transform: translateX(-50%);
-      bottom: 95px;
-      width: min(980px, calc(100% - 40px));
+      margin-top: 20px;
+      padding: 0 20px;
+    }
+    .booking-wrap {
+      position: relative;
+      z-index: 5;
+      max-width: 980px;
+      margin: 0 auto;
     }
     .booking {
       display: grid;
@@ -441,6 +445,7 @@
       .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
       .menu-btn { display: block; }
       .hero { min-height: 540px; background-position: 62% center; }
+      .booking-section { margin-top: 20px; }
       .booking { grid-template-columns: 1fr 1fr; }
       .booking button { min-height: 60px; }
       .apartments-grid { grid-template-columns: 1fr; }
@@ -456,16 +461,17 @@
       .logo strong { font-size: 23px; }
       .logo small { display: none; }
       .hero {
-        min-height: 580px;
+        min-height: 480px;
         align-items: flex-start;
         padding-top: 110px;
+        padding-bottom: 60px;
         background:
           linear-gradient(180deg, rgba(0,27,24,.9) 0%, rgba(0,27,24,.72) 55%, rgba(0,27,24,.35) 100%),
           url("photos/hero.jpg") center/cover;
       }
       .hero h1 { font-size: 64px; }
       .hero h2 { font-size: 28px; }
-      .booking-wrap { bottom: 60px; }
+      .booking-section { margin-top: 20px; }
       .booking { grid-template-columns: 1fr; }
       .field { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
       .booking button { padding: 18px; }
@@ -486,7 +492,7 @@
     }
 
     @media (max-width: 480px) {
-      .hero { min-height: 640px; }
+      .hero { min-height: 420px; }
       .hero h1 { font-size: 52px; }
       .hero h2 { font-size: 24px; }
       .hero p { font-size: 15px; }
@@ -566,28 +572,30 @@
 
       </div>
     </div>
+  </section>
 
-    <div class="booking-wrap" id="rezerva">
-      <form class="booking" onsubmit="submitBooking(event)">
-        <div class="field">
-          <label for="checkin" data-en="Check-in" data-es="Check-in">Check-in</label>
-          <input type="date" id="checkin" required>
-        </div>
-        <div class="field">
-          <label for="checkout" data-en="Check-out" data-es="Check-out">Check-out</label>
-          <input type="date" id="checkout" required>
-        </div>
-        <div class="field">
-          <label for="guests" data-en="Guests" data-es="Huéspedes">Guests</label>
-          <select id="guests">
-            <option data-en="1 adult" data-es="1 adulto">1 adult</option>
-            <option selected data-en="2 adults" data-es="2 adultos">2 adults</option>
-            <option data-en="3 adults" data-es="3 adultos">3 adults</option>
-            <option data-en="4 adults" data-es="4 adultos">4 adults</option>
-          </select>
-        </div>
-        <button type="submit" data-en="CHECK AVAILABILITY" data-es="VERIFICAR DISPONIBILIDAD">CHECK AVAILABILITY</button>
-      </form>
+  <section class="booking-section" id="rezerva">
+    <div class="booking-wrap">
+    <form class="booking" onsubmit="submitBooking(event)">
+      <div class="field">
+        <label for="checkin" data-en="Check-in" data-es="Check-in">Check-in</label>
+        <input type="date" id="checkin" required>
+      </div>
+      <div class="field">
+        <label for="checkout" data-en="Check-out" data-es="Check-out">Check-out</label>
+        <input type="date" id="checkout" required>
+      </div>
+      <div class="field">
+        <label for="guests" data-en="Guests" data-es="Huéspedes">Guests</label>
+        <select id="guests">
+          <option data-en="1 adult" data-es="1 adulto">1 adult</option>
+          <option selected data-en="2 adults" data-es="2 adultos">2 adults</option>
+          <option data-en="3 adults" data-es="3 adultos">3 adults</option>
+          <option data-en="4 adults" data-es="4 adultos">4 adults</option>
+        </select>
+      </div>
+      <button type="submit" data-en="CHECK AVAILABILITY" data-es="VERIFICAR DISPONIBILIDAD">CHECK AVAILABILITY</button>
+    </form>
     </div>
   </section>
 
@@ -683,7 +691,8 @@
         <h4 data-en="Contact" data-es="Contacto">Contact</h4>
         <p>
           La Quinta Villas 95, Santa Catharina, Curaçao<br>
-          +599 9 693 9031
+          +599 9 693 9031<br>
+          <a href="https://www.google.com/maps?q=12.139716145472088,-68.8315028702278" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: underline; font-size: 13px;" data-en="See on map →" data-es="Ver en el mapa →">See on map →</a>
         </p>
       </div>
       <div>
