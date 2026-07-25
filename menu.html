@@ -244,9 +244,13 @@
       align-items: stretch;
       max-width: 100%;
     }
-    .menu-grid.full .menu-item img {
+    .menu-grid.full .menu-item .img-wrap {
       width: 30%;
-      height: auto;
+      flex: none;
+    }
+    .menu-grid.full .menu-item .img-wrap img {
+      width: 100%;
+      height: 100%;
       min-height: 200px;
       border-radius: 14px 0 0 14px;
     }
@@ -277,6 +281,29 @@
       height: 160px;
       object-fit: cover;
       cursor: zoom-in;
+    }
+    .menu-item .img-wrap {
+      position: relative;
+    }
+    .menu-item .img-wrap img {
+      width: 100%;
+      height: 160px;
+      object-fit: cover;
+      cursor: zoom-in;
+    }
+    .menu-badge {
+      position: absolute;
+      top: 10px;
+      right: 10px;
+      background: var(--gold);
+      color: var(--green-950);
+      font-size: 11px;
+      font-weight: 700;
+      padding: 4px 10px;
+      border-radius: 20px;
+      letter-spacing: .03em;
+      white-space: nowrap;
+      z-index: 2;
     }
     .menu-item .txt { padding: 10px 12px 12px; }
     .menu-item h3 {
@@ -651,8 +678,8 @@
           <div class="menu-item"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Mixed Skewers"><div class="txt"><h3>Mixed Skewers</h3><p>A trio of chicken, pork, and beef skewers, flame-grilled and seasoned with Mediterranean herbs.</p></div></div>
           <div class="menu-item"><img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Crispy Schnitzel"><div class="txt"><h3>Crispy Schnitzel</h3><p>Golden-breaded cutlet, crisp and light, served with lemon wedges and roasted potatoes.</p></div></div>
           <div class="menu-item"><img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Roasted Pork Knuckle"><div class="txt"><h3>Roasted Pork Knuckle</h3><p>Fork-tender pork knuckle with wild mushrooms, buttery potatoes, and a tangy beet salad.</p></div></div>
-          <div class="menu-item"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Rotisserie Chicken"><div class="txt"><h3>Rotisserie Chicken</h3><p>Half free-range chicken, slow-roasted and served with silky mashed potatoes and garlic jus.</p></div></div>
-          <div class="menu-item"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Tomahawk Steak"><div class="txt"><h3>Tomahawk Steak</h3><p>1.2 kg premium ribeye on the bone, carved to share and served with rice or potatoes.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Rotisserie Chicken"><span class="menu-badge">For 2 persons</span></div><div class="txt"><h3>Rotisserie Chicken</h3><p>Half free-range chicken, slow-roasted and served with silky mashed potatoes and garlic jus.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Tomahawk Steak"><span class="menu-badge">For 2 persons</span></div><div class="txt"><h3>Tomahawk Steak</h3><p>1.2 kg premium ribeye on the bone, carved to share and served with rice or potatoes.</p></div></div>
         </div>
       </div>
     </section>
@@ -672,7 +699,7 @@
       <div class="container">
         <div class="menu-cat"><span class="dot"></span><h2>Sushi</h2></div>
         <div class="menu-grid full">
-          <div class="menu-item"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Sushi Platter"><div class="txt"><h3>Sushi Platter</h3><p>An artful selection of freshly rolled nigiri and maki, crafted with premium fish and seasoned rice. Each piece is prepared to order by our chef, featuring tuna, salmon, and shrimp accompanied by wasabi, pickled ginger, and soy sauce. Ideal for sharing at the table or enjoying as a solo feast.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Sushi Platter"><span class="menu-badge">For 2 persons</span></div><div class="txt"><h3>Sushi Platter</h3><p>An artful selection of freshly rolled nigiri and maki, crafted with premium fish and seasoned rice. Each piece is prepared to order by our chef, featuring tuna, salmon, and shrimp accompanied by wasabi, pickled ginger, and soy sauce.</p></div></div>
         </div>
       </div>
     </section>
@@ -687,8 +714,8 @@
           <div class="menu-item"><img src="photos/00000116-PHOTO-2026-07-21-23-41-54.jpg" alt="Mushrooms & Pickles"><div class="txt"><h3>Mushrooms &amp; Pickles</h3><p>Woodsy mushrooms and tangy house pickles, lightly marinated in herbs and olive oil.</p></div></div>
           <div class="menu-item"><img src="photos/00000117-PHOTO-2026-07-21-23-41-54.jpg" alt="Eggplant Salad"><div class="txt"><h3>Eggplant Salad</h3><p>Smoky roasted eggplant with garlic, fresh herbs, and a bright lemon finish.</p></div></div>
           <div class="menu-item"><img src="photos/00000114-PHOTO-2026-07-21-23-41-53.jpg" alt="Mixed Cabbage Salad"><div class="txt"><h3>Mixed Cabbage Salad</h3><p>Crisp red and white cabbage slaw with carrots, herbs, and a light vinaigrette.</p></div></div>
-          <div class="menu-item"><img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Baked Stuffed Zucchini"><div class="txt"><h3>Baked Stuffed Zucchini</h3><p>Oven-baked zucchini filled with garden vegetables, melted mozzarella, and black olives.</p></div></div>
-          <div class="menu-item"><img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Rice with Vegetables"><div class="txt"><h3>Rice with Vegetables</h3><p>Fragrant rice folded through a medley of seasonal vegetables and fresh herbs.</p></div></div>
+          <div class="menu-item"><img src="photos/00000121-PHOTO-2026-07-21-23-44-45.jpg" alt="Baked Stuffed Zucchini"><div class="txt"><h3>Baked Stuffed Zucchini</h3><p>Oven-baked zucchini filled with garden vegetables, melted mozzarella, and black olives.</p></div></div>
+          <div class="menu-item"><img src="photos/00000120-PHOTO-2026-07-21-23-44-45.jpg" alt="Rice with Vegetables"><div class="txt"><h3>Rice with Vegetables</h3><p>Fragrant rice folded through a medley of seasonal vegetables and fresh herbs.</p></div></div>
         </div>
       </div>
     </section>
@@ -801,8 +828,8 @@
           <div class="menu-item"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt="Brochetas Mixtas"><div class="txt"><h3>Brochetas Mixtas</h3><p>Un trío de brochetas de pollo, cerdo y res, asadas a la llama y sazonadas con hierbas mediterráneas.</p></div></div>
           <div class="menu-item"><img src="photos/00000084-PHOTO-2026-07-21-23-18-43.jpg" alt="Schnitzel Crujiente"><div class="txt"><h3>Schnitzel Crujiente</h3><p>Milanesa empanada dorada, crujiente y ligera, servida con gajos de limón y patatas asadas.</p></div></div>
           <div class="menu-item"><img src="photos/00000086-PHOTO-2026-07-21-23-21-02.jpg" alt="Codillo de Cerdo Asado"><div class="txt"><h3>Codillo de Cerdo Asado</h3><p>Codillo de cerdo tierno que se deshace, con setas silvestres, patatas con mantequilla y ensalada de remolacha.</p></div></div>
-          <div class="menu-item"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Pollo a la Parrilla"><div class="txt"><h3>Pollo a la Parrilla</h3><p>Medio pollo de corral asado lentamente, servido con puré de patatas sedoso y jugo de ajo.</p></div></div>
-          <div class="menu-item"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Bistec Tomahawk"><div class="txt"><h3>Bistec Tomahawk</h3><p>1.2 kg de ribeye premium con hueso, cortado para compartir y servido con arroz o patatas.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000088-PHOTO-2026-07-21-23-23-40.jpg" alt="Pollo a la Parrilla"><span class="menu-badge">Para 2 personas</span></div><div class="txt"><h3>Pollo a la Parrilla</h3><p>Medio pollo de corral asado lentamente, servido con puré de patatas sedoso y jugo de ajo.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000091-PHOTO-2026-07-21-23-26-19.jpg" alt="Bistec Tomahawk"><span class="menu-badge">Para 2 personas</span></div><div class="txt"><h3>Bistec Tomahawk</h3><p>1.2 kg de ribeye premium con hueso, cortado para compartir y servido con arroz o patatas.</p></div></div>
         </div>
       </div>
     </section>
@@ -822,7 +849,7 @@
       <div class="container">
         <div class="menu-cat"><span class="dot"></span><h2>Sushi</h2></div>
         <div class="menu-grid full">
-          <div class="menu-item"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Bandeja de Sushi"><div class="txt"><h3>Bandeja de Sushi</h3><p>Una selección artística de nigiri y maki recién preparados, elaborados con pescado premium y arroz sazonado. Cada pieza es preparada al momento por nuestro chef, con atún, salmón y gambas, acompañados de wasabi, jengibre encurtido y salsa de soja. Ideal para compartir en la mesa o disfrutar como un festín individual.</p></div></div>
+          <div class="menu-item"><div class="img-wrap"><img src="photos/00000101-PHOTO-2026-07-21-23-34-27.jpg" alt="Bandeja de Sushi"><span class="menu-badge">Para 2 personas</span></div><div class="txt"><h3>Bandeja de Sushi</h3><p>Una selección artística de nigiri y maki recién preparados, elaborados con pescado premium y arroz sazonado. Cada pieza es preparada al momento por nuestro chef, con atún, salmón y gambas, acompañados de wasabi, jengibre encurtido y salsa de soja.</p></div></div>
         </div>
       </div>
     </section>
