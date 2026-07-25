@@ -128,8 +128,8 @@
       min-height: 460px;
       position: relative;
       background:
-        linear-gradient(90deg, rgba(0,27,24,.92) 0%, rgba(0,27,24,.78) 36%, rgba(0,27,24,.20) 64%, rgba(0,27,24,.05) 100%),
-        url("photos/hero.jpg") center/cover;
+        linear-gradient(180deg, rgba(0,27,24,.45) 0%, rgba(0,27,24,.15) 60%, rgba(0,27,24,.3) 100%),
+        url("photos/hero3.png") center center / cover no-repeat;
       color: white;
       display: flex;
       align-items: center;
@@ -266,142 +266,127 @@
     .btn-outline { border: 1px solid rgba(3,47,41,.35); }
     .btn:hover { transform: translateY(-2px); }
 
-    /* Welcome / About */
-    .welcome { padding: 80px 0; }
-    .welcome-box {
-      min-height: 360px;
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--green-950);
-      color: white;
-      box-shadow: var(--shadow);
+    /* About teaser */
+    .about-teaser {
+      padding: 70px 0;
+      background: var(--cream-2);
     }
-    .welcome-img {
-      background: url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
+    .about-teaser-box {
+      max-width: 680px;
+      margin: 0 auto;
+      text-align: center;
     }
-    .welcome-copy {
-      padding: 55px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .welcome-copy::after {
-      content: "✦";
-      position: absolute;
-      right: -20px;
-      bottom: -70px;
-      font-size: 230px;
-      color: rgba(255,255,255,.035);
-    }
-    .welcome-copy h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 42px;
-      margin: 8px 0 18px;
-      font-weight: 500;
-    }
-    .welcome-copy p { color: rgba(255,255,255,.76); line-height: 1.75; margin-bottom: 16px; }
-    .welcome-gifts {
-      display: flex;
-      gap: 12px;
-      flex-wrap: wrap;
+    .about-teaser-box .section-tag { color: var(--gold-dark); }
+    .about-teaser-box .section-title { color: var(--green-950); }
+    .about-teaser-box .section-copy {
+      font-size: 15px;
+      line-height: 1.7;
+      color: var(--muted);
       margin-bottom: 24px;
     }
-    .welcome-gift {
-      background: rgba(215,171,85,.12);
-      border: 1px solid rgba(215,171,85,.2);
-      border-radius: 100px;
-      padding: 6px 16px;
-      font-size: 13px;
-      color: var(--gold);
-      font-weight: 500;
-    }
 
-    /* Apartments */
-    .apartments {
-      padding: 80px 0 50px;
-      background:
-        radial-gradient(circle at 0% 0%, rgba(215,171,85,.12), transparent 24%),
-        var(--cream-2);
-    }
-    .apartments-grid {
-      display: grid;
-      grid-template-columns: .85fr 2.15fr;
-      gap: 46px;
-      align-items: center;
-    }
-    .image-grid {
-      display: grid;
-      grid-template-columns: repeat(3, 1fr);
-      gap: 12px;
-    }
-    .image-card {
+    /* Welcome gift banner */
+    .welcome-gift-section {
       position: relative;
-      overflow: hidden;
-      border-radius: 20px;
-      min-height: 420px;
-      box-shadow: 0 18px 40px rgba(24,32,29,.12);
+      padding: 0;
     }
-    .image-card:nth-child(2) { transform: translateY(26px); }
-    .image-card img { height: 100%; transition: .45s; }
-    .image-card:hover img { transform: scale(1.045); }
-    .image-label {
-      position: absolute;
-      inset: auto 12px 12px;
-      background: rgba(255,255,255,.9);
-      backdrop-filter: blur(8px);
-      padding: 12px 14px;
-      border-radius: 12px;
-      font-size: 12px;
-      font-weight: 700;
-    }
-
-    /* Amenities */
-    .amenities {
-      margin-top: 60px;
-      background: var(--green-950);
+    .welcome-gift-banner {
+      position: relative;
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      background:
+        linear-gradient(rgba(3,47,41,.65), rgba(3,47,41,.8)),
+        url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
       color: white;
-      border-radius: 24px;
-      padding: 36px 40px;
-      box-shadow: var(--shadow);
+      overflow: hidden;
     }
-    .amenities-head {
+    .welcome-gift-banner::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 50px;
+      background: var(--green-950);
+      clip-path: polygon(0 60%, 15% 75%, 30% 50%, 50% 72%, 70% 52%, 85% 74%, 100% 56%, 100% 100%, 0 100%);
+    }
+    .welcome-gift-content {
+      max-width: 620px;
+      padding: 70px 24px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .welcome-gift-content .section-tag { color: var(--gold); }
+    .welcome-gift-content h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4.5vw, 48px);
+      font-weight: 500;
+      margin: 8px 0 14px;
+      line-height: 1;
+      color: white;
+    }
+    .welcome-gift-content > p {
+      color: rgba(255,255,255,.82);
+      line-height: 1.7;
+      font-size: 15px;
+      margin-bottom: 20px;
+    }
+    .gift-pills {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
+      margin: 0 0 20px;
+    }
+    .gift-pill {
+      font-size: 15px;
+      color: rgba(255,255,255,.9);
+      font-weight: 500;
+      font-family: "Cormorant Garamond", serif;
+    }
+    .welcome-center {
       text-align: center;
-      margin-bottom: 28px;
+      max-width: 560px;
+      margin: 0 auto;
     }
-    .amenities-head .section-tag { color: var(--gold); }
-    .amenities-grid {
+    .welcome-center .gift-pills {
+      justify-content: center;
+    }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+
+    /* Amenities list (inside welcome banner) */
+    .amen-list {
+      max-width: 100%;
+      margin: 0 0 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 24px 28px;
       display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 24px;
+      list-style: none;
     }
-    .amenity {
-      background: rgba(255,255,255,.04);
-      border: 1px solid rgba(255,255,255,.08);
-      border-radius: 14px;
-      padding: 18px 16px;
-      text-align: center;
-      font-size: 12px;
-      color: rgba(255,255,255,.8);
-    }
-    .amenity b {
-      display: block;
-      color: var(--gold);
-      font-size: 24px;
-      margin-bottom: 8px;
-    }
-    .amenities-more {
-      text-align: center;
-      margin-top: 24px;
-    }
-    .amenities-more a {
-      color: var(--gold);
+    .amen-list li {
       font-size: 13px;
-      text-decoration: underline;
-      font-weight: 600;
+      color: rgba(255,255,255,.82);
+      padding: 6px 0 6px 26px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .amen-list li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(215,171,85,.18);
+      color: var(--gold);
+      font-size: 10px;
+      font-weight: 700;
+      display: flex;
+      align-items: center;
+      justify-content: center;
     }
 
     /* Explore */
@@ -481,9 +466,7 @@
       .booking-section { margin-top: 20px; }
       .booking { grid-template-columns: 1fr 1fr; }
       .booking button { min-height: 60px; }
-      .apartments-grid { grid-template-columns: 1fr; }
-      .amenities-grid { grid-template-columns: repeat(2,1fr); }
-      .places { grid-template-columns: repeat(2,1fr); }
+      .amen-list { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -498,8 +481,8 @@
         padding-top: 110px;
         padding-bottom: 60px;
         background:
-          linear-gradient(180deg, rgba(0,27,24,.9) 0%, rgba(0,27,24,.72) 55%, rgba(0,27,24,.35) 100%),
-          url("photos/hero.jpg") center/cover;
+          linear-gradient(180deg, rgba(0,27,24,.45) 0%, rgba(0,27,24,.15) 60%, rgba(0,27,24,.3) 100%),
+          url("photos/hero3.png") center center / cover no-repeat;
       }
       .hero h1 { font-size: 64px; }
       .hero h2 { font-size: 28px; }
@@ -507,17 +490,9 @@
       .booking { grid-template-columns: 1fr; }
       .field { border-right: 0; border-bottom: 1px solid rgba(255,255,255,.1); }
       .booking button { padding: 18px; }
-      .apartments { padding-top: 80px; }
-      .image-grid { grid-template-columns: 1fr; }
-      .image-card { min-height: 360px; }
-      .image-card:nth-child(2) { transform: none; }
-      .amenities-grid { grid-template-columns: 1fr; }
-      .welcome-box { grid-template-columns: 1fr; }
-      .welcome-img { min-height: 260px; }
-      .welcome-copy { padding: 36px 26px; }
-      .explore-head { align-items: flex-start; flex-direction: column; }
-      .places { grid-template-columns: 1fr; }
-      .place img { height: 230px; }
+      .amen-list { grid-template-columns: 1fr; padding: 20px 18px; }
+      .amen-list li { font-size: 13px; }
+      .welcome-gift-content { padding: 50px 20px 60px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; }
     }
@@ -530,12 +505,9 @@
       .eyebrow { font-size: 24px; }
       .section-title { font-size: 34px; }
       .section-tag { font-size: 22px; }
-      .welcome-copy h3 { font-size: 36px; }
-      .welcome-copy p { font-size: 14px; }
-      .amenity { font-size: 10px; }
-      .amenity b { font-size: 22px; }
-      .image-card { min-height: 280px; }
-      .image-label { font-size: 11px; padding: 10px 12px; }
+      .welcome-gift-content h2 { font-size: 32px; }
+      .welcome-gift-content > p { font-size: 14px; }
+      .amen-list li { font-size: 12px; }
       footer h4 { font-size: 22px; }
       .field { padding: 14px 16px; }
       .booking button { padding: 16px; font-size: 12px; }
@@ -630,78 +602,67 @@
     </div>
   </section>
 
-  <section class="welcome" id="despre">
+  <!-- About Us -->
+  <section class="about-teaser" id="despre">
     <div class="container">
-      <div class="welcome-box">
-        <div class="welcome-img"></div>
-        <div class="welcome-copy">
-          <div class="section-tag" data-en="About us" data-es="Sobre nosotros">About us</div>
-          <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
-          <p data-en="RDR Apartments is a tranquil retreat in Curaçao, featuring an outdoor pool, tropical garden and fully equipped apartments with air conditioning, free WiFi and private terraces." data-es="RDR Apartments es un refugio tranquilo en Curaçao, con piscina al aire libre, jardín tropical y apartamentos totalmente equipados con aire acondicionado, WiFi gratuito y terrazas privadas.">
-            RDR Apartments is a tranquil retreat in Curaçao, featuring an outdoor pool, tropical garden and fully equipped apartments with air conditioning, free WiFi and private terraces.
-          </p>
-          <p data-en="Every guest is welcomed with a thoughtful gift from the house:" data-es="Cada huésped es recibido con un detalle de la casa:">
-            Every guest is welcomed with a thoughtful gift from the house:
-          </p>
-          <div class="welcome-gifts">
-            <span class="welcome-gift" data-en="🍷 Wine or champagne" data-es="🍷 Vino o champán">🍷 Wine or champagne</span>
-            <span class="welcome-gift" data-en="🍇 Fresh fruit" data-es="🍇 Frutas frescas">🍇 Fresh fruit</span>
-            <span class="welcome-gift" data-en="🍯 Sweets" data-es="🍯 Dulces">🍯 Sweets</span>
-          </div>
-          <a href="about.html" class="btn btn-dark" data-en="Learn more →" data-es="Saber más →">Learn more →</a>
-        </div>
+      <div class="about-teaser-box">
+        <div class="section-tag" data-en="About us" data-es="Sobre nosotros">About us</div>
+        <h2 class="section-title" data-en="A relaxed stay with the comforts of home" data-es="Una estancia relajada con las comodidades de casa">A relaxed stay with the comforts of home</h2>
+        <p class="section-copy" data-en="Located in the peaceful neighborhood of Santa Catharina, our property offers the perfect balance between tranquility and convenience, with easy access to the island's beaches, restaurants, and top attractions." data-es="Ubicado en el tranquilo barrio de Santa Catharina, nuestra propiedad ofrece el equilibrio perfecto entre tranquilidad y conveniencia, con fácil acceso a las playas, restaurantes y principales atracciones de la isla.">
+          Located in the peaceful neighborhood of Santa Catharina, our property offers the perfect balance between tranquility and convenience, with easy access to the island's beaches, restaurants, and top attractions.
+        </p>
+        <p style="margin-top:8px;"><a href="https://www.google.com/maps?q=12.139716145472088,-68.8315028702278" target="_blank" rel="noopener" style="color:var(--gold-dark);text-decoration:underline;font-weight:600;" data-en="See on map →" data-es="Ver en el mapa →">See on map →</a></p>
+        <p class="section-copy" style="margin-top:16px;" data-en="The property is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away. RDR Apartments is situated 12 km from the Curaçao Sea Aquarium." data-es="La propiedad se encuentra a 14 km del Puente Queen Emma y a 43 km del Parque Nacional Christoffel. El Aeropuerto Internacional de Curaçao está a 17 km. RDR Apartments está situado a 12 km del Curaçao Sea Aquarium.">
+          The property is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away. RDR Apartments is situated 12 km from the Curaçao Sea Aquarium.
+        </p>
+        <p class="section-copy" data-en="Whether you're visiting for a romantic getaway, a family vacation, a diving trip, or an extended stay, we aim to provide a comfortable home base where every guest feels welcome." data-es="Ya sea que visites para una escapada romántica, unas vacaciones en familia, un viaje de buceo o una estancia prolongada, nuestro objetivo es proporcionar una base cómoda donde cada huésped se sienta bienvenido.">
+          Whether you're visiting for a romantic getaway, a family vacation, a diving trip, or an extended stay, we aim to provide a comfortable home base where every guest feels welcome.
+        </p>
+        <a href="about.html" class="btn btn-dark" data-en="Learn more about us →" data-es="Saber más sobre nosotros →">Learn more about us →</a>
       </div>
     </div>
   </section>
 
-  <section class="apartments" id="apartamente">
-    <div class="container">
-      <div class="apartments-grid">
-        <div>
-          <div class="section-tag" data-en="Comfort" data-es="Comodidad">Comfort</div>
-          <h2 class="section-title" data-en="Designed for your relaxation" data-es="Diseñado para tu relajación">Designed for your relaxation</h2>
-          <p class="section-copy" data-en="The recently renovated apartments offer everything you need for a memorable stay: air conditioning, fully equipped kitchen, TV with streaming services, private bathroom and terrace with garden or pool view." data-es="Los apartamentos recientemente renovados ofrecen todo lo necesario para una estancia memorable: aire acondicionado, cocina totalmente equipada, TV con servicios de streaming, baño privado y terraza con vista al jardín o la piscina.">
-            The recently renovated apartments offer everything you need for a memorable stay: air conditioning, fully equipped kitchen, TV with streaming services, private bathroom and terrace with garden or pool view.
-          </p>
-          <a href="apartments.html" class="btn btn-dark" data-en="View apartments →" data-es="Ver apartamentos →">View apartments →</a>
-        </div>
-
-        <div class="image-grid">
-          <article class="image-card">
-            <img src="photos/superior/bed.jpeg" alt="Cozy bedroom">
-            <div class="image-label" data-en="Cozy bedroom" data-es="Dormitorio acogedor">Cozy bedroom</div>
-          </article>
-          <article class="image-card">
-            <img src="photos/superior/kitchen.jpg" alt="Fully equipped kitchen">
-            <div class="image-label" data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</div>
-          </article>
-          <article class="image-card">
-            <img src="photos/superior/terase.jpeg" alt="Private terrace">
-            <div class="image-label" data-en="Private terrace" data-es="Terraza privada">Private terrace</div>
-          </article>
-        </div>
-      </div>
-
-      <div class="amenities" id="facilitati">
-        <div class="amenities-head">
+  <!-- Welcome gift banner with amenities -->
+  <section class="welcome-gift-section">
+    <div class="welcome-gift-banner">
+      <div class="container">
+        <div class="welcome-gift-content">
           <div class="section-tag" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
-        </div>
-        <div class="amenities-grid">
-          <div class="amenity"><b>≋</b><span data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</span></div>
-          <div class="amenity"><b>⌁</b><span data-en="Free Wi-Fi" data-es="Wi-Fi gratis">Free Wi-Fi</span></div>
-          <div class="amenity"><b>▣</b><span data-en="Free parking" data-es="Estacionamiento gratis">Free parking</span></div>
-          <div class="amenity"><b>❄</b><span data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</span></div>
-          <div class="amenity"><b>♧</b><span data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</span></div>
-          <div class="amenity"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
-          <div class="amenity"><b>☕</b><span data-en="Breakfast & dinner on request" data-es="Desayuno y cena bajo petición">Breakfast & dinner on request</span></div>
-          <div class="amenity"><b>🧊</b><span data-en="Beach cooler box" data-es="Caja fría para playa">Beach cooler box</span></div>
-          <div class="amenity"><b>🤿</b><span data-en="Snorkeling gear" data-es="Equipo de snorkel">Snorkeling gear</span></div>
-          <div class="amenity"><b>🏖</b><span data-en="Free beach towels" data-es="Toallas de playa gratis">Free beach towels</span></div>
-          <div class="amenity"><b>🎲</b><span data-en="Board games" data-es="Juegos de mesa">Board games</span></div>
-          <div class="amenity"><b>🧺</b><span data-en="Washing machine" data-es="Lavadora">Washing machine</span></div>
-        </div>
-        <div class="amenities-more">
-          <a href="apartments.html" data-en="See all amenities →" data-es="Ver todos los servicios →">See all amenities →</a>
+          <h2 data-en="Included With Every Stay" data-es="Incluido en cada estancia">Included With Every Stay</h2>
+          <p data-en="From the moment you arrive, everything you need is already waiting for you." data-es="Desde el momento en que llegas, todo lo que necesitas ya te está esperando.">
+            From the moment you arrive, everything you need is already waiting for you.
+          </p>
+          <ul class="amen-list">
+            <li data-en="Outdoor swimming pool and tropical garden" data-es="Piscina al aire libre y jardín tropical">Outdoor swimming pool and tropical garden</li>
+            <li data-en="Complimentary high-speed Wi-Fi" data-es="Wi-Fi de alta velocidad gratuito">Complimentary high-speed Wi-Fi</li>
+            <li data-en="Free private parking" data-es="Estacionamiento privado gratuito">Free private parking</li>
+            <li data-en="Fully air-conditioned apartments" data-es="Apartamentos totalmente climatizados">Fully air-conditioned apartments</li>
+            <li data-en="Shared laundry facilities" data-es="Lavandería compartida">Shared laundry facilities</li>
+            <li data-en="Beach towels, cooler box and snorkeling equipment" data-es="Toallas de playa, nevera y equipo de snorkel">Beach towels, cooler box and snorkeling equipment</li>
+            <li data-en="BBQ area with cooking utensils" data-es="Zona de parrilla con utensilios de cocina">BBQ area with cooking utensils</li>
+            <li data-en="Board games, chess, backgammon and playing cards" data-es="Juegos de mesa, ajedrez, backgammon y cartas">Board games, chess, backgammon and playing cards</li>
+            <li data-en="Breakfast and dinner available upon request" data-es="Desayuno y cena disponibles bajo petición">Breakfast and dinner available upon request</li>
+            <li data-en="Daily reception from 8:00 AM to 10:00 PM" data-es="Recepción diaria de 8:00 AM a 10:00 PM">Daily reception from 8:00 AM to 10:00 PM</li>
+            <li data-en="Pet-friendly accommodation (upon approval)" data-es="Alojamiento apto para mascotas (previa aprobación)">Pet-friendly accommodation (upon approval)</li>
+            <li data-en="Accessible transportation available upon request" data-es="Transporte accesible disponible bajo petición">Accessible transportation available upon request</li>
+          </ul>
+          <div class="welcome-center">
+            <div class="section-tag" style="margin-top:28px;" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
+            <h2 data-en="Welcome" data-es="Bienvenida">Welcome</h2>
+            <p data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:" data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa:">
+              We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:
+            </p>
+            <div class="gift-pills">
+              <span class="gift-pill" data-en="🍷 Wine or champagne" data-es="🍷 Vino o champán">🍷 Wine or champagne</span>
+              <span class="gift-pill" data-en="🍇 Fresh fruit" data-es="🍇 Frutas frescas">🍇 Fresh fruit</span>
+              <span class="gift-pill" data-en="🍯 Sweets" data-es="🍯 Dulces">🍯 Sweets</span>
+            </div>
+            <p data-en="A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">
+              A simple gesture that turns arrival into an authentic Caribbean hospitality experience.
+            </p>
+            <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20a%20stay%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
+          </div>
         </div>
       </div>
     </div>
@@ -776,7 +737,7 @@
       document.documentElement.lang = l;
       document.querySelectorAll('[data-en]').forEach(el => {
         const val = el.getAttribute('data-' + l);
-        if (val) el.textContent = val;
+        if (val) el.innerHTML = val;
       });
       document.querySelectorAll('#guests option').forEach(opt => {
         const val = opt.getAttribute('data-' + l);

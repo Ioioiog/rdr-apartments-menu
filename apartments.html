@@ -128,8 +128,8 @@
       min-height: 420px;
       position: relative;
       background:
-        linear-gradient(90deg, rgba(0,27,24,.88) 0%, rgba(0,27,24,.6) 50%, rgba(0,27,24,.2) 100%),
-        url("photos/hero.jpg") center/cover;
+        linear-gradient(180deg, rgba(0,27,24,.45) 0%, rgba(0,27,24,.15) 60%, rgba(0,27,24,.3) 100%),
+        url("photos/hero3.png") center center / cover no-repeat;
       color: white;
       display: flex;
       align-items: center;
@@ -366,127 +366,108 @@
       justify-content: center;
     }
 
-    /* Shared amenities */
-    .shared-section {
-      padding: 50px 0;
-      background: var(--green-950);
-      color: white;
+    /* Welcome gift banner */
+    .welcome-gift-section {
+      position: relative;
+      padding: 0;
     }
-    .shared-section .section-tag { color: var(--gold); }
-    .shared-section .section-title { color: white; }
-    .shared-intro {
-      max-width: 560px;
-      margin: 0 0 24px;
-      text-align: left;
-      color: rgba(255,255,255,.6);
-      font-size: 14px;
-      line-height: 1.6;
-    }
-    .shared-cats {
-      display: grid;
-      grid-template-columns: repeat(4, 1fr);
-      gap: 0;
-      border-top: 1px solid rgba(255,255,255,.1);
-      border-bottom: 1px solid rgba(255,255,255,.1);
-    }
-    .shared-cat {
-      padding: 24px 20px;
-      border-right: 1px solid rgba(255,255,255,.08);
-    }
-    .shared-cat:last-child { border-right: 0; }
-    .shared-cat-icon {
-      width: 32px;
-      height: 32px;
-      border-radius: 8px;
-      background: rgba(215,171,85,.12);
+    .welcome-gift-banner {
+      position: relative;
+      min-height: 380px;
       display: flex;
       align-items: center;
-      justify-content: center;
+      background:
+        linear-gradient(rgba(3,47,41,.65), rgba(3,47,41,.8)),
+        url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
+      color: white;
+      overflow: hidden;
+    }
+    .welcome-gift-banner::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 50px;
+      background: var(--cream-2);
+      clip-path: polygon(0 60%, 15% 75%, 30% 50%, 50% 72%, 70% 52%, 85% 74%, 100% 56%, 100% 100%, 0 100%);
+    }
+    .welcome-gift-content {
+      max-width: 620px;
+      padding: 70px 24px 80px;
+      position: relative;
+      z-index: 2;
+    }
+    .welcome-gift-content .section-tag { color: var(--gold); }
+    .welcome-gift-content h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(34px, 4.5vw, 48px);
+      font-weight: 500;
+      margin: 8px 0 14px;
+      line-height: 1;
+      color: white;
+    }
+    .welcome-gift-content > p {
+      color: rgba(255,255,255,.82);
+      line-height: 1.7;
       font-size: 15px;
-      margin-bottom: 8px;
+      margin-bottom: 20px;
     }
-    .shared-cat h4 {
-      font-family: "DM Sans", sans-serif;
-      font-size: 11px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .08em;
-      margin: 0 0 12px;
-      color: var(--gold);
-    }
-    .shared-cat ul {
-      list-style: none;
-      padding: 0;
+    .gift-pills {
+      display: flex;
+      gap: 20px;
+      flex-wrap: wrap;
       margin: 0;
     }
-    .shared-cat li {
-      font-size: 12px;
-      color: rgba(255,255,255,.75);
-      padding: 5px 0;
-      padding-left: 18px;
-      position: relative;
-      line-height: 1.35;
+    .gift-pill {
+      font-size: 15px;
+      color: rgba(255,255,255,.9);
+      font-weight: 500;
+      font-family: "Cormorant Garamond", serif;
     }
-    .shared-cat li::before {
+    .welcome-center {
+      text-align: center;
+      max-width: 560px;
+      margin: 0 auto;
+    }
+    .welcome-center .gift-pills {
+      justify-content: center;
+    }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+
+    /* Amenities list (inside welcome banner) */
+    .amen-list {
+      max-width: 100%;
+      margin: 0 0 8px;
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(255,255,255,.1);
+      border-radius: 16px;
+      padding: 24px 28px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 4px 24px;
+      list-style: none;
+    }
+    .amen-list li {
+      font-size: 13px;
+      color: rgba(255,255,255,.82);
+      padding: 6px 0 6px 26px;
+      position: relative;
+      line-height: 1.45;
+    }
+    .amen-list li::before {
       content: "✓";
       position: absolute;
       left: 0;
-      top: 5px;
+      top: 6px;
+      width: 18px;
+      height: 18px;
+      border-radius: 50%;
+      background: rgba(215,171,85,.18);
       color: var(--gold);
-      font-size: 12px;
+      font-size: 10px;
       font-weight: 700;
-    }
-
-    /* Welcome gift (merged into shared section) */
-    .gift-box {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-radius: 18px;
-      overflow: hidden;
-      margin-top: 20px;
-    }
-    .gift-copy {
-      padding: 32px;
       display: flex;
-      flex-direction: column;
+      align-items: center;
       justify-content: center;
-      align-items: flex-start;
-      position: relative;
-      overflow: hidden;
-      order: 1;
-    }
-    .gift-img {
-      background: url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
-      min-height: 200px;
-      order: 2;
-    }
-    .gift-copy::after {
-      content: "✦";
-      position: absolute;
-      right: -15px;
-      bottom: -50px;
-      font-size: 160px;
-      color: rgba(255,255,255,.035);
-    }
-    .gift-list {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .gift-list li {
-      padding: 6px 0;
-      padding-left: 24px;
-      position: relative;
-      color: rgba(255,255,255,.85);
-      font-size: 16px;
-      font-family: "Cormorant Garamond", serif;
-    }
-    .gift-list li::before {
-      content: "♡";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
     }
 
     /* Closing CTA */
@@ -575,10 +556,7 @@
       .menu-btn { display: block; }
       .apt-grid { grid-template-columns: 1fr 1fr; }
       .apt-img { height: 220px; }
-      .shared-cats { grid-template-columns: repeat(2, 1fr); }
-      .shared-cat:nth-child(2) { border-right: 0; }
-      .shared-cat:nth-child(1), .shared-cat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.08); }
-      .gift-box { grid-template-columns: 1fr; margin-top: 24px; }
+      .amen-list { grid-template-columns: 1fr; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -598,17 +576,14 @@
       .apt-subtitle { font-size: 11px; }
       .apt-desc { font-size: 12px; margin-bottom: 14px; }
       .apt-cta .btn { font-size: 11px; padding: 10px 14px; }
-      .gift-copy { padding: 36px 26px; }
-      .shared-cats { grid-template-columns: repeat(2, 1fr); }
-      .shared-cat:nth-child(2) { border-right: 0; }
-      .shared-cat:nth-child(1), .shared-cat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.08); }
-      .shared-cat:nth-child(3) { border-right: 1px solid rgba(255,255,255,.08); }
+      .amen-list { padding: 24px 20px; }
+      .amen-list li { font-size: 13px; }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; }
     }
 
     @media (max-width: 480px) {
-      .page-hero { min-height: 300px; padding: 120px 0 40px; }
+      .page-hero { min-height: 320px; padding: 120px 0 40px; background-position: center center; background-size: cover; }
       .page-hero h1 { font-size: 40px; }
       .eyebrow { font-size: 24px; }
       .section-title { font-size: 32px; }
@@ -616,11 +591,7 @@
       .apt-body { padding: 16px 12px; }
       .apt-body h3 { font-size: 20px; }
       .apt-img { height: 140px; }
-      .gift-copy h3 { font-size: 32px; }
-      .gift-copy p { font-size: 14px; }
-      .gift-list li { font-size: 14px; }
-      .shared-item { padding: 16px; font-size: 12px; }
-      .shared-item b { font-size: 20px; }
+      .amen-list li { font-size: 12px; }
       .cta-box h2 { font-size: 30px; }
       .cta-box p { font-size: 14px; }
       footer h4 { font-size: 22px; }
@@ -681,17 +652,26 @@
       <article class="apt-card">
         <div class="apt-gallery">
           <div class="apt-img">
-            <img src="photos/apartament.jpg" alt="One Bedroom Apartment" class="apt-main-img">
+            <img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 2.JPG" alt="One Bedroom Apartment" class="apt-main-img">
             <div class="apt-price-badge">70 USD <small data-en="/ night" data-es="/ noche">/ night</small></div>
           </div>
           <div class="apt-thumbs">
-            <div class="apt-thumb active" data-src="photos/apartament.jpg"><img src="photos/apartament.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg"><img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg"><img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg"><img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000064-PHOTO-2026-07-21-23-02-40.jpg"><img src="photos/00000064-PHOTO-2026-07-21-23-02-40.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg"><img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg"><img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt=""></div>
+            <div class="apt-thumb active" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-25 2.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-25 3.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-25 4.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 4.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-25 5.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 5.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-25 6.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-25 6.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-26 2.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-26 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-26 3.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-26 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-26 4.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-26 4.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-26 5.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-26 5.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-20 5.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-20 5.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-21 4.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-21 4.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-23 5.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-23 5.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-23 6.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-23 6.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-23 7.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-23 7.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-43-23 8.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-43-23 8.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/2/PHOTO-2026-07-23-12-45-34 4.JPG"><img src="photos/superior/2/PHOTO-2026-07-23-12-45-34 4.JPG" alt=""></div>
           </div>
         </div>
         <div class="apt-body">
@@ -716,7 +696,8 @@
           </div>
           <div class="apt-divider"></div>
           <p class="apt-note" data-en="Perfect for romantic getaways, weekend escapes or longer stays." data-es="Perfecto para escapadas románticas, fines de semana o estancias más largas.">Perfect for romantic getaways, weekend escapes or longer stays.</p>
-          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person/day (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona/día (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person/day (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <p class="apt-note" data-en="Check-in from 14:00 · Check-out by 11:00 · Flexible subject to availability" data-es="Check-in desde 14:00 · Check-out hasta 11:00 · Flexible según disponibilidad">Check-in from 14:00 · Check-out by 11:00 · Flexible subject to availability</p>
           <div class="apt-cta">
             <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20the%20One%20Bedroom%20Apartment%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book this apartment →" data-es="Reservar este apartamento →">Book this apartment →</a>
           </div>
@@ -727,17 +708,33 @@
       <article class="apt-card">
         <div class="apt-gallery">
           <div class="apt-img">
-            <img src="photos/apartament1.jpg" alt="Two Bedroom Apartment" class="apt-main-img">
+            <img src="photos/superior/1/PHOTO-2026-07-23-12-43-20.JPG" alt="Two Bedroom Apartment" class="apt-main-img">
             <div class="apt-price-badge">110 USD <small data-en="/ night" data-es="/ noche">/ night</small></div>
           </div>
           <div class="apt-thumbs">
-            <div class="apt-thumb active" data-src="photos/apartament1.jpg"><img src="photos/apartament1.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg"><img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg"><img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000074-PHOTO-2026-07-21-23-11-37.jpg"><img src="photos/00000074-PHOTO-2026-07-21-23-11-37.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg"><img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg"><img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt=""></div>
-            <div class="apt-thumb" data-src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt=""></div>
+            <div class="apt-thumb active" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-20.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-20.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-20 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-20 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-20 3.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-20 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-20 4.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-20 4.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-21.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-21.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-21 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-21 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-21 3.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-21 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-21 5.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-21 5.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-23.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-23.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-23 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-23 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-23 3.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-23 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-23 4.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-23 4.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-24.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-24.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-24 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-24 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-24 3.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-24 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-25.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-25.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-26.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-26.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-27 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-27 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-43-27.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-43-27.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-45-33.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-45-33.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-45-34 2.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-45-34 2.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-45-34 3.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-45-34 3.JPG" alt=""></div>
+            <div class="apt-thumb" data-src="photos/superior/1/PHOTO-2026-07-23-12-45-34.JPG"><img src="photos/superior/1/PHOTO-2026-07-23-12-45-34.JPG" alt=""></div>
           </div>
         </div>
         <div class="apt-body">
@@ -761,7 +758,8 @@
           </div>
           <div class="apt-divider"></div>
           <p class="apt-note" data-en="Ideal for up to 4 guests. Children are welcome; an extra bed is available on request." data-es="Ideal para hasta 4 huéspedes. Se aceptan niños; hay cama adicional bajo petición.">Ideal for up to 4 guests. Children are welcome; an extra bed is available on request.</p>
-          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person/day (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona/día (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person/day (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <p class="apt-note" data-en="Check-in from 14:00 · Check-out by 11:00 · Flexible subject to availability" data-es="Check-in desde 14:00 · Check-out hasta 11:00 · Flexible según disponibilidad">Check-in from 14:00 · Check-out by 11:00 · Flexible subject to availability</p>
           <div class="apt-cta">
             <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20the%20Two%20Bedroom%20Apartment%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book this apartment →" data-es="Reservar este apartamento →">Book this apartment →</a>
           </div>
@@ -772,73 +770,48 @@
     </div>
   </section>
 
-  <!-- Shared amenities + Welcome gift -->
-  <section class="shared-section">
-    <div class="container">
-      <div class="section-tag" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
-      <h2 class="section-title" data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h2>
-      <p class="shared-intro" data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house — wine or champagne, fresh fruit and sweets. A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa — vino o champán, frutas frescas y dulces. Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house — wine or champagne, fresh fruit and sweets. A simple gesture that turns arrival into an authentic Caribbean hospitality experience.</p>
-
-      <div class="gift-box">
-        <div class="gift-copy">
-          <ul class="gift-list">
-            <li data-en="Wine or champagne" data-es="Vino o champán">Wine or champagne</li>
-            <li data-en="Fresh fruit" data-es="Frutas frescas">Fresh fruit</li>
-            <li data-en="Sweets" data-es="Dulces">Sweets</li>
+  <!-- Welcome gift banner -->
+  <section class="welcome-gift-section">
+    <div class="welcome-gift-banner">
+      <div class="container">
+        <div class="welcome-gift-content">
+          <div class="section-tag" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
+          <h2 data-en="Included With Every Stay" data-es="Incluido en cada estancia">Included With Every Stay</h2>
+          <p data-en="From the moment you arrive, everything you need is already waiting for you." data-es="Desde el momento en que llegas, todo lo que necesitas ya te está esperando.">
+            From the moment you arrive, everything you need is already waiting for you.
+          </p>
+          <ul class="amen-list">
+            <li data-en="Outdoor swimming pool and tropical garden" data-es="Piscina al aire libre y jardín tropical">Outdoor swimming pool and tropical garden</li>
+            <li data-en="Complimentary high-speed Wi-Fi" data-es="Wi-Fi de alta velocidad gratuito">Complimentary high-speed Wi-Fi</li>
+            <li data-en="Free private parking" data-es="Estacionamiento privado gratuito">Free private parking</li>
+            <li data-en="Fully air-conditioned apartments" data-es="Apartamentos totalmente climatizados">Fully air-conditioned apartments</li>
+            <li data-en="Shared laundry facilities" data-es="Lavandería compartida">Shared laundry facilities</li>
+            <li data-en="Beach towels, cooler box and snorkeling equipment" data-es="Toallas de playa, nevera y equipo de snorkel">Beach towels, cooler box and snorkeling equipment</li>
+            <li data-en="BBQ area with cooking utensils" data-es="Zona de parrilla con utensilios de cocina">BBQ area with cooking utensils</li>
+            <li data-en="Board games, chess, backgammon and playing cards" data-es="Juegos de mesa, ajedrez, backgammon y cartas">Board games, chess, backgammon and playing cards</li>
+            <li data-en="Breakfast and dinner available upon request" data-es="Desayuno y cena disponibles bajo petición">Breakfast and dinner available upon request</li>
+            <li data-en="Daily reception from 8:00 AM to 10:00 PM" data-es="Recepción diaria de 8:00 AM a 10:00 PM">Daily reception from 8:00 AM to 10:00 PM</li>
+            <li data-en="Pet-friendly accommodation (upon approval)" data-es="Alojamiento apto para mascotas (previa aprobación)">Pet-friendly accommodation (upon approval)</li>
+            <li data-en="Accessible transportation available upon request" data-es="Transporte accesible disponible bajo petición">Accessible transportation available upon request</li>
           </ul>
-        </div>
-        <div class="gift-img"></div>
-      </div>
-
-      <div class="section-tag" style="margin-top:32px;" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
-      <h2 class="section-title" data-en="Available to all guests" data-es="Disponibles para todos los huéspedes">Available to all guests</h2>
-      <p class="shared-intro" data-en="Everything you need for a comfortable and carefree stay — from pool and Wi-Fi to beach gear and board games." data-es="Todo lo que necesitas para una estancia cómoda y sin preocupaciones — desde piscina y Wi-Fi hasta equipo de playa y juegos de mesa.">Everything you need for a comfortable and carefree stay — from pool and Wi-Fi to beach gear and board games.</p>
-      <div class="shared-cats">
-        <div class="shared-cat">
-          <div class="shared-cat-icon">🏠</div>
-          <h4 data-en="Facilities" data-es="Instalaciones">Facilities</h4>
-          <ul>
-            <li data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</li>
-            <li data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</li>
-            <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
-            <li data-en="Free Wi-Fi throughout" data-es="Wi-Fi gratuito en todo el recinto">Free Wi-Fi throughout</li>
-            <li data-en="Free private parking" data-es="Estacionamiento privado gratis">Free private parking</li>
-            <li data-en="Utilities included" data-es="Utilidades incluidas">Utilities included</li>
-            <li data-en="Shared washing machine & dryer" data-es="Lavadora y secadora compartidas">Shared washing machine & dryer</li>
-          </ul>
-        </div>
-        <div class="shared-cat">
-          <div class="shared-cat-icon">🏖</div>
-          <h4 data-en="Beach & Outdoor" data-es="Playa y Exterior">Beach & Outdoor</h4>
-          <ul>
-            <li data-en="Cooler box for the beach" data-es="Caja frigorífica para la playa">Cooler box for the beach</li>
-            <li data-en="Snorkeling gear" data-es="Equipo de snorkel">Snorkeling gear</li>
-            <li data-en="Free beach towels" data-es="Toallas de playa gratuitas">Free beach towels</li>
-            <li data-en="Badminton rackets" data-es="Raquetas de bádminton">Badminton rackets</li>
-            <li data-en="BBQ & utensils" data-es="Parrilla y utensilios">BBQ & utensils</li>
-          </ul>
-        </div>
-        <div class="shared-cat">
-          <div class="shared-cat-icon">🎲</div>
-          <h4 data-en="Entertainment" data-es="Entretenimiento">Entertainment</h4>
-          <ul>
-            <li data-en="Board games (rummy, chess, backgammon)" data-es="Juegos de mesa (rummy, ajedrez, backgammon)">Board games (rummy, chess, backgammon)</li>
-            <li data-en="Cards & poker chips" data-es="Cartas y fichas de póker">Cards & poker chips</li>
-          </ul>
-        </div>
-        <div class="shared-cat">
-          <div class="shared-cat-icon">ℹ</div>
-          <h4 data-en="Services" data-es="Servicios">Services</h4>
-          <ul>
-            <li data-en="Breakfast / dinner on request" data-es="Desayuno / cena bajo petición">Breakfast / dinner on request</li>
-            <li data-en="Reception 8:00–22:00" data-es="Recepción 8:00–22:00">Reception 8:00–22:00</li>
-            <li data-en="Cash or bank transfer" data-es="Efectivo o transferencia bancaria">Cash or bank transfer</li>
-            <li data-en="Pet-friendly (prior approval, possible extra cost)" data-es="Mascotas permitidas (aprobación previa, posible coste adicional)">Pet-friendly (prior approval, possible extra cost)</li>
-            <li data-en="Transport for disabled guests (extra cost)" data-es="Transporte para huéspedes con discapacidad (coste adicional)">Transport for disabled guests (extra cost)</li>
-          </ul>
+          <div class="welcome-center">
+            <div class="section-tag" style="margin-top:28px;" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
+            <h2 data-en="Welcome" data-es="Bienvenida">Welcome</h2>
+            <p data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:" data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa:">
+              We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:
+            </p>
+            <div class="gift-pills">
+              <span class="gift-pill" data-en="🍷 Wine or champagne" data-es="🍷 Vino o champán">🍷 Wine or champagne</span>
+              <span class="gift-pill" data-en="🍇 Fresh fruit" data-es="🍇 Frutas frescas">🍇 Fresh fruit</span>
+              <span class="gift-pill" data-en="🍯 Sweets" data-es="🍯 Dulces">🍯 Sweets</span>
+            </div>
+            <p data-en="A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">
+              A simple gesture that turns arrival into an authentic Caribbean hospitality experience.
+            </p>
+            <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20a%20stay%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
+          </div>
         </div>
       </div>
-
     </div>
   </section>
 
@@ -851,7 +824,7 @@
         <p data-en="Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad." data-es="Ya vengas para relajarte, vivir una aventura o descubrir la belleza de la isla, RDR Apartments te ofrece un refugio cómodo en una ubicación tranquila, a solo minutos de las playas y atracciones más hermosas de Willemstad.">
           Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad.
         </p>
-        <a href="index.html#rezerva" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
+        <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20a%20stay%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
       </div>
     </div>
   </section>
@@ -937,7 +910,7 @@
       document.documentElement.lang = l;
       document.querySelectorAll('[data-en]').forEach(el => {
         const val = el.getAttribute('data-' + l);
-        if (val) el.textContent = val;
+        if (val) el.innerHTML = val;
       });
       localStorage.setItem('rdr-lang', l);
       if (sel) sel.value = l;
