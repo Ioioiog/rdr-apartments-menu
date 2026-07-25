@@ -1,0 +1,700 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="RDR Apartments – car rental in Curaçao. Chevrolet Cruze, Mercedes Cabriolet, Hyundai Santa Fe." />
+  <title>Rent a Car | RDR Apartments Curaçao</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-950: #032f29;
+      --green-900: #073d35;
+      --green-800: #0d4f45;
+      --green-700: #17675a;
+      --gold: #d7ab55;
+      --gold-dark: #b68532;
+      --cream: #f5efe4;
+      --cream-2: #fbf7f0;
+      --paper: #eee4d2;
+      --ink: #1a211f;
+      --muted: #68716d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream-2);
+      overflow-x: hidden;
+    }
+    img { width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(3,47,41,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      padding: 10px 0;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(215,171,85,.7);
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: .08em;
+      line-height: .8;
+    }
+    .logo small {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing: .32em;
+      opacity: .9;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-links a {
+      opacity: .88;
+      transition: .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      padding: 13px 20px;
+      background: var(--gold);
+      color: var(--green-950);
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+
+    /* Page hero */
+    .page-hero {
+      min-height: 420px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(0,27,24,.88) 0%, rgba(0,27,24,.6) 50%, rgba(0,27,24,.2) 100%),
+        url("photos/hero.jpg") center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 60px;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 60px;
+      background: var(--cream-2);
+      clip-path: polygon(0 58%, 12% 72%, 27% 50%, 44% 76%, 62% 54%, 79% 75%, 100% 55%, 100% 100%, 0 100%);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+    .eyebrow {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: .9;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .page-hero p {
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 540px;
+      color: rgba(255,255,255,.82);
+      margin-top: 18px;
+    }
+
+    /* Common */
+    section { position: relative; }
+    .section-tag {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 4.5vw, 56px);
+      line-height: .95;
+      margin: 10px 0 18px;
+      color: var(--green-950);
+    }
+    .section-copy { color: var(--muted); line-height: 1.8; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+    .btn-dark { background: var(--green-950); color: white; }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+    .btn-outline { border: 1px solid rgba(3,47,41,.35); }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Intro */
+    .intro { padding: 80px 0 40px; }
+    .intro-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+
+    /* Car cards */
+    .car-section { padding: 40px 0 60px; }
+    .car-card {
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 28px;
+      overflow: hidden;
+      background: white;
+      box-shadow: 0 15px 50px rgba(15,45,39,.1);
+      margin-bottom: 50px;
+    }
+    .car-card:nth-child(even) .car-img { order: 2; }
+    .car-img {
+      min-height: 380px;
+      display: flex;
+      align-items: center;
+      background: var(--cream);
+    }
+    .car-img img { height: 100%; object-fit: contain; }
+    .car-body {
+      padding: 50px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+    }
+    .car-badge {
+      display: inline-block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 22px;
+      font-style: italic;
+      color: var(--gold-dark);
+      margin-bottom: 6px;
+    }
+    .car-body h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 38px;
+      margin: 4px 0 8px;
+      color: var(--green-950);
+      font-weight: 600;
+    }
+    .car-subtitle {
+      font-size: 14px;
+      color: var(--muted);
+      margin-bottom: 20px;
+      font-weight: 500;
+    }
+    .car-desc {
+      color: var(--muted);
+      line-height: 1.75;
+      margin-bottom: 24px;
+    }
+    .car-features {
+      list-style: none;
+      padding: 0;
+      margin: 0 0 24px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 10px 28px;
+    }
+    .car-features li {
+      font-size: 13px;
+      color: var(--ink);
+      padding-left: 20px;
+      position: relative;
+    }
+    .car-features li::before {
+      content: "✦";
+      position: absolute;
+      left: 0;
+      color: var(--gold);
+      font-size: 11px;
+    }
+    .car-price {
+      background: var(--green-950);
+      color: white;
+      border-radius: 14px;
+      padding: 18px 24px;
+      margin-bottom: 16px;
+    }
+    .car-price .amount {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 32px;
+      color: var(--gold);
+      font-weight: 600;
+    }
+    .car-price .per {
+      font-size: 14px;
+      color: rgba(255,255,255,.7);
+    }
+    .car-note {
+      font-size: 13px;
+      color: var(--muted);
+      font-style: italic;
+      margin-top: 8px;
+    }
+
+    /* Info section */
+    .info-section {
+      padding: 60px 0;
+      background: var(--green-950);
+      color: white;
+    }
+    .info-section .section-tag { color: var(--gold); }
+    .info-section .section-title { color: white; }
+    .info-grid {
+      display: grid;
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
+      margin-top: 30px;
+    }
+    .info-item {
+      background: rgba(255,255,255,.06);
+      border: 1px solid rgba(215,171,85,.2);
+      border-radius: 14px;
+      padding: 24px;
+      text-align: center;
+      font-size: 13px;
+    }
+    .info-item b {
+      display: block;
+      color: var(--gold);
+      font-size: 24px;
+      margin-bottom: 8px;
+    }
+
+    /* Closing CTA */
+    .cta-section {
+      padding: 60px 0 100px;
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-box h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 4vw, 48px);
+      color: var(--green-950);
+      margin: 10px 0 18px;
+      line-height: 1.1;
+    }
+    .cta-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--green-950);
+      color: white;
+      padding: 55px 0 25px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    footer h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      margin: 0 0 14px;
+      color: var(--gold);
+    }
+    footer p, footer a { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 35px;
+      padding-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Language switcher */
+    .lang-switcher {
+      position: fixed; top: 14px; right: 14px; z-index: 60;
+      font-family: "DM Sans", sans-serif; font-size: 13px;
+    }
+    .lang-switcher select {
+      padding: 6px 10px; border: 1px solid rgba(215,171,85,.6); border-radius: 8px;
+      background: rgba(3,47,41,.85); color: white; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switcher select option { color: #111; }
+    @media (max-width: 980px) {
+      .lang-switcher { left: 50%; transform: translateX(-50%); right: auto; }
+    }
+    @media print { .lang-switcher { display: none; } }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 75px 20px auto 20px;
+        background: var(--green-950);
+        border-radius: 16px;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: .2s;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .menu-btn { display: block; }
+      .car-card { grid-template-columns: 1fr; }
+      .car-card:nth-child(even) .car-img { order: 0; }
+      .car-img { min-height: 280px; }
+      .car-features { grid-template-columns: 1fr; }
+      .info-grid { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .logo { min-width: unset; }
+      .logo strong { font-size: 23px; }
+      .logo small { display: none; }
+      .car-body { padding: 32px 24px; }
+      .info-grid { grid-template-columns: 1fr; }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { min-height: 300px; padding: 120px 0 40px; }
+      .page-hero h1 { font-size: 40px; }
+      .eyebrow { font-size: 24px; }
+      .section-title { font-size: 32px; }
+      .section-tag { font-size: 22px; }
+      .car-body { padding: 26px 20px; }
+      .car-body h3 { font-size: 30px; }
+      .car-badge { font-size: 18px; }
+      .car-subtitle { font-size: 13px; }
+      .car-desc { font-size: 14px; }
+      .car-features li { font-size: 12px; }
+      .car-img { min-height: 220px; }
+      .car-price .amount { font-size: 26px; }
+      .info-item { padding: 16px; font-size: 12px; }
+      .info-item b { font-size: 20px; }
+      .cta-box h2 { font-size: 30px; }
+      .cta-box p { font-size: 14px; }
+      footer h4 { font-size: 22px; }
+      .lang-switcher select { font-size: 12px; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <select id="lang-select">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
+</div>
+
+<header class="site-header" id="header">
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+      <span>
+        <strong>RDR</strong>
+        <small>APARTMENTS · CURAÇAO</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" data-en="HOME" data-es="INICIO">HOME</a>
+      <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
+      <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
+      <a href="rentacar.html" data-en="RENT A CAR" data-es="ALQUILER DE COCHES">RENT A CAR</a>
+      <a href="index.html#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+      <a class="nav-cta" href="index.html#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="eyebrow" data-en="Car Rental" data-es="Alquiler de Coches">Car Rental</div>
+        <h1 data-en="Explore Curaçao at your own pace" data-es="Explora Curaçao a tu ritmo">Explore Curaçao at your own pace</h1>
+        <p data-en="Rent a car directly from RDR Apartments and discover the island freely. Insurance included, free airport transfers, unlimited mileage and no hidden fees." data-es="Alquila un coche directamente desde RDR Apartments y descubre la isla con libertad. Seguro incluido, traslados de aeropuerto gratuitos, kilometraje ilimitado y sin cargos ocultos.">
+          Rent a car directly from RDR Apartments and discover the island freely. Insurance included, free airport transfers, unlimited mileage and no hidden fees.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <section class="car-section">
+    <div class="container">
+
+      <!-- Car 1: Chevrolet Cruze -->
+      <article class="car-card">
+        <div class="car-img">
+          <img src="photos/cars/WhatsApp Image 2026-07-24 at 20.43.46.jpeg" alt="Chevrolet Cruze">
+        </div>
+        <div class="car-body">
+          <span class="car-badge" data-en="Compact & economical" data-es="Compacto y económico">Compact & economical</span>
+          <h3>Chevrolet Cruze</h3>
+          <p class="car-subtitle" data-en="Ideal for couples and city drives" data-es="Ideal para parejas y conducción urbana">Ideal for couples and city drives</p>
+          <p class="car-desc" data-en="A reliable and fuel-efficient sedan, perfect for exploring Willemstad and the island's main roads with comfort and ease." data-es="Un sedán fiable y eficiente, perfecto para explorar Willemstad y las principales carreteras de la isla con comodidad.">
+            A reliable and fuel-efficient sedan, perfect for exploring Willemstad and the island's main roads with comfort and ease.
+          </p>
+          <ul class="car-features">
+            <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+            <li data-en="Automatic transmission" data-es="Transmisión automática">Automatic transmission</li>
+            <li data-en="5 seats" data-es="5 plazas">5 seats</li>
+            <li data-en="Insurance included" data-es="Seguro incluido">Insurance included</li>
+          </ul>
+          <div class="car-price">
+            <span class="amount">50 USD</span> <span class="per" data-en="/ day" data-es="/ día">/ day</span>
+          </div>
+          <p class="car-note" data-en="200 USD deposit required · Unlimited mileage · Free airport transfer" data-es="200 USD de depósito · Kilometraje ilimitado · Traslado de aeropuerto gratuito">200 USD deposit required · Unlimited mileage · Free airport transfer</p>
+        </div>
+      </article>
+
+      <!-- Car 2: Mercedes Cabriolet -->
+      <article class="car-card">
+        <div class="car-img">
+          <img src="photos/cars/WhatsApp Image 2026-07-24 at 20.44.47.jpeg" alt="Mercedes Cabriolet">
+        </div>
+        <div class="car-body">
+          <span class="car-badge" data-en="Style & open-air freedom" data-es="Estilo y libertad al aire libre">Style & open-air freedom</span>
+          <h3>Mercedes Cabriolet</h3>
+          <p class="car-subtitle" data-en="For those who want to feel the island breeze" data-es="Para quienes quieren sentir la brisa de la isla">For those who want to feel the island breeze</p>
+          <p class="car-desc" data-en="A premium convertible that turns every drive into a memorable experience. Feel the Caribbean wind as you cruise along the coast." data-es="Un descapotable premium que convierte cada viaje en una experiencia memorable. Siente el viento del Caribe mientras recorres la costa.">
+            A premium convertible that turns every drive into a memorable experience. Feel the Caribbean wind as you cruise along the coast.
+          </p>
+          <ul class="car-features">
+            <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+            <li data-en="Automatic transmission" data-es="Transmisión automática">Automatic transmission</li>
+            <li data-en="4 seats" data-es="4 plazas">4 seats</li>
+            <li data-en="Insurance included" data-es="Seguro incluido">Insurance included</li>
+          </ul>
+          <div class="car-price">
+            <span class="amount">50 USD</span> <span class="per" data-en="/ day" data-es="/ día">/ day</span>
+          </div>
+          <p class="car-note" data-en="200 USD deposit required · Unlimited mileage · Free airport transfer" data-es="200 USD de depósito · Kilometraje ilimitado · Traslado de aeropuerto gratuito">200 USD deposit required · Unlimited mileage · Free airport transfer</p>
+        </div>
+      </article>
+
+      <!-- Car 3: Hyundai Santa Fe -->
+      <article class="car-card">
+        <div class="car-img">
+          <img src="photos/cars/WhatsApp Image 2026-07-24 at 20.46.05.jpeg" alt="Hyundai Santa Fe">
+        </div>
+        <div class="car-body">
+          <span class="car-badge" data-en="Spacious & versatile" data-es="Espacioso y versátil">Spacious & versatile</span>
+          <h3>Hyundai Santa Fe</h3>
+          <p class="car-subtitle" data-en="Perfect for families and group adventures" data-es="Perfecto para familias y aventuras en grupo">Perfect for families and group adventures</p>
+          <p class="car-desc" data-en="A comfortable SUV with plenty of space for passengers and luggage. Ideal for beach trips, national parks and exploring every corner of Curaçao." data-es="Un SUV cómodo con mucho espacio para pasajeros y equipaje. Ideal para excursiones a la playa, parques nacionales y explorar cada rincón de Curaçao.">
+            A comfortable SUV with plenty of space for passengers and luggage. Ideal for beach trips, national parks and exploring every corner of Curaçao.
+          </p>
+          <ul class="car-features">
+            <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+            <li data-en="Automatic transmission" data-es="Transmisión automática">Automatic transmission</li>
+            <li data-en="5 seats" data-es="5 plazas">5 seats</li>
+            <li data-en="Insurance included" data-es="Seguro incluido">Insurance included</li>
+          </ul>
+          <div class="car-price">
+            <span class="amount">50 USD</span> <span class="per" data-en="/ day" data-es="/ día">/ day</span>
+          </div>
+          <p class="car-note" data-en="200 USD deposit required · Unlimited mileage · Free airport transfer" data-es="200 USD de depósito · Kilometraje ilimitado · Traslado de aeropuerto gratuito">200 USD deposit required · Unlimited mileage · Free airport transfer</p>
+        </div>
+      </article>
+
+    </div>
+  </section>
+
+  <!-- Rental info -->
+  <section class="info-section">
+    <div class="container">
+      <div class="section-tag" data-en="What's included" data-es="Lo que incluye">What's included</div>
+      <h2 class="section-title" data-en="All rentals include" data-es="Todos los alquileres incluyen">All rentals include</h2>
+      <div class="info-grid">
+        <div class="info-item"><b>50 USD</b><span data-en="per day, all cars" data-es="por día, todos los coches">per day, all cars</span></div>
+        <div class="info-item"><b>✓</b><span data-en="Insurance included" data-es="Seguro incluido">Insurance included</span></div>
+        <div class="info-item"><b>∞</b><span data-en="Unlimited mileage" data-es="Kilometraje ilimitado">Unlimited mileage</span></div>
+        <div class="info-item"><b>✈</b><span data-en="Free airport transfer" data-es="Traslado de aeropuerto gratuito">Free airport transfer</span></div>
+        <div class="info-item"><b>200 USD</b><span data-en="deposit required" data-es="depósito requerido">deposit required</span></div>
+        <div class="info-item"><b>⚡</b><span data-en="No hidden fees" data-es="Sin cargos ocultos">No hidden fees</span></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="section-tag" data-en="Ready to drive?" data-es="¿Listo para conducir?">Ready to drive?</div>
+        <h2 data-en="Book your car today" data-es="Reserva tu coche hoy">Book your car today</h2>
+        <p data-en="Contact us via WhatsApp to check availability and reserve your vehicle. Drive Curaçao your way." data-es="Contáctanos por WhatsApp para verificar la disponibilidad y reservar tu vehículo. Conduce Curaçao a tu manera.">
+          Contact us via WhatsApp to check availability and reserve your vehicle. Drive Curaçao your way.
+        </p>
+        <a href="https://wa.me/59996939031" class="btn btn-gold" data-en="WhatsApp us →" data-es="Escríbenos por WhatsApp →">WhatsApp us →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+          <span><strong>RDR</strong><small>APARTMENTS · CURAÇAO</small></span>
+        </div>
+        <p data-en="More than accommodation — an authentic Caribbean experience." data-es="Más que alojamiento — una experiencia caribeña auténtica.">More than accommodation — an authentic Caribbean experience.</p>
+      </div>
+      <div>
+        <h4 data-en="Contact" data-es="Contacto">Contact</h4>
+        <p>
+          La Quinta Villas 95, Santa Catharina, Curaçao<br>
+          +599 9 693 9031<br>
+          <a href="https://www.google.com/maps?q=12.139716145472088,-68.8315028702278" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: underline; font-size: 13px;" data-en="See on map →" data-es="Ver en el mapa →">See on map →</a>
+        </p>
+      </div>
+      <div>
+        <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
+        <p>
+          <a href="index.html" data-en="Home" data-es="Inicio">Home</a><br>
+          <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
+          <a href="rentacar.html" data-en="Rent a Car" data-es="Alquiler de Coches">Rent a Car</a><br>
+          <a href="index.html#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="© 2026 RDR Apartments. All rights reserved." data-es="© 2026 RDR Apartments. Todos los derechos reservados.">© 2026 RDR Apartments. All rights reserved.</span>
+      <span>Willemstad · Curaçao</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '×' : '☰';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  /* Language switching */
+  (function(){
+    const sel = document.getElementById('lang-select');
+    function setLang(l){
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + l);
+        if (val) el.textContent = val;
+      });
+      localStorage.setItem('rdr-lang', l);
+      if (sel) sel.value = l;
+    }
+    if (sel) sel.addEventListener('change', e => setLang(e.target.value));
+    const saved = localStorage.getItem('rdr-lang');
+    setLang(saved || 'en');
+  })();
+</script>
+</body>
+</html>
