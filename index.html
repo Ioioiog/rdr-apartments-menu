@@ -266,9 +266,63 @@
     .btn-outline { border: 1px solid rgba(3,47,41,.35); }
     .btn:hover { transform: translateY(-2px); }
 
+    /* Welcome / About */
+    .welcome { padding: 80px 0; }
+    .welcome-box {
+      min-height: 360px;
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      border-radius: 28px;
+      overflow: hidden;
+      background: var(--green-950);
+      color: white;
+      box-shadow: var(--shadow);
+    }
+    .welcome-img {
+      background: url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
+    }
+    .welcome-copy {
+      padding: 55px;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      position: relative;
+      overflow: hidden;
+    }
+    .welcome-copy::after {
+      content: "✦";
+      position: absolute;
+      right: -20px;
+      bottom: -70px;
+      font-size: 230px;
+      color: rgba(255,255,255,.035);
+    }
+    .welcome-copy h3 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 42px;
+      margin: 8px 0 18px;
+      font-weight: 500;
+    }
+    .welcome-copy p { color: rgba(255,255,255,.76); line-height: 1.75; margin-bottom: 16px; }
+    .welcome-gifts {
+      display: flex;
+      gap: 12px;
+      flex-wrap: wrap;
+      margin-bottom: 24px;
+    }
+    .welcome-gift {
+      background: rgba(215,171,85,.12);
+      border: 1px solid rgba(215,171,85,.2);
+      border-radius: 100px;
+      padding: 6px 16px;
+      font-size: 13px;
+      color: var(--gold);
+      font-weight: 500;
+    }
+
     /* Apartments */
     .apartments {
-      padding: 100px 0 50px;
+      padding: 80px 0 50px;
       background:
         radial-gradient(circle at 0% 0%, rgba(215,171,85,.12), transparent 24%),
         var(--cream-2);
@@ -307,69 +361,48 @@
 
     /* Amenities */
     .amenities {
-      margin-top: 80px;
+      margin-top: 60px;
       background: var(--green-950);
       color: white;
       border-radius: 24px;
-      padding: 26px 28px;
+      padding: 36px 40px;
       box-shadow: var(--shadow);
     }
+    .amenities-head {
+      text-align: center;
+      margin-bottom: 28px;
+    }
+    .amenities-head .section-tag { color: var(--gold); }
     .amenities-grid {
       display: grid;
-      grid-template-columns: repeat(8, 1fr);
+      grid-template-columns: repeat(4, 1fr);
+      gap: 16px;
     }
     .amenity {
+      background: rgba(255,255,255,.04);
+      border: 1px solid rgba(255,255,255,.08);
+      border-radius: 14px;
+      padding: 18px 16px;
       text-align: center;
-      padding: 10px 8px;
-      border-right: 1px solid rgba(255,255,255,.12);
-      font-size: 11px;
+      font-size: 12px;
+      color: rgba(255,255,255,.8);
     }
-    .amenity:last-child { border-right: 0; }
     .amenity b {
       display: block;
       color: var(--gold);
-      font-size: 27px;
+      font-size: 24px;
       margin-bottom: 8px;
     }
-
-    /* Welcome */
-    .welcome { padding: 70px 0; }
-    .welcome-box {
-      min-height: 360px;
-      display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      border-radius: 28px;
-      overflow: hidden;
-      background: var(--green-950);
-      color: white;
-      box-shadow: var(--shadow);
+    .amenities-more {
+      text-align: center;
+      margin-top: 24px;
     }
-    .welcome-img {
-      background: url("photos/apartament.jpg") center/cover;
+    .amenities-more a {
+      color: var(--gold);
+      font-size: 13px;
+      text-decoration: underline;
+      font-weight: 600;
     }
-    .welcome-copy {
-      padding: 55px;
-      display: flex;
-      flex-direction: column;
-      justify-content: center;
-      position: relative;
-      overflow: hidden;
-    }
-    .welcome-copy::after {
-      content: "✦";
-      position: absolute;
-      right: -20px;
-      bottom: -70px;
-      font-size: 230px;
-      color: rgba(255,255,255,.035);
-    }
-    .welcome-copy h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 46px;
-      margin: 8px 0 18px;
-      font-weight: 500;
-    }
-    .welcome-copy p { color: rgba(255,255,255,.76); line-height: 1.75; }
 
     /* Explore */
     .explore { padding: 30px 0 100px; }
@@ -449,8 +482,7 @@
       .booking { grid-template-columns: 1fr 1fr; }
       .booking button { min-height: 60px; }
       .apartments-grid { grid-template-columns: 1fr; }
-      .amenities-grid { grid-template-columns: repeat(4,1fr); }
-      .amenity:nth-child(4) { border-right: 0; }
+      .amenities-grid { grid-template-columns: repeat(2,1fr); }
       .places { grid-template-columns: repeat(2,1fr); }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
@@ -479,8 +511,7 @@
       .image-grid { grid-template-columns: 1fr; }
       .image-card { min-height: 360px; }
       .image-card:nth-child(2) { transform: none; }
-      .amenities-grid { grid-template-columns: repeat(2,1fr); }
-      .amenity:nth-child(even) { border-right: 0; }
+      .amenities-grid { grid-template-columns: 1fr; }
       .welcome-box { grid-template-columns: 1fr; }
       .welcome-img { min-height: 260px; }
       .welcome-copy { padding: 36px 26px; }
@@ -548,11 +579,9 @@
     <nav class="nav-links" id="navLinks">
       <a href="#acasa" data-en="HOME" data-es="INICIO">HOME</a>
       <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
-      <a href="#facilitati" data-en="AMENITIES" data-es="SERVICIOS">AMENITIES</a>
-      <a href="#despre" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
+      <a href="about.html" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
       <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
       <a href="rentacar.html" data-en="RENT A CAR" data-es="ALQUILER DE COCHES">RENT A CAR</a>
-      <a href="#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
       <a class="nav-cta" href="#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
     </nav>
 
@@ -601,6 +630,30 @@
     </div>
   </section>
 
+  <section class="welcome" id="despre">
+    <div class="container">
+      <div class="welcome-box">
+        <div class="welcome-img"></div>
+        <div class="welcome-copy">
+          <div class="section-tag" data-en="About us" data-es="Sobre nosotros">About us</div>
+          <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
+          <p data-en="RDR Apartments is a tranquil retreat in Curaçao, featuring an outdoor pool, tropical garden and fully equipped apartments with air conditioning, free WiFi and private terraces." data-es="RDR Apartments es un refugio tranquilo en Curaçao, con piscina al aire libre, jardín tropical y apartamentos totalmente equipados con aire acondicionado, WiFi gratuito y terrazas privadas.">
+            RDR Apartments is a tranquil retreat in Curaçao, featuring an outdoor pool, tropical garden and fully equipped apartments with air conditioning, free WiFi and private terraces.
+          </p>
+          <p data-en="Every guest is welcomed with a thoughtful gift from the house:" data-es="Cada huésped es recibido con un detalle de la casa:">
+            Every guest is welcomed with a thoughtful gift from the house:
+          </p>
+          <div class="welcome-gifts">
+            <span class="welcome-gift" data-en="🍷 Wine or champagne" data-es="🍷 Vino o champán">🍷 Wine or champagne</span>
+            <span class="welcome-gift" data-en="🍇 Fresh fruit" data-es="🍇 Frutas frescas">🍇 Fresh fruit</span>
+            <span class="welcome-gift" data-en="🍯 Sweets" data-es="🍯 Dulces">🍯 Sweets</span>
+          </div>
+          <a href="about.html" class="btn btn-dark" data-en="Learn more →" data-es="Saber más →">Learn more →</a>
+        </div>
+      </div>
+    </div>
+  </section>
+
   <section class="apartments" id="apartamente">
     <div class="container">
       <div class="apartments-grid">
@@ -630,48 +683,25 @@
       </div>
 
       <div class="amenities" id="facilitati">
+        <div class="amenities-head">
+          <div class="section-tag" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
+        </div>
         <div class="amenities-grid">
           <div class="amenity"><b>≋</b><span data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</span></div>
           <div class="amenity"><b>⌁</b><span data-en="Free Wi-Fi" data-es="Wi-Fi gratis">Free Wi-Fi</span></div>
           <div class="amenity"><b>▣</b><span data-en="Free parking" data-es="Estacionamiento gratis">Free parking</span></div>
-          <div class="amenity"><b>☕</b><span data-en="Breakfast / dinner on request" data-es="Desayuno / cena bajo petición">Breakfast / dinner on request</span></div>
-          <div class="amenity"><b>◷</b><span data-en="Reception 8:00–22:00" data-es="Recepción 8:00–22:00">Reception 8:00–22:00</span></div>
-          <div class="amenity"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
-          <div class="amenity"><b>♧</b><span data-en="Garden & terrace" data-es="Jardín y terraza">Garden & terrace</span></div>
           <div class="amenity"><b>❄</b><span data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</span></div>
+          <div class="amenity"><b>♧</b><span data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</span></div>
+          <div class="amenity"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
+          <div class="amenity"><b>☕</b><span data-en="Breakfast & dinner on request" data-es="Desayuno y cena bajo petición">Breakfast & dinner on request</span></div>
+          <div class="amenity"><b>🧊</b><span data-en="Beach cooler box" data-es="Caja fría para playa">Beach cooler box</span></div>
+          <div class="amenity"><b>🤿</b><span data-en="Snorkeling gear" data-es="Equipo de snorkel">Snorkeling gear</span></div>
+          <div class="amenity"><b>🏖</b><span data-en="Free beach towels" data-es="Toallas de playa gratis">Free beach towels</span></div>
+          <div class="amenity"><b>🎲</b><span data-en="Board games" data-es="Juegos de mesa">Board games</span></div>
+          <div class="amenity"><b>🧺</b><span data-en="Washing machine" data-es="Lavadora">Washing machine</span></div>
         </div>
-      </div>
-    </div>
-  </section>
-
-  <section class="welcome" id="despre">
-    <div class="container">
-      <div class="welcome-box">
-        <div class="welcome-img"></div>
-        <div class="welcome-copy">
-          <div class="section-tag" data-en="About us" data-es="Sobre nosotros">About us</div>
-          <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
-          <p data-en="Every guest is welcomed with wine or champagne, fresh fruit and sweets, so the experience starts in a special way from the very first moment." data-es="Cada huésped es recibido con vino o champán, frutas frescas y dulces, para que la experiencia comience de manera especial desde el primer momento.">
-            Every guest is welcomed with wine or champagne, fresh fruit and sweets, so the experience starts in a special way from the very first moment.
-          </p>
-          <p data-en="RDR Apartments is located 12 km from Curaçao Sea Aquarium and offers an outdoor pool, a garden and accommodation with air conditioning, free WiFi and a terrace." data-es="RDR Apartments se encuentra a 12 km del Curaçao Sea Aquarium y ofrece una piscina al aire libre, un jardín y alojamiento con aire acondicionado, WiFi gratuito y terraza.">
-            RDR Apartments is located 12 km from Curaçao Sea Aquarium and offers an outdoor pool, a garden and accommodation with air conditioning, free WiFi and a terrace.
-          </p>
-          <p data-en="The apartment features units with a terrace, pool view, seating area, flat-screen TV, fully equipped kitchen with a fridge and an oven, as well as a private bathroom with a shower and free toiletries. Guests also have access to a microwave, a minibar and a stovetop, as well as a coffee machine and an electric kettle." data-es="El apartamento ofrece unidades con terraza, vista a la piscina, zona de estar, TV de pantalla plana, cocina totalmente equipada con nevera y horno, así como baño privado con ducha y artículos de aseo gratuitos. Los huéspedes también disponen de microondas, minibar y cocina, así como cafetera y hervidor eléctrico.">
-            The apartment features units with a terrace, pool view, seating area, flat-screen TV, fully equipped kitchen with a fridge and an oven, as well as a private bathroom with a shower and free toiletries. Guests also have access to a microwave, a minibar and a stovetop, as well as a coffee machine and an electric kettle.
-          </p>
-          <p data-en="Breakfast and dinner are available on request. A half-board option is offered at $40 per person." data-es="El desayuno y la cena están disponibles bajo petición. Se ofrece una opción de media pensión a $40 por persona.">
-            Breakfast and dinner are available on request. A half-board option is offered at $40 per person.
-          </p>
-          <p data-en="RDR Apartments features a barbecue. Utilities are included in the price. A shared washing machine and dryer are available for all guests. Payment can be made in cash or by bank transfer. Children are welcome; an extra bed is available on request." data-es="RDR Apartments cuenta con parrilla. Las utilidades están incluidas en el precio. Hay una lavadora y secadora compartidas para todos los huéspedes. El pago puede realizarse en efectivo o por transferencia bancaria. Se aceptan niños; hay cama adicional bajo petición.">
-            RDR Apartments features a barbecue. Utilities are included in the price. A shared washing machine and dryer are available for all guests. Payment can be made in cash or by bank transfer. Children are welcome; an extra bed is available on request.
-          </p>
-          <p data-en="Car rental services are available at RDR Apartments." data-es="Servicios de alquiler de coches están disponibles en RDR Apartments.">
-            Car rental services are available at RDR Apartments.
-          </p>
-          <p data-en="The apartment is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away." data-es="El apartamento se encuentra a 14 km del Queen Emma Bridge y a 43 km del Christoffel National Park. El Aeropuerto Internacional de Curaçao está a 17 km.">
-            The apartment is located 14 km from Queen Emma Bridge and 43 km from Christoffel National Park. Curaçao International Airport is 17 km away.
-          </p>
+        <div class="amenities-more">
+          <a href="apartments.html" data-en="See all amenities →" data-es="Ver todos los servicios →">See all amenities →</a>
         </div>
       </div>
     </div>
@@ -700,8 +730,9 @@
       <div>
         <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
         <p>
+          <a href="#acasa" data-en="Home" data-es="Inicio">Home</a><br>
           <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
-          <a href="#facilitati" data-en="Amenities" data-es="Servicios">Amenities</a><br>
+          <a href="about.html" data-en="About Us" data-es="Sobre Nosotros">About Us</a><br>
           <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
           <a href="rentacar.html" data-en="Rent a Car" data-es="Alquiler de Coches">Rent a Car</a><br>
           <a href="#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>

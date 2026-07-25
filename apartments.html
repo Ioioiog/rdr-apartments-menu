@@ -215,172 +215,272 @@
 
     /* Apartment cards */
     .apt-section { padding: 40px 0 60px; }
-    .apt-card {
+    .apt-grid {
       display: grid;
       grid-template-columns: 1fr 1fr;
-      gap: 0;
-      border-radius: 28px;
+      gap: 32px;
+    }
+    .apt-card {
+      border-radius: 24px;
       overflow: hidden;
       background: white;
-      box-shadow: 0 15px 50px rgba(15,45,39,.1);
-      margin-bottom: 50px;
-    }
-    .apt-card:nth-child(even) .apt-img { order: 2; }
-    .apt-img {
-      min-height: 420px;
-    }
-    .apt-img img { height: 100%; }
-    .apt-body {
-      padding: 50px;
+      box-shadow: 0 12px 40px rgba(15,45,39,.08);
       display: flex;
       flex-direction: column;
-      justify-content: center;
+      transition: transform .3s ease, box-shadow .3s ease;
+    }
+    .apt-card:hover {
+      transform: translateY(-6px);
+      box-shadow: 0 24px 60px rgba(15,45,39,.15);
+    }
+    .apt-img {
+      position: relative;
+      height: 260px;
+      overflow: hidden;
+    }
+    .apt-img img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+    .apt-thumbs {
+      display: flex;
+      gap: 6px;
+      padding: 8px;
+      background: rgba(3,47,41,.03);
+      overflow-x: auto;
+      -webkit-overflow-scrolling: touch;
+    }
+    .apt-thumb {
+      width: 56px;
+      height: 56px;
+      border-radius: 8px;
+      overflow: hidden;
+      cursor: pointer;
+      flex-shrink: 0;
+      border: 2px solid transparent;
+      transition: border-color .2s;
+    }
+    .apt-thumb img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+    }
+    .apt-thumb.active {
+      border-color: var(--gold);
+    }
+    .apt-thumb:hover {
+      border-color: rgba(215,171,85,.5);
+    }
+    .apt-card:hover .apt-img img { transform: scale(1.05); }
+    .apt-price-badge {
+      position: absolute;
+      top: 16px;
+      right: 16px;
+      background: var(--gold);
+      color: var(--green-950);
+      padding: 8px 16px;
+      border-radius: 100px;
+      font-weight: 800;
+      font-size: 15px;
+      box-shadow: 0 4px 16px rgba(0,0,0,.2);
+      z-index: 2;
+    }
+    .apt-price-badge small {
+      font-weight: 500;
+      font-size: 11px;
+      opacity: .8;
+    }
+    .apt-body {
+      padding: 36px 32px 32px;
+      display: flex;
+      flex-direction: column;
+      flex: 1;
     }
     .apt-badge {
-      display: inline-block;
-      font-family: "Cormorant Garamond", serif;
-      font-size: 22px;
-      font-style: italic;
+      display: inline-flex;
+      align-self: flex-start;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
       color: var(--gold-dark);
-      margin-bottom: 6px;
+      background: rgba(215,171,85,.12);
+      padding: 6px 14px;
+      border-radius: 100px;
+      margin-bottom: 14px;
     }
     .apt-body h3 {
       font-family: "Cormorant Garamond", serif;
-      font-size: 38px;
-      margin: 4px 0 8px;
+      font-size: 32px;
+      margin: 0 0 6px;
       color: var(--green-950);
       font-weight: 600;
+      line-height: 1.1;
     }
     .apt-subtitle {
-      font-size: 14px;
+      font-size: 13px;
       color: var(--muted);
-      margin-bottom: 20px;
+      margin-bottom: 16px;
       font-weight: 500;
     }
     .apt-desc {
       color: var(--muted);
-      line-height: 1.75;
-      margin-bottom: 24px;
+      line-height: 1.7;
+      margin-bottom: 20px;
+      font-size: 14px;
     }
-    .apt-lists {
-      display: grid;
-      grid-template-columns: 1fr 1fr;
-      gap: 28px;
+    .apt-tags {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 8px;
       margin-bottom: 20px;
     }
-    .apt-list h5 {
-      font-family: "DM Sans", sans-serif;
+    .apt-tag {
       font-size: 12px;
-      font-weight: 700;
-      text-transform: uppercase;
-      letter-spacing: .06em;
       color: var(--green-800);
-      margin: 0 0 12px;
+      background: var(--cream);
+      padding: 6px 12px;
+      border-radius: 8px;
+      font-weight: 500;
     }
-    .apt-list ul {
-      list-style: none;
-      padding: 0;
-      margin: 0;
-    }
-    .apt-list li {
-      font-size: 13px;
-      color: var(--ink);
-      padding: 5px 0;
-      padding-left: 20px;
-      position: relative;
-    }
-    .apt-list li::before {
-      content: "✦";
-      position: absolute;
-      left: 0;
-      color: var(--gold);
-      font-size: 11px;
+    .apt-divider {
+      height: 1px;
+      background: rgba(3,47,41,.08);
+      margin: 0 0 20px;
     }
     .apt-note {
       font-size: 13px;
       color: var(--muted);
-      font-style: italic;
-      margin-top: 8px;
+      line-height: 1.6;
+      margin: 0 0 8px;
+    }
+    .apt-cta {
+      margin-top: auto;
+      padding-top: 20px;
+    }
+    .apt-cta .btn {
+      margin-top: 0;
+      width: 100%;
+      justify-content: center;
     }
 
     /* Shared amenities */
     .shared-section {
-      padding: 60px 0;
+      padding: 50px 0;
       background: var(--green-950);
       color: white;
     }
     .shared-section .section-tag { color: var(--gold); }
     .shared-section .section-title { color: white; }
-    .shared-grid {
+    .shared-intro {
+      max-width: 560px;
+      margin: 0 0 24px;
+      text-align: left;
+      color: rgba(255,255,255,.6);
+      font-size: 14px;
+      line-height: 1.6;
+    }
+    .shared-cats {
       display: grid;
       grid-template-columns: repeat(4, 1fr);
-      gap: 16px;
-      margin-top: 30px;
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
     }
-    .shared-item {
-      background: rgba(255,255,255,.06);
-      border: 1px solid rgba(215,171,85,.2);
-      border-radius: 14px;
-      padding: 20px;
-      text-align: center;
-      font-size: 13px;
+    .shared-cat {
+      padding: 24px 20px;
+      border-right: 1px solid rgba(255,255,255,.08);
     }
-    .shared-item b {
-      display: block;
-      color: var(--gold);
-      font-size: 24px;
+    .shared-cat:last-child { border-right: 0; }
+    .shared-cat-icon {
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(215,171,85,.12);
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 15px;
       margin-bottom: 8px;
     }
+    .shared-cat h4 {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      margin: 0 0 12px;
+      color: var(--gold);
+    }
+    .shared-cat ul {
+      list-style: none;
+      padding: 0;
+      margin: 0;
+    }
+    .shared-cat li {
+      font-size: 12px;
+      color: rgba(255,255,255,.75);
+      padding: 5px 0;
+      padding-left: 18px;
+      position: relative;
+      line-height: 1.35;
+    }
+    .shared-cat li::before {
+      content: "✓";
+      position: absolute;
+      left: 0;
+      top: 5px;
+      color: var(--gold);
+      font-size: 12px;
+      font-weight: 700;
+    }
 
-    /* Welcome gift */
-    .gift-section { padding: 70px 0; }
+    /* Welcome gift (merged into shared section) */
     .gift-box {
       display: grid;
-      grid-template-columns: 1.05fr .95fr;
-      border-radius: 28px;
+      grid-template-columns: 1fr 1fr;
+      gap: 0;
+      border-radius: 18px;
       overflow: hidden;
-      background: var(--green-950);
-      color: white;
-      box-shadow: var(--shadow);
-    }
-    .gift-img {
-      background: url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
-      min-height: 360px;
+      margin-top: 20px;
     }
     .gift-copy {
-      padding: 55px;
+      padding: 32px;
       display: flex;
       flex-direction: column;
       justify-content: center;
+      align-items: flex-start;
       position: relative;
       overflow: hidden;
+      order: 1;
+    }
+    .gift-img {
+      background: url("photos/00000150-PHOTO-2026-07-22-00-04-20.jpg") center/cover;
+      min-height: 200px;
+      order: 2;
     }
     .gift-copy::after {
       content: "✦";
       position: absolute;
-      right: -20px;
-      bottom: -70px;
-      font-size: 230px;
+      right: -15px;
+      bottom: -50px;
+      font-size: 160px;
       color: rgba(255,255,255,.035);
     }
-    .gift-copy h3 {
-      font-family: "Cormorant Garamond", serif;
-      font-size: 42px;
-      margin: 8px 0 18px;
-      font-weight: 500;
-    }
-    .gift-copy p { color: rgba(255,255,255,.76); line-height: 1.75; }
     .gift-list {
       list-style: none;
       padding: 0;
-      margin: 16px 0 0;
+      margin: 0;
     }
     .gift-list li {
       padding: 6px 0;
       padding-left: 24px;
       position: relative;
-      color: rgba(255,255,255,.76);
-      font-size: 15px;
+      color: rgba(255,255,255,.85);
+      font-size: 16px;
+      font-family: "Cormorant Garamond", serif;
     }
     .gift-list li::before {
       content: "♡";
@@ -473,12 +573,12 @@
       }
       .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
       .menu-btn { display: block; }
-      .apt-card { grid-template-columns: 1fr; }
-      .apt-card:nth-child(even) .apt-img { order: 0; }
-      .apt-img { min-height: 300px; }
-      .apt-lists { grid-template-columns: 1fr; }
-      .shared-grid { grid-template-columns: repeat(2, 1fr); }
-      .gift-box { grid-template-columns: 1fr; }
+      .apt-grid { grid-template-columns: 1fr 1fr; }
+      .apt-img { height: 220px; }
+      .shared-cats { grid-template-columns: repeat(2, 1fr); }
+      .shared-cat:nth-child(2) { border-right: 0; }
+      .shared-cat:nth-child(1), .shared-cat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .gift-box { grid-template-columns: 1fr; margin-top: 24px; }
       .footer-grid { grid-template-columns: 1fr 1fr; }
     }
 
@@ -487,9 +587,22 @@
       .logo { min-width: unset; }
       .logo strong { font-size: 23px; }
       .logo small { display: none; }
-      .apt-body { padding: 32px 24px; }
+      .apt-body { padding: 20px 16px; }
+      .apt-body h3 { font-size: 22px; }
+      .apt-grid { grid-template-columns: 1fr 1fr; gap: 16px; }
+      .apt-img { height: 180px; }
+      .apt-tag { font-size: 10px; padding: 4px 8px; }
+      .apt-note { font-size: 11px; }
+      .apt-price-badge { font-size: 12px; padding: 5px 10px; }
+      .apt-badge { font-size: 9px; padding: 4px 10px; }
+      .apt-subtitle { font-size: 11px; }
+      .apt-desc { font-size: 12px; margin-bottom: 14px; }
+      .apt-cta .btn { font-size: 11px; padding: 10px 14px; }
       .gift-copy { padding: 36px 26px; }
-      .shared-grid { grid-template-columns: 1fr; }
+      .shared-cats { grid-template-columns: repeat(2, 1fr); }
+      .shared-cat:nth-child(2) { border-right: 0; }
+      .shared-cat:nth-child(1), .shared-cat:nth-child(2) { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .shared-cat:nth-child(3) { border-right: 1px solid rgba(255,255,255,.08); }
       .footer-grid { grid-template-columns: 1fr; }
       .footer-bottom { flex-direction: column; }
     }
@@ -500,13 +613,9 @@
       .eyebrow { font-size: 24px; }
       .section-title { font-size: 32px; }
       .section-tag { font-size: 22px; }
-      .apt-body { padding: 26px 20px; }
-      .apt-body h3 { font-size: 30px; }
-      .apt-badge { font-size: 18px; }
-      .apt-subtitle { font-size: 13px; }
-      .apt-desc { font-size: 14px; }
-      .apt-list li { font-size: 12px; }
-      .apt-img { min-height: 240px; }
+      .apt-body { padding: 16px 12px; }
+      .apt-body h3 { font-size: 20px; }
+      .apt-img { height: 140px; }
       .gift-copy h3 { font-size: 32px; }
       .gift-copy p { font-size: 14px; }
       .gift-list li { font-size: 14px; }
@@ -541,11 +650,9 @@
     <nav class="nav-links" id="navLinks">
       <a href="index.html" data-en="HOME" data-es="INICIO">HOME</a>
       <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
-      <a href="index.html#facilitati" data-en="AMENITIES" data-es="SERVICIOS">AMENITIES</a>
-      <a href="index.html#despre" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
+      <a href="about.html" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
       <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
       <a href="rentacar.html" data-en="RENT A CAR" data-es="ALQUILER DE COCHES">RENT A CAR</a>
-      <a href="index.html#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
       <a class="nav-cta" href="index.html#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
     </nav>
 
@@ -568,11 +675,24 @@
 
   <section class="apt-section">
     <div class="container">
+      <div class="apt-grid">
 
       <!-- Apartment 1: One Bedroom -->
       <article class="apt-card">
-        <div class="apt-img">
-          <img src="photos/apartament.jpg" alt="One Bedroom Apartment">
+        <div class="apt-gallery">
+          <div class="apt-img">
+            <img src="photos/apartament.jpg" alt="One Bedroom Apartment" class="apt-main-img">
+            <div class="apt-price-badge">70 USD <small data-en="/ night" data-es="/ noche">/ night</small></div>
+          </div>
+          <div class="apt-thumbs">
+            <div class="apt-thumb active" data-src="photos/apartament.jpg"><img src="photos/apartament.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg"><img src="photos/00000058-PHOTO-2026-07-21-22-59-11.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg"><img src="photos/00000060-PHOTO-2026-07-21-22-59-59.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg"><img src="photos/00000062-PHOTO-2026-07-21-23-01-37.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000064-PHOTO-2026-07-21-23-02-40.jpg"><img src="photos/00000064-PHOTO-2026-07-21-23-02-40.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg"><img src="photos/00000066-PHOTO-2026-07-21-23-03-37.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg"><img src="photos/00000068-PHOTO-2026-07-21-23-04-47.jpg" alt=""></div>
+          </div>
         </div>
         <div class="apt-body">
           <span class="apt-badge" data-en="Ideal for couples" data-es="Ideal para parejas">Ideal for couples</span>
@@ -581,131 +701,144 @@
           <p class="apt-desc" data-en="A spacious apartment of approximately 55 m², perfect for two people seeking comfort, privacy and a relaxing atmosphere." data-es="Un apartamento espacioso de aproximadamente 55 m², perfecto para dos personas que buscan comodidad, privacidad y un ambiente relajante.">
             A spacious apartment of approximately 55 m², perfect for two people seeking comfort, privacy and a relaxing atmosphere.
           </p>
-          <div class="apt-lists">
-            <div class="apt-list">
-              <h5 data-en="Layout" data-es="Distribución">Layout</h5>
-              <ul>
-                <li data-en="1 bedroom with king-size bed" data-es="1 dormitorio con cama king-size">1 bedroom with king-size bed</li>
-                <li data-en="Cozy living room" data-es="Salón acogedor">Cozy living room</li>
-                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
-                <li data-en="Modern bathroom with walk-in shower" data-es="Baño moderno con ducha walk-in">Modern bathroom with walk-in shower</li>
-                <li data-en="Private terrace" data-es="Terraza privada">Private terrace</li>
-              </ul>
-            </div>
-            <div class="apt-list">
-              <h5 data-en="Amenities" data-es="Servicios">Amenities</h5>
-              <ul>
-                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
-                <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
-                <li data-en="High-speed free Wi-Fi" data-es="Wi-Fi gratuito de alta velocidad">High-speed free Wi-Fi</li>
-                <li data-en="Smart TV with streaming" data-es="Smart TV con streaming">Smart TV with streaming</li>
-                <li data-en="Minibar" data-es="Minibar">Minibar</li>
-                <li data-en="Coffee machine" data-es="Cafetera">Coffee machine</li>
-                <li data-en="Soundproofing" data-es="Insonorización">Soundproofing</li>
-                <li data-en="Private patio & terrace" data-es="Patio y terraza privados">Private patio & terrace</li>
-                <li data-en="Garden & pool view" data-es="Vista al jardín y la piscina">Garden & pool view</li>
-              </ul>
-            </div>
+          <div class="apt-tags">
+            <span class="apt-tag" data-en="1 bedroom · king-size bed" data-es="1 dormitorio · cama king-size">1 bedroom · king-size bed</span>
+            <span class="apt-tag" data-en="Living room" data-es="Salón">Living room</span>
+            <span class="apt-tag" data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</span>
+            <span class="apt-tag" data-en="Walk-in shower" data-es="Ducha walk-in">Walk-in shower</span>
+            <span class="apt-tag" data-en="Private terrace" data-es="Terraza privada">Private terrace</span>
+            <span class="apt-tag" data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</span>
+            <span class="apt-tag" data-en="Free Wi-Fi" data-es="Wi-Fi gratuito">Free Wi-Fi</span>
+            <span class="apt-tag" data-en="Smart TV" data-es="Smart TV">Smart TV</span>
+            <span class="apt-tag" data-en="Minibar" data-es="Minibar">Minibar</span>
+            <span class="apt-tag" data-en="Coffee machine" data-es="Cafetera">Coffee machine</span>
+            <span class="apt-tag" data-en="Garden & pool view" data-es="Vista al jardín y la piscina">Garden & pool view</span>
           </div>
+          <div class="apt-divider"></div>
           <p class="apt-note" data-en="Perfect for romantic getaways, weekend escapes or longer stays." data-es="Perfecto para escapadas románticas, fines de semana o estancias más largas.">Perfect for romantic getaways, weekend escapes or longer stays.</p>
-          <p class="apt-note" data-en="Breakfast and dinner available on request. Half-board option at $40 per person." data-es="Desayuno y cena disponibles bajo petición. Opción de media pensión a $40 por persona.">Breakfast and dinner available on request. Half-board option at $40 per person.</p>
+          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <div class="apt-cta">
+            <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20the%20One%20Bedroom%20Apartment%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book this apartment →" data-es="Reservar este apartamento →">Book this apartment →</a>
+          </div>
         </div>
       </article>
 
-      <!-- Apartment 2: Deluxe Garden -->
+      <!-- Apartment 2: Two Bedroom -->
       <article class="apt-card">
-        <div class="apt-img">
-          <img src="photos/apartament1.jpg" alt="Deluxe Garden Apartment">
+        <div class="apt-gallery">
+          <div class="apt-img">
+            <img src="photos/apartament1.jpg" alt="Two Bedroom Apartment" class="apt-main-img">
+            <div class="apt-price-badge">110 USD <small data-en="/ night" data-es="/ noche">/ night</small></div>
+          </div>
+          <div class="apt-thumbs">
+            <div class="apt-thumb active" data-src="photos/apartament1.jpg"><img src="photos/apartament1.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg"><img src="photos/00000070-PHOTO-2026-07-21-23-06-44.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg"><img src="photos/00000072-PHOTO-2026-07-21-23-10-49.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000074-PHOTO-2026-07-21-23-11-37.jpg"><img src="photos/00000074-PHOTO-2026-07-21-23-11-37.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg"><img src="photos/00000077-PHOTO-2026-07-21-23-14-13.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg"><img src="photos/00000079-PHOTO-2026-07-21-23-16-20.jpg" alt=""></div>
+            <div class="apt-thumb" data-src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg"><img src="photos/00000082-PHOTO-2026-07-21-23-17-38.jpg" alt=""></div>
+          </div>
         </div>
         <div class="apt-body">
-          <span class="apt-badge" data-en="Space and premium comfort" data-es="Espacio y comodidad premium">Space and premium comfort</span>
-          <h3 data-en="Deluxe Garden Apartment" data-es="Apartamento Deluxe Garden">Deluxe Garden Apartment</h3>
+          <span class="apt-badge" data-en="Space & premium comfort" data-es="Espacio y comodidad premium">Space & premium comfort</span>
+          <h3 data-en="Two Bedroom Apartment" data-es="Apartamento de 2 Dormitorios">Two Bedroom Apartment</h3>
           <p class="apt-subtitle" data-en="≈ 100 m² · Up to 4 guests" data-es="≈ 100 m² · Hasta 4 huéspedes">≈ 100 m² · Up to 4 guests</p>
-          <p class="apt-desc" data-en="The most generous apartment on the property, with approximately 100 m², ideal for up to 4 people who want more space and extra comfort." data-es="El apartamento más amplio de la propiedad, con aproximadamente 100 m², ideal para hasta 4 personas que desean más espacio y comodidad adicional.">
-            The most generous  apartment on the property, with approximately 100 m², ideal for up to 4 people who want more space and extra comfort.
+          <p class="apt-desc" data-en="A spacious apartment with two bedrooms, each with its own private bathroom, a fully equipped kitchen and a private terrace. Ideal for families or groups of up to 4 people." data-es="Un apartamento espacioso con dos dormitorios, cada uno con su propio baño privado, una cocina totalmente equipada y una terraza privada. Ideal para familias o grupos de hasta 4 personas.">
+            A spacious apartment with two bedrooms, each with its own private bathroom, a fully equipped kitchen and a private terrace. Ideal for families or groups of up to 4 people.
           </p>
-          <div class="apt-lists">
-            <div class="apt-list">
-              <h5 data-en="Layout" data-es="Distribución">Layout</h5>
-              <ul>
-                <li data-en="Spacious bedroom" data-es="Dormitorio espacioso">Spacious bedroom</li>
-                <li data-en="Generous living area" data-es="Amplia zona de estar">Generous living area</li>
-                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
-                <li data-en="Modern bathroom" data-es="Baño moderno">Modern bathroom</li>
-                <li data-en="Private terrace" data-es="Terraza privada">Private terrace</li>
-              </ul>
-            </div>
-            <div class="apt-list">
-              <h5 data-en="Amenities" data-es="Servicios">Amenities</h5>
-              <ul>
-                <li data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</li>
-                <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
-                <li data-en="Free Wi-Fi" data-es="Wi-Fi gratuito">Free Wi-Fi</li>
-                <li data-en="Smart TV" data-es="Smart TV">Smart TV</li>
-                <li data-en="Minibar" data-es="Minibar">Minibar</li>
-                <li data-en="Coffee machine" data-es="Cafetera">Coffee machine</li>
-                <li data-en="Soundproofing" data-es="Insonorización">Soundproofing</li>
-                <li data-en="Private patio & terrace" data-es="Patio y terraza privados">Private patio & terrace</li>
-                <li data-en="Panoramic garden & pool view" data-es="Vista panorámica al jardín y la piscina">Panoramic garden & pool view</li>
-              </ul>
-            </div>
+          <div class="apt-tags">
+            <span class="apt-tag" data-en="2 bedrooms · 2 private bathrooms" data-es="2 dormitorios · 2 baños privados">2 bedrooms · 2 private bathrooms</span>
+            <span class="apt-tag" data-en="Generous living area" data-es="Amplia zona de estar">Generous living area</span>
+            <span class="apt-tag" data-en="Fully equipped kitchen" data-es="Cocina totalmente equipada">Fully equipped kitchen</span>
+            <span class="apt-tag" data-en="Private terrace" data-es="Terraza privada">Private terrace</span>
+            <span class="apt-tag" data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</span>
+            <span class="apt-tag" data-en="Free Wi-Fi" data-es="Wi-Fi gratuito">Free Wi-Fi</span>
+            <span class="apt-tag" data-en="Smart TV" data-es="Smart TV">Smart TV</span>
+            <span class="apt-tag" data-en="Minibar" data-es="Minibar">Minibar</span>
+            <span class="apt-tag" data-en="Coffee machine" data-es="Cafetera">Coffee machine</span>
+            <span class="apt-tag" data-en="Panoramic garden & pool view" data-es="Vista panorámica al jardín y la piscina">Panoramic garden & pool view</span>
           </div>
-          <p class="apt-note" data-en="Ideal for up to 4 guests seeking a premium experience in a tranquil tropical setting. Children are welcome; an extra bed is available on request." data-es="Ideal para hasta 4 huéspedes que buscan una experiencia premium en un entorno tropical tranquilo. Se aceptan niños; hay cama adicional bajo petición.">Ideal for up to 4 guests seeking a premium experience in a tranquil tropical setting. Children are welcome; an extra bed is available on request.</p>
-          <p class="apt-note" data-en="Breakfast and dinner available on request. Half-board option at $40 per person." data-es="Desayuno y cena disponibles bajo petición. Opción de media pensión a $40 por persona.">Breakfast and dinner available on request. Half-board option at $40 per person.</p>
+          <div class="apt-divider"></div>
+          <p class="apt-note" data-en="Ideal for up to 4 guests. Children are welcome; an extra bed is available on request." data-es="Ideal para hasta 4 huéspedes. Se aceptan niños; hay cama adicional bajo petición.">Ideal for up to 4 guests. Children are welcome; an extra bed is available on request.</p>
+          <p class="apt-note" data-en="Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine)." data-es="Desayuno y cena bajo petición. Media pensión a $40–50/persona (desayuno + cena con plato principal, postre y una copa de vino).">Breakfast and dinner on request. Half-board at $40–50/person (breakfast + dinner with main course, dessert and a glass of wine).</p>
+          <div class="apt-cta">
+            <a href="https://wa.me/59996939031?text=Hello!%20I%27d%20like%20to%20book%20the%20Two%20Bedroom%20Apartment%20at%20RDR%20Apartments." target="_blank" rel="noopener" class="btn btn-gold" data-en="Book this apartment →" data-es="Reservar este apartamento →">Book this apartment →</a>
+          </div>
         </div>
       </article>
 
-    </div>
-  </section>
-
-  <!-- Shared amenities -->
-  <section class="shared-section">
-    <div class="container">
-      <div class="section-tag" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
-      <h2 class="section-title" data-en="Available to all guests" data-es="Disponibles para todos los huéspedes">Available to all guests</h2>
-      <div class="shared-grid">
-        <div class="shared-item"><b>≋</b><span data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</span></div>
-        <div class="shared-item"><b>♧</b><span data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</span></div>
-        <div class="shared-item"><b>♨</b><span data-en="BBQ facilities" data-es="Instalaciones para parrilla">BBQ facilities</span></div>
-        <div class="shared-item"><b>▣</b><span data-en="Free private parking" data-es="Estacionamiento privado gratis">Free private parking</span></div>
-        <div class="shared-item"><b>⌁</b><span data-en="Free Wi-Fi throughout" data-es="Wi-Fi gratuito en todo el recinto">Free Wi-Fi throughout</span></div>
-        <div class="shared-item"><b>◷</b><span data-en="Reception 8:00–22:00" data-es="Recepción 8:00–22:00">Reception 8:00–22:00</span></div>
-        <div class="shared-item"><b>☕</b><span data-en="Breakfast / dinner on request" data-es="Desayuno / cena bajo petición">Breakfast / dinner on request</span></div>
-        <div class="shared-item"><b>❄</b><span data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</span></div>
-        <div class="shared-item"><b>⚡</b><span data-en="Utilities included" data-es="Utilidades incluidas">Utilities included</span></div>
-        <div class="shared-item"><b>🧺</b><span data-en="Shared washing machine & dryer" data-es="Lavadora y secadora compartidas">Shared washing machine & dryer</span></div>
-        <div class="shared-item"><b>💳</b><span data-en="Cash or bank transfer" data-es="Efectivo o transferencia bancaria">Cash or bank transfer</span></div>
-        <div class="shared-item"><b>🧊</b><span data-en="Cooler box for the beach" data-es="Caja frigorífica para la playa">Cooler box for the beach</span></div>
-        <div class="shared-item"><b>🤿</b><span data-en="Snorkeling gear" data-es="Equipo de snorkel">Snorkeling gear</span></div>
-        <div class="shared-item"><b>🏖</b><span data-en="Free beach towels" data-es="Toallas de playa gratuitas">Free beach towels</span></div>
-        <div class="shared-item"><b>🎲</b><span data-en="Board games (rummy, chess, backgammon, cards & poker chips)" data-es="Juegos de mesa (rummy, ajedrez, backgammon, cartas y fichas de póker)">Board games (rummy, chess, backgammon, cards & poker chips)</span></div>
-        <div class="shared-item"><b>🏸</b><span data-en="Badminton rackets" data-es="Raquetas de bádminton">Badminton rackets</span></div>
-        <div class="shared-item"><b>🍴</b><span data-en="BBQ & utensils" data-es="Parrilla y utensilios">BBQ & utensils</span></div>
       </div>
     </div>
   </section>
 
-  <!-- Welcome gift -->
-  <section class="gift-section">
+  <!-- Shared amenities + Welcome gift -->
+  <section class="shared-section">
     <div class="container">
+      <div class="section-tag" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
+      <h2 class="section-title" data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h2>
+      <p class="shared-intro" data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house — wine or champagne, fresh fruit and sweets. A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa — vino o champán, frutas frescas y dulces. Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house — wine or champagne, fresh fruit and sweets. A simple gesture that turns arrival into an authentic Caribbean hospitality experience.</p>
+
       <div class="gift-box">
-        <div class="gift-img"></div>
         <div class="gift-copy">
-          <div class="section-tag" data-en="A special welcome" data-es="Una bienvenida especial">A special welcome</div>
-          <h3 data-en="Welcome from the house" data-es="Bienvenida de la casa">Welcome from the house</h3>
-          <p data-en="We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:" data-es="Queremos que cada estancia comience de manera memorable. Al llegar, los huéspedes son recibidos con un detalle de la casa:">
-            We want every stay to begin memorably. Upon arrival, guests are welcomed with a thoughtful gift from the house:
-          </p>
           <ul class="gift-list">
             <li data-en="Wine or champagne" data-es="Vino o champán">Wine or champagne</li>
             <li data-en="Fresh fruit" data-es="Frutas frescas">Fresh fruit</li>
             <li data-en="Sweets" data-es="Dulces">Sweets</li>
           </ul>
-          <p style="margin-top:16px;font-size:14px;font-style:italic;" data-en="A simple gesture that turns arrival into an authentic Caribbean hospitality experience." data-es="Un gesto sencillo que convierte la llegada en una experiencia auténtica de hospitalidad caribeña.">
-            A simple gesture that turns arrival into an authentic Caribbean hospitality experience.
-          </p>
+        </div>
+        <div class="gift-img"></div>
+      </div>
+
+      <div class="section-tag" style="margin-top:32px;" data-en="Included amenities" data-es="Servicios incluidos">Included amenities</div>
+      <h2 class="section-title" data-en="Available to all guests" data-es="Disponibles para todos los huéspedes">Available to all guests</h2>
+      <p class="shared-intro" data-en="Everything you need for a comfortable and carefree stay — from pool and Wi-Fi to beach gear and board games." data-es="Todo lo que necesitas para una estancia cómoda y sin preocupaciones — desde piscina y Wi-Fi hasta equipo de playa y juegos de mesa.">Everything you need for a comfortable and carefree stay — from pool and Wi-Fi to beach gear and board games.</p>
+      <div class="shared-cats">
+        <div class="shared-cat">
+          <div class="shared-cat-icon">🏠</div>
+          <h4 data-en="Facilities" data-es="Instalaciones">Facilities</h4>
+          <ul>
+            <li data-en="Outdoor pool" data-es="Piscina exterior">Outdoor pool</li>
+            <li data-en="Tropical garden" data-es="Jardín tropical">Tropical garden</li>
+            <li data-en="Air conditioning" data-es="Aire acondicionado">Air conditioning</li>
+            <li data-en="Free Wi-Fi throughout" data-es="Wi-Fi gratuito en todo el recinto">Free Wi-Fi throughout</li>
+            <li data-en="Free private parking" data-es="Estacionamiento privado gratis">Free private parking</li>
+            <li data-en="Utilities included" data-es="Utilidades incluidas">Utilities included</li>
+            <li data-en="Shared washing machine & dryer" data-es="Lavadora y secadora compartidas">Shared washing machine & dryer</li>
+          </ul>
+        </div>
+        <div class="shared-cat">
+          <div class="shared-cat-icon">🏖</div>
+          <h4 data-en="Beach & Outdoor" data-es="Playa y Exterior">Beach & Outdoor</h4>
+          <ul>
+            <li data-en="Cooler box for the beach" data-es="Caja frigorífica para la playa">Cooler box for the beach</li>
+            <li data-en="Snorkeling gear" data-es="Equipo de snorkel">Snorkeling gear</li>
+            <li data-en="Free beach towels" data-es="Toallas de playa gratuitas">Free beach towels</li>
+            <li data-en="Badminton rackets" data-es="Raquetas de bádminton">Badminton rackets</li>
+            <li data-en="BBQ & utensils" data-es="Parrilla y utensilios">BBQ & utensils</li>
+          </ul>
+        </div>
+        <div class="shared-cat">
+          <div class="shared-cat-icon">🎲</div>
+          <h4 data-en="Entertainment" data-es="Entretenimiento">Entertainment</h4>
+          <ul>
+            <li data-en="Board games (rummy, chess, backgammon)" data-es="Juegos de mesa (rummy, ajedrez, backgammon)">Board games (rummy, chess, backgammon)</li>
+            <li data-en="Cards & poker chips" data-es="Cartas y fichas de póker">Cards & poker chips</li>
+          </ul>
+        </div>
+        <div class="shared-cat">
+          <div class="shared-cat-icon">ℹ</div>
+          <h4 data-en="Services" data-es="Servicios">Services</h4>
+          <ul>
+            <li data-en="Breakfast / dinner on request" data-es="Desayuno / cena bajo petición">Breakfast / dinner on request</li>
+            <li data-en="Reception 8:00–22:00" data-es="Recepción 8:00–22:00">Reception 8:00–22:00</li>
+            <li data-en="Cash or bank transfer" data-es="Efectivo o transferencia bancaria">Cash or bank transfer</li>
+            <li data-en="Pet-friendly (prior approval, possible extra cost)" data-es="Mascotas permitidas (aprobación previa, posible coste adicional)">Pet-friendly (prior approval, possible extra cost)</li>
+            <li data-en="Transport for disabled guests (extra cost)" data-es="Transporte para huéspedes con discapacidad (coste adicional)">Transport for disabled guests (extra cost)</li>
+          </ul>
         </div>
       </div>
+
     </div>
   </section>
 
@@ -747,6 +880,7 @@
         <p>
           <a href="index.html" data-en="Home" data-es="Inicio">Home</a><br>
           <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="about.html" data-en="About Us" data-es="Sobre Nosotros">About Us</a><br>
           <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
           <a href="rentacar.html" data-en="Rent a Car" data-es="Alquiler de Coches">Rent a Car</a><br>
           <a href="index.html#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
@@ -779,6 +913,19 @@
     link.addEventListener('click', () => {
       navLinks.classList.remove('open');
       menuBtn.textContent = '☰';
+    });
+  });
+
+  /* Thumbnail gallery */
+  document.querySelectorAll('.apt-gallery').forEach(gallery => {
+    const mainImg = gallery.querySelector('.apt-main-img');
+    const thumbs = gallery.querySelectorAll('.apt-thumb');
+    thumbs.forEach(thumb => {
+      thumb.addEventListener('click', () => {
+        mainImg.src = thumb.dataset.src;
+        thumbs.forEach(t => t.classList.remove('active'));
+        thumb.classList.add('active');
+      });
     });
   });
 

@@ -1,0 +1,592 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0" />
+  <meta name="description" content="RDR Apartments – about us, our property, company and neighborhood in Curaçao." />
+  <title>About Us | RDR Apartments Curaçao</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:wght@500;600;700&family=DM+Sans:wght@400;500;600;700&family=Italiana&display=swap" rel="stylesheet">
+
+  <style>
+    :root {
+      --green-950: #032f29;
+      --green-900: #073d35;
+      --green-800: #0d4f45;
+      --green-700: #17675a;
+      --gold: #d7ab55;
+      --gold-dark: #b68532;
+      --cream: #f5efe4;
+      --cream-2: #fbf7f0;
+      --paper: #eee4d2;
+      --ink: #1a211f;
+      --muted: #68716d;
+      --white: #ffffff;
+      --shadow: 0 20px 60px rgba(0,0,0,.18);
+      --radius: 24px;
+    }
+
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; }
+    body {
+      margin: 0;
+      font-family: "DM Sans", sans-serif;
+      color: var(--ink);
+      background: var(--cream-2);
+      overflow-x: hidden;
+    }
+    img { width: 100%; display: block; object-fit: cover; }
+    a { color: inherit; text-decoration: none; }
+    button, input, select { font: inherit; }
+    .container { width: min(1180px, calc(100% - 40px)); margin: 0 auto; }
+
+    /* Header */
+    .site-header {
+      position: fixed;
+      inset: 0 0 auto 0;
+      z-index: 50;
+      padding: 18px 0;
+      transition: .3s ease;
+    }
+    .site-header.scrolled {
+      background: rgba(3,47,41,.92);
+      backdrop-filter: blur(14px);
+      box-shadow: 0 8px 30px rgba(0,0,0,.2);
+      padding: 10px 0;
+    }
+    .nav {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      gap: 24px;
+    }
+    .logo {
+      color: white;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      min-width: 220px;
+    }
+    .logo-mark {
+      width: 46px;
+      height: 46px;
+      border: 1px solid rgba(215,171,85,.7);
+      border-radius: 50%;
+      overflow: hidden;
+      flex-shrink: 0;
+    }
+    .logo-mark img { width: 100%; height: 100%; object-fit: cover; }
+    .logo strong {
+      display: block;
+      font-family: "Cormorant Garamond", serif;
+      font-size: 28px;
+      letter-spacing: .08em;
+      line-height: .8;
+    }
+    .logo small {
+      display: block;
+      margin-top: 7px;
+      font-size: 10px;
+      letter-spacing: .32em;
+      opacity: .9;
+    }
+    .nav-links {
+      display: flex;
+      align-items: center;
+      gap: 25px;
+      color: white;
+      font-size: 13px;
+      font-weight: 600;
+    }
+    .nav-links a {
+      opacity: .88;
+      transition: .2s;
+    }
+    .nav-links a:hover { opacity: 1; color: var(--gold); }
+    .nav-cta {
+      padding: 13px 20px;
+      background: var(--gold);
+      color: var(--green-950);
+      border-radius: 10px;
+      font-weight: 700;
+    }
+    .menu-btn {
+      display: none;
+      border: 0;
+      background: rgba(255,255,255,.12);
+      color: white;
+      width: 44px;
+      height: 44px;
+      border-radius: 10px;
+      font-size: 24px;
+    }
+
+    /* Page hero */
+    .page-hero {
+      min-height: 420px;
+      position: relative;
+      background:
+        linear-gradient(90deg, rgba(0,27,24,.88) 0%, rgba(0,27,24,.6) 50%, rgba(0,27,24,.2) 100%),
+        url("photos/hero.jpg") center/cover;
+      color: white;
+      display: flex;
+      align-items: center;
+      padding: 140px 0 60px;
+    }
+    .page-hero::after {
+      content: "";
+      position: absolute;
+      left: 0; right: 0; bottom: -1px;
+      height: 60px;
+      background: var(--cream-2);
+      clip-path: polygon(0 58%, 12% 72%, 27% 50%, 44% 76%, 62% 54%, 79% 75%, 100% 55%, 100% 100%, 0 100%);
+    }
+    .page-hero-content {
+      position: relative;
+      z-index: 2;
+      max-width: 640px;
+    }
+    .eyebrow {
+      font-family: "Cormorant Garamond", serif;
+      font-style: italic;
+      color: var(--gold);
+      font-size: 29px;
+      margin-bottom: 8px;
+    }
+    .page-hero h1 {
+      margin: 0;
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(48px, 6vw, 72px);
+      line-height: .9;
+      font-weight: 600;
+      letter-spacing: -.03em;
+    }
+    .page-hero p {
+      font-size: 17px;
+      line-height: 1.75;
+      max-width: 540px;
+      color: rgba(255,255,255,.82);
+      margin-top: 18px;
+    }
+
+    /* Common */
+    section { position: relative; }
+    .section-tag {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      color: var(--gold-dark);
+      font-style: italic;
+    }
+    .section-title {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(38px, 4.5vw, 56px);
+      line-height: .95;
+      margin: 10px 0 18px;
+      color: var(--green-950);
+    }
+    .section-copy { color: var(--muted); line-height: 1.8; }
+    .btn {
+      display: inline-flex;
+      align-items: center;
+      gap: 10px;
+      margin-top: 20px;
+      padding: 14px 20px;
+      border-radius: 10px;
+      font-size: 13px;
+      font-weight: 800;
+      letter-spacing: .03em;
+      text-transform: uppercase;
+      transition: .2s;
+    }
+    .btn-dark { background: var(--green-950); color: white; }
+    .btn-gold { background: var(--gold); color: var(--green-950); }
+    .btn-outline { border: 1px solid rgba(3,47,41,.35); }
+    .btn:hover { transform: translateY(-2px); }
+
+    /* Intro */
+    .intro { padding: 50px 0; }
+    .intro-box {
+      max-width: 760px;
+      margin: 0 auto;
+      text-align: center;
+    }
+    .intro-box .section-copy { font-size: 14px; line-height: 1.7; }
+
+    /* Feature panels */
+    .shared-section {
+      padding: 50px 0;
+      background: var(--green-950);
+      color: white;
+    }
+    .shared-section .section-tag { color: var(--gold); }
+    .shared-section .section-title { color: white; }
+    .shared-section .section-copy { color: rgba(255,255,255,.6); font-size: 14px; line-height: 1.7; }
+    .feature-panel {
+      display: grid;
+      grid-template-columns: repeat(3, 1fr);
+      gap: 0;
+      border-top: 1px solid rgba(255,255,255,.1);
+      border-bottom: 1px solid rgba(255,255,255,.1);
+      margin-top: 24px;
+    }
+    .feature-panel.col-4 { grid-template-columns: repeat(4, 1fr); }
+    .feature-panel.col-6 { grid-template-columns: repeat(3, 1fr); }
+    .feature-panel.light {
+      border-color: rgba(3,47,41,.1);
+    }
+    .feature-item {
+      padding: 18px 16px;
+      border-right: 1px solid rgba(255,255,255,.08);
+    }
+    .feature-panel.light .feature-item { border-color: rgba(3,47,41,.08); }
+    .feature-item:last-child { border-right: 0; }
+    .feature-item b {
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 32px;
+      height: 32px;
+      border-radius: 8px;
+      background: rgba(215,171,85,.12);
+      color: var(--gold);
+      font-size: 15px;
+      margin-bottom: 8px;
+    }
+    .feature-panel.light .feature-item b { color: var(--gold-dark); }
+    .feature-item span {
+      font-size: 12px;
+      line-height: 1.45;
+      color: rgba(255,255,255,.7);
+    }
+    .feature-panel.light .feature-item span { color: var(--muted); }
+    .feature-item .feature-title {
+      font-family: "DM Sans", sans-serif;
+      font-size: 11px;
+      font-weight: 700;
+      text-transform: uppercase;
+      letter-spacing: .08em;
+      color: var(--gold);
+      margin-bottom: 4px;
+      display: block;
+    }
+    .feature-panel.light .feature-title { color: var(--gold-dark); }
+
+    /* Closing CTA */
+    .cta-section {
+      padding: 40px 0 80px;
+      text-align: center;
+    }
+    .cta-box {
+      max-width: 680px;
+      margin: 0 auto;
+    }
+    .cta-box h2 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: clamp(36px, 4vw, 48px);
+      color: var(--green-950);
+      margin: 10px 0 18px;
+      line-height: 1.1;
+    }
+    .cta-box p {
+      color: var(--muted);
+      line-height: 1.8;
+      margin-bottom: 10px;
+    }
+
+    /* Footer */
+    footer {
+      background: var(--green-950);
+      color: white;
+      padding: 55px 0 25px;
+    }
+    .footer-grid {
+      display: grid;
+      grid-template-columns: 1.2fr 1fr 1fr;
+      gap: 50px;
+      align-items: start;
+    }
+    footer h4 {
+      font-family: "Cormorant Garamond", serif;
+      font-size: 26px;
+      margin: 0 0 14px;
+      color: var(--gold);
+    }
+    footer p, footer a { color: rgba(255,255,255,.72); font-size: 14px; line-height: 1.8; }
+    .footer-bottom {
+      border-top: 1px solid rgba(255,255,255,.1);
+      margin-top: 35px;
+      padding-top: 20px;
+      font-size: 12px;
+      color: rgba(255,255,255,.45);
+      display: flex;
+      justify-content: space-between;
+      gap: 20px;
+    }
+
+    /* Language switcher */
+    .lang-switcher {
+      position: fixed; top: 14px; right: 14px; z-index: 60;
+      font-family: "DM Sans", sans-serif; font-size: 13px;
+    }
+    .lang-switcher select {
+      padding: 6px 10px; border: 1px solid rgba(215,171,85,.6); border-radius: 8px;
+      background: rgba(3,47,41,.85); color: white; font-weight: 600; cursor: pointer;
+      backdrop-filter: blur(8px);
+    }
+    .lang-switcher select option { color: #111; }
+    @media (max-width: 980px) {
+      .lang-switcher { left: 50%; transform: translateX(-50%); right: auto; }
+    }
+    @media print { .lang-switcher { display: none; } }
+
+    @media (max-width: 980px) {
+      .nav-links {
+        position: fixed;
+        inset: 75px 20px auto 20px;
+        background: var(--green-950);
+        border-radius: 16px;
+        padding: 22px;
+        flex-direction: column;
+        align-items: stretch;
+        opacity: 0;
+        pointer-events: none;
+        transform: translateY(-10px);
+        transition: .2s;
+      }
+      .nav-links.open { opacity: 1; pointer-events: auto; transform: translateY(0); }
+      .menu-btn { display: block; }
+      .feature-panel, .feature-panel.col-4, .feature-panel.col-6 { grid-template-columns: repeat(2, 1fr); }
+      .feature-item:nth-child(2) { border-right: 0; }
+      .feature-item:nth-child(odd) { border-bottom: 1px solid rgba(255,255,255,.08); }
+      .feature-item:nth-child(3) { border-right: 1px solid rgba(255,255,255,.08); }
+      .footer-grid { grid-template-columns: 1fr 1fr; }
+    }
+
+    @media (max-width: 640px) {
+      .container { width: min(100% - 24px, 1180px); }
+      .logo { min-width: unset; }
+      .logo strong { font-size: 23px; }
+      .logo small { display: none; }
+      .feature-panel, .feature-panel.col-4, .feature-panel.col-6 { grid-template-columns: repeat(2, 1fr); }
+      .footer-grid { grid-template-columns: 1fr; }
+      .footer-bottom { flex-direction: column; }
+    }
+
+    @media (max-width: 480px) {
+      .page-hero { min-height: 300px; padding: 120px 0 40px; }
+      .page-hero h1 { font-size: 40px; }
+      .eyebrow { font-size: 24px; }
+      .section-title { font-size: 32px; }
+      .section-tag { font-size: 22px; }
+      .feature-item span { font-size: 12px; }
+      .cta-box h2 { font-size: 30px; }
+      .cta-box p { font-size: 14px; }
+      footer h4 { font-size: 22px; }
+      .lang-switcher select { font-size: 12px; padding: 5px 8px; }
+    }
+  </style>
+</head>
+<body>
+
+<div class="lang-switcher">
+  <select id="lang-select">
+    <option value="en">English</option>
+    <option value="es">Español</option>
+  </select>
+</div>
+
+<header class="site-header" id="header">
+  <div class="container nav">
+    <a href="index.html" class="logo">
+      <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+      <span>
+        <strong>RDR</strong>
+        <small>APARTMENTS · CURAÇAO</small>
+      </span>
+    </a>
+
+    <nav class="nav-links" id="navLinks">
+      <a href="index.html" data-en="HOME" data-es="INICIO">HOME</a>
+      <a href="apartments.html" data-en="APARTMENTS" data-es="APARTAMENTOS">APARTMENTS</a>
+      <a href="about.html" data-en="ABOUT US" data-es="SOBRE NOSOTROS">ABOUT US</a>
+      <a href="menu.html" data-en="MENU" data-es="MENÚ">MENU</a>
+      <a href="rentacar.html" data-en="RENT A CAR" data-es="ALQUILER DE COCHES">RENT A CAR</a>
+      <a href="index.html#contact" data-en="CONTACT" data-es="CONTACTO">CONTACT</a>
+      <a class="nav-cta" href="index.html#rezerva" data-en="BOOK NOW" data-es="RESERVAR AHORA">BOOK NOW</a>
+    </nav>
+
+    <button class="menu-btn" id="menuBtn" aria-label="Open menu">☰</button>
+  </div>
+</header>
+
+<main>
+  <section class="page-hero">
+    <div class="container">
+      <div class="page-hero-content">
+        <div class="eyebrow" data-en="About Us" data-es="Sobre Nosotros">About Us</div>
+        <h1 data-en="Home in Curaçao" data-es="Hogar en Curaçao">Home in Curaçao</h1>
+        <p data-en="Discover the story behind RDR Apartments — our property, our company and the beautiful neighborhood of Santa Catharina that we call home." data-es="Descubre la historia detrás de RDR Apartments — nuestra propiedad, nuestra empresa y el hermoso barrio de Santa Catharina al que llamamos hogar.">
+          Discover the story behind RDR Apartments — our property, our company and the beautiful neighborhood of Santa Catharina that we call home.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Property -->
+  <section class="shared-section">
+    <div class="container">
+      <div style="max-width:760px;margin:0 auto;text-align:center;">
+        <div class="section-tag" data-en="About the Property" data-es="Sobre la Propiedad">About the Property</div>
+        <h2 class="section-title" data-en="Why guests love RDR Apartments" data-es="Por qué los huéspedes aman RDR Apartments">Why guests love RDR Apartments</h2>
+        <p class="section-copy" data-en="RDR Apartments stands out for the perfect combination of comfort, style and privacy. Each apartment is designed with care, featuring modern decor, bright interiors and generous spaces, creating a welcoming and relaxing atmosphere." data-es="RDR Apartments se distingue por la combinación perfecta de comodidad, estilo e intimidad. Cada apartamento está diseñado con cuidado, con decoración moderna, interiores luminosos y espacios generosos, creando un ambiente acogedor y relajante.">
+          RDR Apartments stands out for the perfect combination of comfort, style and privacy. Each apartment is designed with care, featuring modern decor, bright interiors and generous spaces, creating a welcoming and relaxing atmosphere.
+        </p>
+        <div class="feature-panel col-6">
+          <div class="feature-item"><b>≋</b><span class="feature-title" data-en="Pool" data-es="Piscina">Pool</span><span data-en="Relax in the clean, refreshing water" data-es="Relájate en el agua limpia y refrescante">Relax in the clean, refreshing water</span></div>
+          <div class="feature-item"><b>♧</b><span class="feature-title" data-en="Private terraces" data-es="Terrazas privadas">Private terraces</span><span data-en="Enjoy coffee or sunset with a beautiful view" data-es="Disfruta del café o el atardecer con una hermosa vista">Enjoy coffee or sunset with a beautiful view</span></div>
+          <div class="feature-item"><b>🐾</b><span class="feature-title" data-en="Pet-friendly" data-es="Mascotas permitidas">Pet-friendly</span><span data-en="Bring your furry friends along" data-es="Trae a tus amigos peludos">Bring your furry friends along</span></div>
+          <div class="feature-item"><b>♨</b><span class="feature-title" data-en="Restaurant & BBQ" data-es="Restaurante y BBQ">Restaurant & BBQ</span><span data-en="Dine without leaving the property" data-es="Come sin salir de la propiedad">Dine without leaving the property</span></div>
+          <div class="feature-item"><b>👪</b><span class="feature-title" data-en="Family-friendly" data-es="Familiar">Family-friendly</span><span data-en="Playground and spacious apartments" data-es="Parque infantil y apartamentos espaciosos">Playground and spacious apartments</span></div>
+          <div class="feature-item"><b>📍</b><span class="feature-title" data-en="Convenient location" data-es="Ubicación conveniente">Convenient location</span><span data-en="Close to beaches, attractions and restaurants" data-es="Cerca de playas, atracciones y restaurantes">Close to beaches, attractions and restaurants</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Company -->
+  <section class="intro">
+    <div class="container">
+      <div class="intro-box">
+        <div class="section-tag" data-en="About the Company" data-es="Sobre la Empresa">About the Company</div>
+        <h2 class="section-title" data-en="RDR Apartments — Home in Curaçao" data-es="RDR Apartments — Hogar en Curaçao">RDR Apartments — Home in Curaçao</h2>
+        <p class="section-copy" data-en="RDR Apartments has been welcoming guests to Curaçao for several years, offering quality, comfortable and stylish accommodation. Our team currently manages a selection of boutique apartments in Santa Catharina, each designed to provide privacy, convenience and an authentic island experience." data-es="RDR Apartments ha recibido huéspedes en Curaçao durante varios años, ofreciendo alojamiento de calidad, cómodo y con estilo. Nuestro equipo gestiona actualmente una selección de apartamentos boutique en Santa Catharina, cada uno diseñado para ofrecer intimidad, comodidad y una experiencia auténtica en la isla.">
+          RDR Apartments has been welcoming guests to Curaçao for several years, offering quality, comfortable and stylish accommodation. Our team currently manages a selection of boutique apartments in Santa Catharina, each designed to provide privacy, convenience and an authentic island experience.
+        </p>
+        <div class="feature-panel col-4 light">
+          <div class="feature-item"><b>♡</b><span class="feature-title" data-en="Guest-oriented service" data-es="Servicio orientado al huésped">Guest-oriented service</span><span data-en="Dedicated team, quick communication, local tips" data-es="Equipo dedicado, comunicación rápida, consejos locales">Dedicated team, quick communication, local tips</span></div>
+          <div class="feature-item"><b>★</b><span class="feature-title" data-en="Professionalism & reliability" data-es="Profesionalidad y fiabilidad">Professionalism & reliability</span><span data-en="Every booking handled with care" data-es="Cada reserva gestionada con cuidado">Every booking handled with care</span></div>
+          <div class="feature-item"><b>✦</b><span class="feature-title" data-en="Passion for comfort" data-es="Pasión por la comodidad">Passion for comfort</span><span data-en="Modern decor to AC, every detail matters" data-es="De la decoración moderna al aire acondicionado, cada detalle importa">Modern decor to AC, every detail matters</span></div>
+          <div class="feature-item"><b>≈</b><span class="feature-title" data-en="Local expertise" data-es="Experiencia local">Local expertise</span><span data-en="From beaches to hidden gems, we know Curaçao" data-es="De playas a joyas ocultas, conocemos Curaçao">From beaches to hidden gems, we know Curaçao</span></div>
+        </div>
+        <p class="section-copy" style="margin-top:20px;" data-en="Guests can expect a warm welcome with a refined cocktail, a glass of wine or a cold beer, attentive service and accommodation that combines modern comfort with the vibrant and relaxed spirit of Curaçao." data-es="Los huéspedes pueden esperar una cálida bienvenida con un cóctel refinado, una copa de vino o una cerveza fría, servicio atento y alojamiento que combina la comodidad moderna con el espíritu vibrante y relajado de Curaçao.">
+          Guests can expect a warm welcome with a refined cocktail, a glass of wine or a cold beer, attentive service and accommodation that combines modern comfort with the vibrant and relaxed spirit of Curaçao.
+        </p>
+      </div>
+    </div>
+  </section>
+
+  <!-- About the Neighborhood -->
+  <section class="shared-section">
+    <div class="container">
+      <div style="max-width:760px;margin:0 auto;text-align:center;">
+        <div class="section-tag" data-en="About the Neighborhood" data-es="Sobre el Barrio">About the Neighborhood</div>
+        <h2 class="section-title" data-en="Discover Santa Catharina and nearby attractions" data-es="Descubre Santa Catharina y las atracciones cercanas">Discover Santa Catharina and nearby attractions</h2>
+        <p class="section-copy" data-en="RDR Apartments is located in the quiet and charming area of Santa Catharina, offering the perfect balance between relaxation and accessibility. Guests appreciate the peaceful residential streets, safe environment and easy access to the island's main attractions." data-es="RDR Apartments se encuentra en la tranquila y encantadora zona de Santa Catharina, ofreciendo el equilibrio perfecto entre relajación y accesibilidad. Los huéspedes aprecian las calles residenciales tranquilas, el entorno seguro y el fácil acceso a las principales atracciones de la isla.">
+          RDR Apartments is located in the quiet and charming area of Santa Catharina, offering the perfect balance between relaxation and accessibility. Guests appreciate the peaceful residential streets, safe environment and easy access to the island's main attractions.
+        </p>
+        <div class="feature-panel">
+          <div class="feature-item"><b>🏖</b><span class="feature-title" data-en="Beaches" data-es="Playas">Beaches</span><span data-en="Jan Thiel, Mambo Beach and more, just minutes away" data-es="Jan Thiel, Mambo Beach y más, a solo minutos">Jan Thiel, Mambo Beach and more, just minutes away</span></div>
+          <div class="feature-item"><b>🐠</b><span class="feature-title" data-en="Sea Aquarium" data-es="Sea Aquarium">Sea Aquarium</span><span data-en="Marine life and exhibits, 7.5 km away" data-es="Vida marina y exposiciones, a 7,5 km">Marine life and exhibits, 7.5 km away</span></div>
+          <div class="feature-item"><b>🏔</b><span class="feature-title" data-en="Christoffel Park" data-es="Parque Christoffel">Christoffel Park</span><span data-en="Hiking, nature and spectacular views" data-es="Senderismo, naturaleza y vistas espectaculares">Hiking, nature and spectacular views</span></div>
+          <div class="feature-item"><b>🍽</b><span class="feature-title" data-en="Local restaurants" data-es="Restaurantes locales">Local restaurants</span><span data-en="Authentic Curaçao flavors nearby" data-es="Sabores auténticos de Curaçao cerca">Authentic Curaçao flavors nearby</span></div>
+          <div class="feature-item"><b>🏛</b><span class="feature-title" data-en="Willemstad" data-es="Willemstad">Willemstad</span><span data-en="Historic center, colorful architecture, cultural events" data-es="Centro histórico, arquitectura colorida, eventos culturales">Historic center, colorful architecture, cultural events</span></div>
+          <div class="feature-item"><b>🚗</b><span class="feature-title" data-en="Car rental on-site" data-es="Alquiler de coches en el lugar">Car rental on-site</span><span data-en="Explore the island at your own pace" data-es="Explora la isla a tu propio ritmo">Explore the island at your own pace</span></div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Closing CTA -->
+  <section class="cta-section">
+    <div class="container">
+      <div class="cta-box">
+        <div class="section-tag" data-en="Feel at home" data-es="Siéntete en casa">Feel at home</div>
+        <h2 data-en="Feel at home in Curaçao" data-es="Siéntete en casa en Curaçao">Feel at home in Curaçao</h2>
+        <p data-en="Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad." data-es="Ya vengas para relajarte, vivir una aventura o descubrir la belleza de la isla, RDR Apartments te ofrece un refugio cómodo en una ubicación tranquila, a solo minutos de las playas y atracciones más hermosas de Willemstad.">
+          Whether you come for relaxation, adventure or to discover the beauty of the island, RDR Apartments offers you a comfortable retreat in a quiet location, just minutes from the most beautiful beaches and attractions in Willemstad.
+        </p>
+        <a href="index.html#rezerva" class="btn btn-gold" data-en="Book your stay →" data-es="Reserva tu estancia →">Book your stay →</a>
+      </div>
+    </div>
+  </section>
+</main>
+
+<footer id="contact">
+  <div class="container">
+    <div class="footer-grid">
+      <div>
+        <div class="logo">
+          <span class="logo-mark"><img src="photos/logo.jpg" alt="RDR Apartments logo"></span>
+          <span><strong>RDR</strong><small>APARTMENTS · CURAÇAO</small></span>
+        </div>
+        <p data-en="More than accommodation — an authentic Caribbean experience." data-es="Más que alojamiento — una experiencia caribeña auténtica.">More than accommodation — an authentic Caribbean experience.</p>
+      </div>
+      <div>
+        <h4 data-en="Contact" data-es="Contacto">Contact</h4>
+        <p>
+          La Quinta Villas 95, Santa Catharina, Curaçao<br>
+          +599 9 693 9031<br>
+          <a href="https://www.google.com/maps?q=12.139716145472088,-68.8315028702278" target="_blank" rel="noopener" style="color: var(--gold); text-decoration: underline; font-size: 13px;" data-en="See on map →" data-es="Ver en el mapa →">See on map →</a>
+        </p>
+      </div>
+      <div>
+        <h4 data-en="Navigation" data-es="Navegación">Navigation</h4>
+        <p>
+          <a href="index.html" data-en="Home" data-es="Inicio">Home</a><br>
+          <a href="apartments.html" data-en="Apartments" data-es="Apartamentos">Apartments</a><br>
+          <a href="about.html" data-en="About Us" data-es="Sobre Nosotros">About Us</a><br>
+          <a href="menu.html" data-en="Menu" data-es="Menú">Menu</a><br>
+          <a href="rentacar.html" data-en="Rent a Car" data-es="Alquiler de Coches">Rent a Car</a><br>
+          <a href="index.html#rezerva" data-en="Book now" data-es="Reservar ahora">Book now</a>
+        </p>
+      </div>
+    </div>
+    <div class="footer-bottom">
+      <span data-en="© 2026 RDR Apartments. All rights reserved." data-es="© 2026 RDR Apartments. Todos los derechos reservados.">© 2026 RDR Apartments. All rights reserved.</span>
+      <span>Willemstad · Curaçao</span>
+    </div>
+  </div>
+</footer>
+
+<script>
+  const header = document.getElementById('header');
+  const menuBtn = document.getElementById('menuBtn');
+  const navLinks = document.getElementById('navLinks');
+
+  window.addEventListener('scroll', () => {
+    header.classList.toggle('scrolled', window.scrollY > 40);
+  });
+
+  menuBtn.addEventListener('click', () => {
+    navLinks.classList.toggle('open');
+    menuBtn.textContent = navLinks.classList.contains('open') ? '×' : '☰';
+  });
+
+  navLinks.querySelectorAll('a').forEach(link => {
+    link.addEventListener('click', () => {
+      navLinks.classList.remove('open');
+      menuBtn.textContent = '☰';
+    });
+  });
+
+  /* Language switching */
+  (function(){
+    const sel = document.getElementById('lang-select');
+    function setLang(l){
+      document.documentElement.lang = l;
+      document.querySelectorAll('[data-en]').forEach(el => {
+        const val = el.getAttribute('data-' + l);
+        if (val) el.textContent = val;
+      });
+      localStorage.setItem('rdr-lang', l);
+      if (sel) sel.value = l;
+    }
+    if (sel) sel.addEventListener('change', e => setLang(e.target.value));
+    const saved = localStorage.getItem('rdr-lang');
+    setLang(saved || 'en');
+  })();
+</script>
+</body>
+</html>
